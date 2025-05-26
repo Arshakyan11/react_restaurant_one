@@ -87,15 +87,15 @@ const Home = () => {
           </div>
           <CustomersComment />
           <div className={styles.workingTimeAll}>
-          <div className={styles.workingDays}>
-          </div>
-            <h2>We are open from</h2>
-            <h3>Monday-Sunday</h3>
-            <p>Launch : Mon-Sun : 11:00am-02:00pm</p>
-            <p>Dinner : sunday : 04:00pm-08:00pm</p>
-            <div className={styles.buttons}>
-              <Link to={ROUTES.MENU}>Menu</Link>
-              <Link to={ROUTES.RESERVATION}>Reservation</Link>
+            <div className={styles.workingDays}>
+              <h2>We are open from</h2>
+              <h3>Monday-Sunday</h3>
+              <p>Launch : Mon-Sun : 11:00am-02:00pm</p>
+              <p>Dinner : sunday : 04:00pm-08:00pm</p>
+              <div className={styles.buttons}>
+                <Link to={ROUTES.MENU}>Menu</Link>
+                <Link to={ROUTES.RESERVATION}>Reservation</Link>
+              </div>
             </div>
           </div>
         </div>
