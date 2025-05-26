@@ -33,7 +33,6 @@ import chiefImg12 from "../assets/images/chiefsImage/chief12.jpg";
 import chiefImg13 from "../assets/images/chiefsImage/chief13.jpg";
 import chiefImg14 from "../assets/images/chiefsImage/chief14.avif";
 import chiefImg15 from "../assets/images/chiefsImage/chief15.jpg";
-import customerImgMan1 from "../assets/images/customerImages/customerMan1.png";
 import customerImgMan2 from "../assets/images/customerImages/customerMan2.avif";
 import customerImgMan3 from "../assets/images/customerImages/customerMan3.jpg";
 import customerImgMan4 from "../assets/images/customerImages/customerMan4.jpg";
@@ -78,7 +77,6 @@ export {
   chiefImg13,
   chiefImg14,
   chiefImg15,
-  customerImgMan1,
   customerImgMan2,
   customerImgMan3,
   customerImgMan4,
