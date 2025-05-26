@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AboutUS.module.scss";
-import { ownerImg, pic2, pic3 } from "../../components/Images";
+import { ownerImg, pic2, pic3, pic4, pic5 } from "../../components/Images";
 const AboutUS = () => {
   return (
     <section className={styles.aboutUsSec}>
@@ -58,13 +58,7 @@ const AboutUS = () => {
           </div>
           <div className={styles.firstBox}>
             <div className={styles.firstleftSide}>
-              <img
-                src={
-                  "https://assets.architecturaldigest.in/photos/64f85037ec0bc118bdd98aba/master/pass/Untitled%20design%20(14).png"
-                }
-                alt="img"
-                className={styles.alternativeImg}
-              />
+              <img src={pic5} alt="img" className={styles.alternativeImg} />
             </div>
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
@@ -89,6 +83,27 @@ const AboutUS = () => {
           <div className={styles.firstBox}>
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
+                <span>Our</span> Working Time
+              </p>
+              <p className={styles.info}>
+                We welcome guests every day of the week, offering both lunch and
+                dinner services designed to suit every schedule and occasion.
+                Monday – Sunday Lunch: 11:00 AM – 2:00 PM Dinner: Sunday only,
+                4:00 PM – 8:00 PM Whether you're stopping by for a midday bite
+                or planning a relaxing evening meal, our doors are open and our
+                kitchen is ready to serve you with excellence.
+              </p>
+            </div>
+            <div className={styles.firstleftSide}>
+              <img src={pic4} alt="img" className={styles.alternativeImg} />
+            </div>
+          </div>
+          <div className={styles.firstBox}>
+            <div className={styles.firstleftSide}>
+              <img src={ownerImg} alt="img" className={styles.ownerImg} />
+            </div>
+            <div className={styles.firsRightSide}>
+              <p className={styles.title}>
                 Owner & Executive Chef <br /> <span>Erik Arshakyan </span>
               </p>
               <p className={styles.info}>
@@ -108,9 +123,6 @@ const AboutUS = () => {
                 has become a place where food tells a story, and guests feel
                 like family.
               </p>
-            </div>
-            <div className={styles.firstleftSide}>
-              <img src={ownerImg} alt="img" className={styles.ownerImg} />
             </div>
           </div>
         </div>
