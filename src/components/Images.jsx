@@ -12,7 +12,8 @@ import img9 from "../assets/images/restaurants/9.png";
 import welcomeImg from "../assets/images/defaultImages/picture.png";
 import pic2 from "../assets/images/defaultImages/pic2.png";
 import pic3 from "../assets/images/defaultImages/pic3.png";
-import pic4 from "../assets/images/defaultImages/pic4.png";
+import pic4 from "../assets/images/defaultImages/pic4.jpg";
+import pic5 from "../assets/images/defaultImages/pic5.webp";
 import ownerImg from "../assets/images/defaultImages/owner.jpg";
 import starRating from "../assets/images/defaultImages/star.png";
 import reserveImg1 from "../assets/images/defaultImages/reserve1.png";
@@ -57,6 +58,7 @@ export {
   pic2,
   pic3,
   pic4,
+  pic5,
   ownerImg,
   starRating,
   reserveImg1,
