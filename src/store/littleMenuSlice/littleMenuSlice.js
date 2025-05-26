@@ -7,6 +7,12 @@ const littleMenuSlice = createSlice({
     data: [],
     error: null,
     loading: false,
+    activeCategory: null,
+  },
+  reducers: {
+    setActiveCategory: (state, action) => {
+      state.activeCategory = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchingLittleMenu.pending, (state, action) => {
@@ -30,3 +36,4 @@ const littleMenuSlice = createSlice({
 
 export default littleMenuSlice.reducer;
 export const { gettAllInfo, gettData } = littleMenuSlice.selectors;
+export const { setActiveCategory } = littleMenuSlice.actions;

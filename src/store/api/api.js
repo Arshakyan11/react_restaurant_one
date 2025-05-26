@@ -20,8 +20,6 @@ export const fetchingLittleMenu = createAsyncThunk(
       if (response.length > 16) {
         response.length = 12;
       }
-      {
-      }
       response.forEach((elm) => {
         elm.recipe.price = Math.round(Math.random() * 45 + 5);
         delete elm.recipe.digest;
