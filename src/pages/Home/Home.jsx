@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import LittleMenuSection from "../../components/LittleMenuSection/LittleMenuSection";
 import { restaurantChefs } from "../../components/data/chiefsData";
-import { customerReview } from "../../components/data/customerData";
+import CustomersComment from "../../components/CustomersComment/CustomersComment";
 const Home = () => {
   return (
     <div className={styles.homeSection}>
@@ -73,9 +73,9 @@ const Home = () => {
           <div className={styles.chiefSection}>
             <h2 className={styles.mainTitle}>Our greatest chef</h2>
             <div className={styles.chiefsBox}>
-              {restaurantChefs.slice(0, 3).map((chief) => {
+              {restaurantChefs.slice(0, 3).map((chief, ind) => {
                 return (
-                  <div className={styles.eachChief}>
+                  <div className={styles.eachChief} key={ind}>
                     <img src={chief.img} alt="chiefImg" />
                     <h2>{chief.name}</h2>
                     <h3>{chief.position}</h3>
@@ -85,28 +85,18 @@ const Home = () => {
             </div>
             <Link to={ROUTES.STAFF}>See Our Chef Team</Link>
           </div>
-          <div className={styles.ourCustomers}>
-            <h2>Our Customers Say</h2>
-            {customerReview.map((elm) => {
-              let randomStarCount = Math.round(Math.random() * 2 + 3);
-              return (
-                <div className={styles.eachCustomer} key={elm.id}>
-                  <div className={styles.profileSec}>
-                    <img src={elm.img} alt="img" />
-                    <div className={styles.profileInfo}>
-                      <h2>{elm.nickname}</h2>
-                      <div className={styles.starReview}>
-                        {Array(randomStarCount).map((count) => {
-                          return (
-                            <img src={starRating} alt="star" key={count} />
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <CustomersComment />
+          <div className={styles.workingTimeAll}>
+            <div className={styles.workingDays}>
+              <h2>We are open from</h2>
+              <h3>Monday-Sunday</h3>
+              <p>Launch : Mon-Sun : 11:00am-02:00pm</p>
+              <p>Dinner : sunday : 04:00pm-08:00pm</p>
+              <div className={styles.buttons}>
+                <Link to={ROUTES.MENU}>Menu</Link>
+                <Link to={ROUTES.RESERVATION}>Reservation</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

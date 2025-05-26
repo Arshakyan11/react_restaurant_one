@@ -1,5 +1,4 @@
 import {
-  customerImgMan1,
   customerImgMan2,
   customerImgMan3,
   customerImgMan4,
@@ -14,7 +13,7 @@ export const customerReview = [
   {
     id: 1,
     nickname: "Emily Johnson",
-    img: customerImgMan1,
+    img: customerImgMan5,
     comment:
       "This restaurant offers an experience that goes beyond just food. Every dish we tried had a unique story and rich flavor that showed the chef’s passion. The ambiance was both elegant and cozy, perfect for a date night or family celebration. Staff were knowledgeable and eager to explain the menu. We felt like royalty from the moment we walked in. Definitely planning to come back and try the seasonal menu.",
   },
@@ -70,7 +69,7 @@ export const customerReview = [
   {
     id: 9,
     nickname: "Ava Davis",
-    img: customerImgMan1,
+    img: customerImgMan2,
     comment:
       "The perfect place for those who appreciate fine dining with personality. Each plate felt like it was handcrafted just for us. We tried the tasting menu and were delighted with every course. The staff anticipated our needs before we even voiced them. It’s rare to find such passion in both service and cuisine these days. A true culinary sanctuary.",
   },
@@ -105,7 +104,7 @@ export const customerReview = [
   {
     id: 14,
     nickname: "James White",
-    img: customerImgMan1,
+    img: customerImgMan3,
     comment:
       "Rarely do I come across a restaurant that hits every mark, but this one did. From the fresh ingredients to the thoughtful plating, it was a celebration of flavor and style. Even the coffee at the end of our meal was perfect. The team here clearly loves what they do. I’ll be telling all my friends about this spot.",
   },

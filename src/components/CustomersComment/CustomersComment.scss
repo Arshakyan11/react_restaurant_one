@@ -1,0 +1,65 @@
+@import "../../global//global.scss";
+.ourCustomers {
+  .title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .eachCustomer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    width: 100%;
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #e1f2f7, rgb(255, 255, 255));
+    box-shadow: 10px 6px 20px rgba(150, 200, 255, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(100, 160, 255, 0.25);
+    }
+    .profileSec {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .profileInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        h2 {
+          color: #1f1f1f;
+        }
+        .starReview {
+          display: flex;
+          gap: 3px;
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .comment {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+  }
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 70px;
+}
