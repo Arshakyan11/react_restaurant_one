@@ -4,5 +4,8 @@ export const ROUTES = {
   ABOUTUS: "aboutUs",
   Search: "search",
   RESERVATION: "reservation",
-  RESTAURANTS : "restaurants"
+  RESTAURANTS: "restaurants",
+  REGISTRATION: "registration",
+  LOGIN: "login",
+  STAFF: "/staff",
 };

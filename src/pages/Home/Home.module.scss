@@ -1,0 +1,149 @@
+@import "../../global/global.scss";
+.homeSection {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .homeBox {
+      display: flex;
+      flex-direction: column;
+      .welcomeSec {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 50px;
+        margin-top: 70px;
+        padding: 30px;
+        background: rgba(63, 198, 110, 0.1);
+        .leftSide {
+          img {
+            width: 500px;
+          }
+        }
+        .rightSide {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding-top: 20px;
+          .welcome {
+            font-size: 60px;
+            font-weight: bold;
+            span {
+              color: orange;
+              font-weight: 100;
+            }
+          }
+          .welcomeText {
+            @include textStyleSome();
+          }
+          a {
+            @include btnStylesAndHover();
+            padding: 10px 30px;
+            padding-left: 10px;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+      .reservationSec {
+        display: flex;
+        justify-content: space-evenly;
+        background: rgba(255, 244, 231, 0.6);
+        padding: 50px 0;
+        .leftSideReserve {
+          position: relative;
+          .mainImg {
+            width: 500px;
+          }
+          .secondaryImg,
+          .secondaryImg2 {
+            position: absolute;
+            width: 100px;
+          }
+          .secondaryImg {
+            right: 8%;
+            top: 2%;
+          }
+          .secondaryImg2 {
+            bottom: 0;
+            left: 0;
+          }
+        }
+        .rightSideReserve {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          h2 {
+            font-size: 60px;
+            font-weight: bold;
+            span {
+              color: orange;
+              font-weight: 100;
+            }
+          }
+          p {
+            @include textStyleSome();
+            line-height: 40px;
+          }
+          a {
+            @include btnStylesAndHover();
+            padding: 10px 40px;
+            max-width: 200px;
+          }
+        }
+      }
+      .chiefSection {
+        @include disFx();
+        padding: 50px 0;
+        flex-direction: column;
+        gap: 50px;
+        .mainTitle {
+          font-size: 50px;
+        }
+        .chiefsBox {
+          display: flex;
+          gap: 30px;
+          .eachChief {
+            @include disFx();
+            flex-direction: column;
+            img {
+              width: 300px;
+              border-radius: 50px;
+              transition: all 0.5s;
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+            h2 {
+              color: #311f09;
+              margin-top: 10px;
+            }
+            h3 {
+              color: #a08d76;
+              font-size: 26px;
+            }
+            &:nth-child(1) {
+              img {
+                background: rgba(128, 128, 128, 0.5);
+              }
+            }
+            &:nth-child(2) {
+              img {
+                background: rgba(245, 222, 179, 0.5);
+              }
+            }
+            &:nth-child(3) {
+              img {
+                background: rgba(201, 182, 147, 0.5);
+              }
+            }
+          }
+        }
+        a {
+          @include btnStylesAndHover();
+          padding: 10px  40px;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

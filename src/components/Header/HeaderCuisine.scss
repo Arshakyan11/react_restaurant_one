@@ -1,0 +1,39 @@
+.cuisinesBox {
+  .eachCuisine {
+    display: flex;
+    gap: 50px;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    margin-top: 50px;
+    .leftSide {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .restaurants {
+        color: #ff8a00;
+        background: rgba(255, 165, 0, 0.2);
+        padding: 10px 20px;
+        max-width: 140px;
+        border-radius: 10px;
+        font-size: 20px;
+      }
+      .cusisineType {
+        font-size: 60px;
+        font-weight: bold;
+      }
+      .aboutCousine {
+        color: #5c4529;
+        max-width: 550px;
+        font-size: 20px;
+      }
+    }
+    .rightSide {
+      overflow: hidden;
+      img {
+        min-width: 300px;
+        height: 350px;
+        border-radius: 20px;
+      }
+    }
+  }
+}

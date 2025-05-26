@@ -1,0 +1,49 @@
+.aboutUsSec {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .aboutUsBox {
+    //   margin-top: 50px;
+    padding: 50px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      .firstBox {
+        display: flex;
+        justify-content: space-evenly;
+        .firstleftSide {
+          img {
+            width: 500px;
+          }
+          .alternativeImg {
+            align-self: center;
+          }
+          .ownerImg {
+            height: 500px;
+            object-fit: contain;
+          }
+        }
+        .firsRightSide {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          .title {
+            span {
+              color: orange;
+              font-weight: bold;
+            }
+            font-size: 60px;
+          }
+          .info {
+            max-width: 700px;
+            font-size: 20px;
+            line-height: 30px;
+          }
+          .owner {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+}

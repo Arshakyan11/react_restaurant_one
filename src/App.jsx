@@ -10,6 +10,7 @@ import {
   Reservation,
   Search,
 } from "./pages";
+import Staff from "./pages/Staff/Staff";
 function App() {
   return (
     <div>
@@ -21,6 +22,7 @@ function App() {
           <Route path={ROUTES.RESTAURANTS} element={<OurRestourants />} />
           <Route path={ROUTES.Search} element={<Search />} />
           <Route path={ROUTES.RESERVATION} element={<Reservation />} />
+          <Route path={ROUTES.STAFF} element={<Staff />} />
         </Route>
       </Routes>
     </div>
