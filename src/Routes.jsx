@@ -8,4 +8,11 @@ export const ROUTES = {
   REGISTRATION: "registration",
   LOGIN: "login",
   STAFF: "/staff",
+  CONTACTUS : "/contactUs"
 };
+
+
+//home
+//aboutUs
+//staff
+//contactUS

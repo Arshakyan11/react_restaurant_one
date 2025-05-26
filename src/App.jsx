@@ -4,6 +4,7 @@ import LayOut from "./LayOut/LayOut";
 import { ROUTES } from "./Routes";
 import {
   AboutUS,
+  ContactUs,
   Home,
   Menu,
   OurRestourants,
@@ -23,6 +24,7 @@ function App() {
           <Route path={ROUTES.Search} element={<Search />} />
           <Route path={ROUTES.RESERVATION} element={<Reservation />} />
           <Route path={ROUTES.STAFF} element={<Staff />} />
+          <Route path={ROUTES.CONTACTUS} element={<ContactUs />} />
         </Route>
       </Routes>
     </div>
