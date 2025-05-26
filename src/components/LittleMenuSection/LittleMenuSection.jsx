@@ -23,8 +23,8 @@ const LittleMenuSection = () => {
   const handleClick = (type) => {
     if (type !== activeCategory) {
       dispatch(fetchingLittleMenu(type));
+      dispatch(setActiveCategory(type));
     }
-    dispatch(setActiveCategory(type));
   };
   return (
     <div className={styles.littleMenuSec}>
@@ -47,9 +47,14 @@ const LittleMenuSection = () => {
       <div className={styles.allMenu}>
         {loading ? (
           <div className={styles.allLoaders}>
-            <span className={styles.loader}></span>
-            <span className={styles.loader}></span>
-            <span className={styles.loader}></span>
+            <div className={styles.firstLine}>
+              <span className={styles.loader}></span>
+              <span className={styles.loader}></span>
+              <span className={styles.loader}></span>
+            </div>
+            <div className={styles.firstLine}>
+              <span class={styles.loader2}>L &nbsp; ading</span>
+            </div>
           </div>
         ) : (
           data?.map((elm, index) => {
