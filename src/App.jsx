@@ -12,9 +12,25 @@ import {
   Search,
 } from "./pages";
 import Staff from "./pages/Staff/Staff";
+import { Bounce, ToastContainer } from "react-toastify";
 function App() {
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+        style={{ zIndex: "1000", top: "10px" }}
+        limit={5}
+      />
       <Routes>
         <Route path={ROUTES.HOME} element={<LayOut />}>
           <Route path={ROUTES.HOME} element={<Home />} />

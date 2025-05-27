@@ -36,8 +36,8 @@
         align-items: center;
         gap: 40px;
         width: 100%;
-
         fieldset {
+          overflow: hidden;
           border-radius: 20px;
           background-color: #f2f0ec;
           border: 1px solid #d0ccc7;

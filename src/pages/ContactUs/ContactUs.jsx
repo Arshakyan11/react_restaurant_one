@@ -2,19 +2,23 @@ import React, { useEffect } from "react";
 import "aos/dist/aos.css";
 import styles from "./ContactUs.module.scss";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllData } from "../../store/ContactUsSlice/ContactUsSlice";
 import { contactUsValidation } from "../../helpers/useValidation";
 import Aos from "aos";
+import { sendingMessage } from "../../store/api/api";
+import { createDataContact } from "../../helpers/sendData";
 const ContactUs = () => {
-  const { initialValues, data } = useSelector(getAllData);
+  const dispatch = useDispatch();
+  const { initialValues } = useSelector(getAllData);
   useEffect(() => {
     Aos.init({ duration: 800 });
   }, []);
+
   return (
     <section className={styles.contactUsSec}>
       <div className={styles.container}>
-        <div className={styles.contactUsMain} >
+        <div className={styles.contactUsMain}>
           <h2>Contact Us</h2>
           <p className={styles.titileText}>
             We love hearing from our customers. Feel free to share your
@@ -26,13 +30,10 @@ const ContactUs = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={contactUsValidation}
-            onSubmit={(e, form) => {
-              const { name, lastname, email, subject, message } = e;
-              console.log(name);
-            }}
+            onSubmit={(e, form) => createDataContact(e, form, dispatch)}
           >
             <Form data-aos="fade-down">
-              <div className={styles.eachLine} >
+              <div className={styles.eachLine}>
                 <fieldset>
                   <Field name="name" placeholder="First Name" type="text" />
                   <legend>
