@@ -42,6 +42,18 @@ import customerImgMan6 from "../assets/images/customerImages/customerMan6.jpg";
 import customerImgWoman1 from "../assets/images/customerImages/customerWoman1.jpg";
 import customerImgWoman2 from "../assets/images/customerImages/customerWoman2.jpg";
 import customerImgWoman3 from "../assets/images/customerImages/customerWoman3.avif";
+import yerRestImg1 from "../assets/images/yerevanRestaurant/yer1.jpg";
+import yerRestImg2 from "../assets/images/yerevanRestaurant/yer2.jpeg";
+import yerRestImg3 from "../assets/images/yerevanRestaurant/yer3.jpg";
+import yerRestImg4 from "../assets/images/yerevanRestaurant/yer4.jpg";
+import losRestImg1 from "../assets/images/losRestaurant/los1.jpg";
+import losRestImg2 from "../assets/images/losRestaurant/los2.jpg";
+import losRestImg3 from "../assets/images/losRestaurant/los3.jpg";
+import losRestImg4 from "../assets/images/losRestaurant/los4.jpg";
+import tokyoRestImg1 from "../assets/images/tokyoRestaurant/tokyo1.jpg";
+import tokyoRestImg2 from "../assets/images/tokyoRestaurant/tokyo2.jpg";
+import tokyoRestImg3 from "../assets/images/tokyoRestaurant/tokyo3.jpg";
+import tokyoRestImg4 from "../assets/images/tokyoRestaurant/tokyo4.webp";
 export {
   logo,
   logo1,
@@ -87,4 +99,16 @@ export {
   customerImgWoman1,
   customerImgWoman2,
   customerImgWoman3,
+  yerRestImg1,
+  yerRestImg2,
+  yerRestImg3,
+  yerRestImg4,
+  losRestImg1,
+  losRestImg2,
+  losRestImg3,
+  losRestImg4,
+  tokyoRestImg1,
+  tokyoRestImg2,
+  tokyoRestImg3,
+  tokyoRestImg4,
 };
