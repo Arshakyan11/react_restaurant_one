@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { notifyForConnecting } from "../../helpers/notifyUser";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -7,6 +8,12 @@ const instant = axios.create({
   headers: {
     "Edamam-Account-User": "myrestaurant123",
   },
+});
+
+const localStorageContacts = axios.create({
+  timeoutErrorMessage: "Error 404",
+  timeout: 10000,
+  baseURL: "http://localhost:8000/usersMessage",
 });
 
 export const fetchingLittleMenu = createAsyncThunk(
@@ -34,6 +41,19 @@ export const fetchingLittleMenu = createAsyncThunk(
       return response;
     } catch (error) {
       return rejectWithValue("Error 404");
+    }
+  }
+);
+
+export const sendingMessage = createAsyncThunk(
+  "ContactUsSlice/sendingMessage",
+  async (data, { rejectWithValue }) => {
+    try {
+      localStorageContacts({ method: "POST", data: data });
+     notifyForConnecting()
+      return "Success";
+    } catch (error) {
+      return rejectWithValue("Smth Went Wrong!");
     }
   }
 );

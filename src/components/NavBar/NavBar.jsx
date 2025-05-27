@@ -55,7 +55,7 @@ const NavBar = () => {
                   <div className="dropDownMenu">
                     <NavLink to={ROUTES.RESERVATION}>Reservation</NavLink>
                     <NavLink to={ROUTES.RESTAURANTS}>Our Addresses</NavLink>
-                    <NavLink to={ROUTES.RESTAURANTS}>Contact Us</NavLink>
+                    <NavLink to={ROUTES.CONTACTUS}>Contact Us</NavLink>
                     <NavLink to={ROUTES.STAFF}>Our Staff</NavLink>
                   </div>
                 )}
