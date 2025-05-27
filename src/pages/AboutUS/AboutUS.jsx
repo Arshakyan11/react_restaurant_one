@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./AboutUS.module.scss";
 import { ownerImg, pic2, pic3, pic4, pic5 } from "../../components/Images";
+import Aos from "aos";
 const AboutUS = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+    });
+  });
   return (
     <section className={styles.aboutUsSec}>
       <div className={styles.container}>
         <div className={styles.aboutUsBox}>
-          <div className={styles.firstBox}>
+          <div className={styles.firstBox} data-aos="fade-left">
             <div className={styles.firstleftSide}>
               <img src={pic2} alt="img" />
             </div>
@@ -30,7 +36,7 @@ const AboutUS = () => {
               </p>
             </div>
           </div>
-          <div className={styles.firstBox}>
+          <div className={styles.firstBox} data-aos="fade-right">
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
                 Our <br /> <span>Menu</span>
@@ -56,7 +62,7 @@ const AboutUS = () => {
               <img src={pic3} alt="img" />
             </div>
           </div>
-          <div className={styles.firstBox}>
+          <div className={styles.firstBox} data-aos="fade-left">
             <div className={styles.firstleftSide}>
               <img src={pic5} alt="img" className={styles.alternativeImg} />
             </div>
@@ -80,7 +86,7 @@ const AboutUS = () => {
               </p>
             </div>
           </div>
-          <div className={styles.firstBox}>
+          <div className={styles.firstBox} data-aos="fade-right">
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
                 <span>Our</span> Working Time
@@ -98,7 +104,7 @@ const AboutUS = () => {
               <img src={pic4} alt="img" className={styles.alternativeImg} />
             </div>
           </div>
-          <div className={styles.firstBox}>
+          <div className={styles.firstBox} data-aos="fade-left">
             <div className={styles.firstleftSide}>
               <img src={ownerImg} alt="img" className={styles.ownerImg} />
             </div>
