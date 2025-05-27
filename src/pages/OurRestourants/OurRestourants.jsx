@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaClock, FaEnvelope, FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import styles from "./OurRestourants.module.scss";
 import RestaurantSlider from "../../components/RestaurantSlider/RestaurantSlider";
 import { eachRestaurantData } from "../../components/data/eachRestaurant";
+import Aos from "aos";
 
 const OurRestourants = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+    });
+  });
   return (
     <section className={styles.OurAddressSec}>
       <div className={styles.container}>
         <div className={styles.ourRestaurants}>
           {eachRestaurantData.map((elm) => {
             return (
-              <div className={styles.firstRestaurant}>
+              <div className={styles.firstRestaurant} data-aos="fade-left">
                 <p className={styles.title}>
                   <span>ERISO</span> {elm.location}
                 </p>
