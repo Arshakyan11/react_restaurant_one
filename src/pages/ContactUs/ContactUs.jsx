@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "aos/dist/aos.css";
 import styles from "./ContactUs.module.scss";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useSelector } from "react-redux";
 import { getAllData } from "../../store/ContactUsSlice/ContactUsSlice";
 import { contactUsValidation } from "../../helpers/useValidation";
+import Aos from "aos";
 const ContactUs = () => {
   const { initialValues, data } = useSelector(getAllData);
-  console.log(initialValues);
-
+  useEffect(() => {
+    Aos.init({ duration: 800 });
+  }, []);
   return (
     <section className={styles.contactUsSec}>
       <div className={styles.container}>
-        <div className={styles.contactUsMain}>
+        <div className={styles.contactUsMain} >
           <h2>Contact Us</h2>
           <p className={styles.titileText}>
             We love hearing from our customers. Feel free to share your
@@ -28,8 +31,8 @@ const ContactUs = () => {
               console.log(name);
             }}
           >
-            <Form>
-              <div className={styles.eachLine}>
+            <Form data-aos="fade-down">
+              <div className={styles.eachLine} >
                 <fieldset>
                   <Field name="name" placeholder="First Name" type="text" />
                   <legend>
