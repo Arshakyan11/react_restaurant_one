@@ -10,6 +10,7 @@ nav {
       align-items: center;
       padding: 0 40px;
       gap: 20px;
+      border-bottom: 2px solid rgb(204, 204, 204);
       // a {
       // color: #212121;
       // font-size: 22px;
@@ -69,10 +70,10 @@ nav {
         gap: 20px;
         a {
           color: white;
-          background: orange;
+          background: #3fa72f;
           padding: 10px 40px;
-          border-radius: 10px;
-          color: #212121;
+          border-radius: 50px;
+          color: white;
           font-size: 22px;
         }
       }

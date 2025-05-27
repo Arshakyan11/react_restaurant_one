@@ -1,0 +1,107 @@
+@import "../../global/global.scss";
+.contactUsSec {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .contactUsMain {
+      @include disFx();
+      flex-direction: column;
+      padding: 40px 20px;
+      background: linear-gradient(to bottom, #fdfaf5, #fff);
+      h2 {
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        &::after {
+          content: "";
+          display: block;
+          width: 280px;
+          height: 3px;
+          background-color: #e6b100;
+          margin: 10px auto 0;
+        }
+      }
+      .titileText {
+        font-size: 20px;
+        max-width: 1000px;
+        text-align: center;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 50px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+
+        fieldset {
+          border-radius: 20px;
+          background-color: #f2f0ec;
+          border: 1px solid #d0ccc7;
+          position: relative;
+          legend {
+            color: red;
+            position: absolute;
+            left: 10px;
+            top: -20px;
+          }
+          textarea,
+          input {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 20px;
+            width: 100%;
+          }
+        }
+        .eachLine {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          width: 100%;
+          fieldset {
+            max-width: 500px;
+            width: 100%;
+          }
+        }
+        fieldset {
+          max-width: 1020px;
+          width: 100%;
+          .textareaStyle {
+            min-height: 300px;
+            resize: none;
+          }
+        }
+        .buttons {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          width: 100%;
+          button {
+            font-size: 22px;
+            border-radius: 60px;
+            transition: all 0.5s;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, #f6a700, #ffcc00);
+            color: white;
+            box-shadow: 0 4px 12px rgba(246, 167, 0, 0.3);
+            padding: 10px 40px;
+            max-width: 300px;
+            font-weight: bold;
+            width: 100%;
+            &:hover {
+              background: linear-gradient(135deg, #ff9900, #ffd700);
+              box-shadow: 0 4px 12px rgba(255, 210, 77, 0.5);
+              color: rgb(240, 77, 36);
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,7 +21,8 @@
     "redux": "^5.0.1",
     "sass": "^1.89.0",
     "swiper": "^11.2.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
