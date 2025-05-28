@@ -1,3 +1,4 @@
+@import  "../../global/global.scss"; 
 .searching {
   .container {
     max-width: 1440px;
@@ -48,8 +49,8 @@
         max-width: 600px;
         text-align: center;
         border-radius: 8px;
-        // background-color: #1a2e2e;
-        background-color: #e0d4bc;
+        background-color: #cab366;
+
         .searchingIcon {
           font-size: 50px;
           color: #ffffff;
@@ -60,16 +61,16 @@
         .searchingTitle {
           font-size: 24px;
           font-weight: 600;
-          // color: #ffffff;
           margin-bottom: 10px;
           color: #333;
         }
         .searchingMessage {
           font-size: 18px;
-          //   color: #d3d3d3;
           color: #333;
           line-height: 1.5;
           margin-bottom: 20px;
+          line-height: 26px;
+          max-width: 500px;
         }
         .buttons {
           display: flex;
@@ -78,15 +79,94 @@
           a {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #6f42c1;
+            background-color: #2d3436;
             color: #ffffff;
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.5s ease;
             &:hover {
-              background-color: #563d7c;
+              color: #2d3436;
+              background: white;
+            }
+          }
+        }
+      }
+      .allMeals {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        .eachMenu {
+          @include disFx();
+          justify-content: flex-start;
+          flex-direction: column;
+          max-width: 380px;
+          height: 600px;
+          width: 100%;
+          background: rgba(208, 204, 199, 0.2);
+          border-radius: 70px;
+          .mealImg {
+            width: 380px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 30px;
+            width: 200px;
+            min-height: 200px;
+            padding-top: 10px;
+          }
+          .infoOfMeal {
+            @include disFx();
+            flex-direction: column;
+            gap: 15px;
+            padding: 0 20px;
+            height: 100%;
+            padding-bottom: 20px;
+            h2 {
+              font-size: 18px;
+              text-align: center;
+            }
+            span {
+              font-weight: bold;
+            }
+            .stars {
+              @include disFx();
+              gap: 5px;
+              span {
+                margin-right: 5px;
+              }
+              img {
+                width: 15px;
+                height: 15px;
+              }
+            }
+            .ingredients {
+              @include disFx();
+              flex-direction: column;
+              text-align: center;
+              .ingredientsName {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 18px;
+              }
+            }
+            .priceAndOrderNow {
+              @include disFx();
+              justify-content: space-evenly;
+              font-size: 20px;
+              margin-top: auto;
+              .priceBox {
+                display: flex;
+                gap: 5px;
+              }
+              a {
+                @include btnStylesAndHover();
+                padding: 12px 40px;
+                font-weight: bold;
+              }
             }
           }
         }

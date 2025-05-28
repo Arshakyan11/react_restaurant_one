@@ -9,6 +9,11 @@ const SearchSlice = createSlice({
     loading: false,
     error: null,
   },
+  reducers: {
+    clearFoundedData: (state) => {
+      state.foundedData = [];
+    },
+  },
   selectors: {
     gettAllDataSearching: (state) => state,
   },
@@ -32,4 +37,5 @@ const SearchSlice = createSlice({
 });
 
 export default SearchSlice.reducer;
+export const { clearFoundedData } = SearchSlice.actions;
 export const { gettAllDataSearching } = SearchSlice.selectors;
