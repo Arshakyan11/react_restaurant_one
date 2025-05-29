@@ -50,10 +50,28 @@ export const sendingMessage = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       localStorageContacts({ method: "POST", data: data });
-     notifyForConnecting()
+      notifyForConnecting();
       return "Success";
     } catch (error) {
       return rejectWithValue("Smth Went Wrong!");
+    }
+  }
+);
+
+export const fetchingSearchMenu = createAsyncThunk(
+  "searching/fetchingSearchMenu",
+  async (query, { rejectWithValue }) => {
+    try {
+      const response = await instant({
+        method: "GET",
+        baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
+      }).then((res) => res.data.hits);
+      response.forEach((elm) => {
+        elm.recipe.price = Math.round(Math.random() * 45 + 5);
+      });
+      return { queryName: query, data: response };
+    } catch (error) {
+      return rejectWithValue("Error 404");
     }
   }
 );

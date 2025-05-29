@@ -1,18 +1,20 @@
 export const ROUTES = {
   HOME: "/",
-  MENU: "menu",
   ABOUTUS: "aboutUs",
-  Search: "search",
-  RESERVATION: "reservation",
+  STAFF: "/staff",
+  CONTACTUS: "/contactUs",
   RESTAURANTS: "restaurants",
+
+  Search: "search",
+  MENU: "menu",
+  RESERVATION: "reservation",
   REGISTRATION: "registration",
   LOGIN: "login",
-  STAFF: "/staff",
-  CONTACTUS : "/contactUs"
 };
-
 
 //home
 //aboutUs
 //staff
 //contactUS
+//restaurants
+//search
