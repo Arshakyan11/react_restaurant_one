@@ -10,9 +10,8 @@ import { nanoid } from "nanoid";
 import { starRating } from "../../components/Images";
 const Search = () => {
   const dispatch = useDispatch();
-  const { foundedData } = useSelector(gettAllDataSearching);
-console.log(foundedData.length);
-
+  const { foundedData, loading } = useSelector(gettAllDataSearching);
+  console.log(foundedData);
   return (
     <section className={styles.searching}>
       <div className={styles.container}>
@@ -28,11 +27,15 @@ console.log(foundedData.length);
             />
           </div>
           <div className={styles.allMeals}>
-            {foundedData.length > 1 ? (
+            {loading ? (
+              <div className={styles.loaders}>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+              </div>
+            ) : foundedData.length > 1 ? (
               foundedData?.map((elm) => {
                 const each = elm.recipe;
                 let randomStar = Math.round(Math.random() * 2 + 3);
-                let ingredients = each.ingredientLines.slice(0, 4);
                 return (
                   <div key={nanoid(5)} className={styles.eachMenu}>
                     <img
@@ -48,17 +51,18 @@ console.log(foundedData.length);
                           return <img key={i} src={starRating} alt="star" />;
                         })}
                       </div>
-                      <div className={styles.ingredients}>
-                        <h3>Ingredients:</h3>
-                        <div className={styles.ingredientsName}>
-                          {ingredients.map((elm, ind) => {
-                            return (
-                              <p key={ind}>
-                                {`${ind + 1})`} {elm}
-                              </p>
-                            );
-                          })}
-                        </div>
+                      <div className={styles.cousine}>
+                        <span>Cousine</span>
+                        <p>{each.cuisineType[0]}</p>
+                      </div>
+                      <div className={styles.dietLabels}>
+                        <span>Diet</span>
+                        <p>{each.dietLabels[0]}</p>
+                        <p>{each.dietLabels[1]}</p>
+                      </div>
+                      <div className={styles.mealType}>
+                        <span>Meal Type</span>
+                        <p>{each.mealType[0]}</p>
                       </div>
                       <div className={styles.priceAndOrderNow}>
                         <div className={styles.priceBox}>
