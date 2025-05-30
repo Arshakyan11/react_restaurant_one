@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Menu.module.scss";
 import Pagination from "../../components/Pagination/Pagination";
+import {
+  dessertsAndDrinks,
+  mealTime,
+  topCategories,
+} from "../../data/menuData";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMenuInfo } from "../../store/MenuSlice/MenuSlice";
+import { fetchingGlobalMenu } from "../../store/api/api";
+import { starRating } from "../../components/Images";
+import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
 const Menu = () => {
-  const mealTime = ["BreakFast", "Brunch", "Lunch", "Dinner"];
-  const topCategories = [
-    "sushi",
-    "pizza",
-    "soups",
-    "bbq",
-    "pasta",
-    "steaks",
-    "burger",
-    "salads",
-  ];
-  const dessertsAndDrinks = ["cake", "milkshakes", "lemonade"];
+  const dispatch = useDispatch();
+  const { selectedItems } = useSelector(getAllMenuInfo);
+  console.log(selectedItems);
+
+  useEffect(() => {
+    dispatch(fetchingGlobalMenu("bbq"));
+  }, []);
   return (
     <section className={styles.menuSec}>
       <div className={styles.container}>
@@ -34,19 +40,19 @@ const Menu = () => {
                   <ul className={styles.mealTime}>
                     <h2>MealTime</h2>
                     {mealTime.map((elm) => {
-                      return <li>{elm}</li>;
+                      return <li key={nanoid(2)}>{elm}</li>;
                     })}
                   </ul>
                   <ul className={styles.mealTime}>
                     <h2>Top Categories</h2>
                     {topCategories.map((elm) => {
-                      return <li>{elm}</li>;
+                      return <li key={nanoid(2)}>{elm}</li>;
                     })}
                   </ul>
                   <ul className={styles.mealTime}>
                     <h2>Desserts & Drinks</h2>
                     {dessertsAndDrinks.map((elm) => {
-                      return <li>{elm}</li>;
+                      return <li key={nanoid(2)}>{elm}</li>;
                     })}
                   </ul>
                   <ul className={styles.mealTime}>
@@ -61,6 +67,50 @@ const Menu = () => {
                   </ul>
                 </div>
               </div>
+            </div>
+            <div className={styles.allMenuIngredients}>
+              {selectedItems.map((elm, index) => {
+                const each = elm.recipe;
+                let randomStar = Math.round(Math.random() * 2 + 3);
+                let ingredients = each.ingredientLines.slice(0, 2);
+                return (
+                  <div key={index} className={styles.eachMenu}>
+                    <img
+                      src={each.images?.REGULAR.url}
+                      alt=""
+                      className={styles.mealImg}
+                    />
+                    <div className={styles.infoOfMeal}>
+                      <h2>{each.label}</h2>
+                      <div className={styles.stars}>
+                        <span>Rate:</span>
+                        {[...Array(randomStar)].map((_, i) => {
+                          return <img key={i} src={starRating} alt="star" />;
+                        })}
+                      </div>
+                      <div className={styles.ingredients}>
+                        <h3>Ingredients:</h3>
+                        <div className={styles.ingredientsName}>
+                          {ingredients.map((elm, ind) => {
+                            return (
+                              <p key={ind}>
+                                {`${ind + 1})`} {elm}
+                              </p>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <div className={styles.priceAndOrderNow}>
+                        <div className={styles.priceBox}>
+                          <span>Price:</span>
+                          <p> ${each.price}</p>
+                        </div>
+                        <Link>Order Now</Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
