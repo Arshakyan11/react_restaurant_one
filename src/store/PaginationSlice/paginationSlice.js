@@ -1,16 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { sliceDataForPage } from "../../helpers/sliceData";
 
 const pagionationSlice = createSlice({
   name: "pagination",
   initialState: {
-    data: [],
-    postsPerPage: 3,
+    dataRcving: [],
+    slicedData: [],
+    postsPerPage: 0,
     currentPage: 0,
-    firstIndex: 0,
   },
   reducers: {
-    setingCurrentPage: (state, action) => {
+    setInfoAboutPagination: (state, action) => {
+      const rcvInfo = action.payload;
+      state.dataRcving = rcvInfo.data;
+      state.postsPerPage = rcvInfo.postsPerPage;
+      state.currentPage = rcvInfo.currentPage;
+      state.slicedData = sliceDataForPage(
+        rcvInfo.data,
+        rcvInfo.currentPage,
+        rcvInfo.postsPerPage
+      );
+    },
+    setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+      state.slicedData = sliceDataForPage(
+        state.dataRcving,
+        action.payload,
+        state.postsPerPage
+      );
     },
   },
   selectors: {
@@ -19,4 +36,6 @@ const pagionationSlice = createSlice({
 });
 
 export default pagionationSlice.reducer;
-export const { getAllPagination } = pagionationSlice.reducer;
+export const { setInfoAboutPagination, setCurrentPage } =
+  pagionationSlice.actions;
+export const { getAllPagination } = pagionationSlice.selectors;

@@ -8,10 +8,16 @@ import {
 } from "../../store/littleMenuSlice/littleMenuSlice";
 import { starRating } from "../Images";
 import { Link } from "react-router-dom";
+import Pagination from "../Pagination/Pagination";
+import {
+  getAllPagination,
+  setInfoAboutPagination,
+} from "../../store/PaginationSlice/paginationSlice";
 
 const LittleMenuSection = () => {
   const dispatch = useDispatch();
-  const { data, error, loading, activeCategory } = useSelector(gettAllInfo);
+  const { data, loading, activeCategory } = useSelector(gettAllInfo);
+  const { slicedData } = useSelector(getAllPagination);
   const categories = ["BBQ", "pizza", "sushi", "desserts top", "coffee drink"];
   const buttonNames = ["All Category", "Dinner", "Lunch", "Dessert", "Drink"];
 
@@ -19,6 +25,16 @@ const LittleMenuSection = () => {
     dispatch(fetchingLittleMenu("BBQ"));
     dispatch(setActiveCategory("BBQ"));
   }, []);
+
+  useEffect(() => {
+    dispatch(
+      setInfoAboutPagination({
+        data: data,
+        postsPerPage: 6,
+        currentPage: 1,
+      })
+    );
+  }, [data]);
 
   const handleClick = (type) => {
     if (type !== activeCategory) {
@@ -30,7 +46,7 @@ const LittleMenuSection = () => {
     <div className={styles.littleMenuSec}>
       <p className={styles.mainText}>Our popular Menu</p>
       <div className={styles.foodType}>
-        {categories.map((each, ind) => {
+        {categories?.map((each, ind) => {
           return (
             <button
               key={ind}
@@ -53,11 +69,11 @@ const LittleMenuSection = () => {
               <span className={styles.loader}></span>
             </div>
             <div className={styles.firstLine}>
-              <span class={styles.loader2}>L &nbsp; ading</span>
+              <span className={styles.loader2}>L &nbsp; ading</span>
             </div>
           </div>
         ) : (
-          data?.map((elm, index) => {
+          slicedData?.map((elm, index) => {
             const each = elm.recipe;
             let randomStar = Math.round(Math.random() * 2 + 3);
             let ingredients = each.ingredientLines.slice(0, 4);
@@ -101,6 +117,7 @@ const LittleMenuSection = () => {
           })
         )}
       </div>
+      <Pagination length={data.length} />
     </div>
   );
 };
