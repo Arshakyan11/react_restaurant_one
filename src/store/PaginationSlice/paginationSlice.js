@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { sliceDataForPage } from "../../helpers/sliceData";
 
 const pagionationSlice = createSlice({
   name: "pagination",
@@ -14,24 +15,18 @@ const pagionationSlice = createSlice({
       state.dataRcving = rcvInfo.data;
       state.postsPerPage = rcvInfo.postsPerPage;
       state.currentPage = rcvInfo.currentPage;
-      const wrappedLastIndex = rcvInfo.currentPage * state.postsPerPage;
-      const wrappedFirstIndex = wrappedLastIndex - state.postsPerPage;
-      state.lastIndex = wrappedLastIndex;
-      state.firstIndex = wrappedFirstIndex;
-      state.slicedData = rcvInfo.data.slice(
-        wrappedFirstIndex,
-        wrappedLastIndex
+      state.slicedData = sliceDataForPage(
+        rcvInfo.data,
+        rcvInfo.currentPage,
+        rcvInfo.postsPerPage
       );
     },
     setCurrentPage: (state, action) => {
-      const wrappedLastIndex = action.payload * state.postsPerPage;
-      const wrappedFirstIndex = wrappedLastIndex - state.postsPerPage;
       state.currentPage = action.payload;
-      state.lastIndex = wrappedLastIndex;
-      state.firstIndex = wrappedFirstIndex;
-      state.slicedData = state.dataRcving.slice(
-        wrappedFirstIndex,
-        wrappedLastIndex
+      state.slicedData = sliceDataForPage(
+        state.dataRcving,
+        action.payload,
+        state.postsPerPage
       );
     },
   },

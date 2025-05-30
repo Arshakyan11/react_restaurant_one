@@ -1,12 +1,35 @@
 .pagination {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
   .buttons {
     display: flex;
-    gap: 5px;
+    gap: 8px;
     button {
       padding: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: 2px solid #f57c00;
+      background-color: #ffffff;
+      color: #f57c00;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover:not(:disabled) {
+        background-color: #f57c00;
+        color: #ffffff;
+      }
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
     .activePage {
-      background: red;
+      background-color: #f57c00;
+      color: #ffffff;
+    }
+    .normal {
+      background-color: #ffffff;
+      color: #f57c00;
     }
   }
 }

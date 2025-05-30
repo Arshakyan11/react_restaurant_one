@@ -17,7 +17,7 @@ import {
 const LittleMenuSection = () => {
   const dispatch = useDispatch();
   const { data, loading, activeCategory } = useSelector(gettAllInfo);
-  const { slicedData, dataRcving, currentPage } = useSelector(getAllPagination);
+  const { slicedData } = useSelector(getAllPagination);
   const categories = ["BBQ", "pizza", "sushi", "desserts top", "coffee drink"];
   const buttonNames = ["All Category", "Dinner", "Lunch", "Dessert", "Drink"];
 
@@ -30,7 +30,7 @@ const LittleMenuSection = () => {
     dispatch(
       setInfoAboutPagination({
         data: data,
-        postsPerPage: 3,
+        postsPerPage: 6,
         currentPage: 1,
       })
     );
@@ -60,7 +60,6 @@ const LittleMenuSection = () => {
           );
         })}
       </div>
-      <Pagination length={data.length} />
       <div className={styles.allMenu}>
         {loading ? (
           <div className={styles.allLoaders}>
@@ -118,6 +117,7 @@ const LittleMenuSection = () => {
           })
         )}
       </div>
+      <Pagination length={data.length} />
     </div>
   );
 };
