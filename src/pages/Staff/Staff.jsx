@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Staff.module.scss";
-import { restaurantChefs } from "../../components/data/chiefsData";
+import { restaurantChefs } from "../../data/chiefsData";
 const Staff = () => {
   return (
     <section className={styles.chiefsS}>

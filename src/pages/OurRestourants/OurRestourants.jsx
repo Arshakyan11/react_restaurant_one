@@ -3,7 +3,7 @@ import { FaClock, FaEnvelope, FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import styles from "./OurRestourants.module.scss";
 import RestaurantSlider from "../../components/RestaurantSlider/RestaurantSlider";
-import { eachRestaurantData } from "../../components/data/eachRestaurant";
+import { eachRestaurantData } from "../../data/eachRestaurant";
 import Aos from "aos";
 
 const OurRestourants = () => {

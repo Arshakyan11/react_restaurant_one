@@ -11,7 +11,7 @@ import {
   Navigation,
   Pagination,
 } from "swiper/modules";
-import { cuisines } from "../data/data";
+import { cuisines } from "../../data/data";
 
 const HeaderCuisine = () => {
   const arr = [1, 2, 3, 4, 5, 6];

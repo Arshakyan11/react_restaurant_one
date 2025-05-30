@@ -7,7 +7,7 @@ import {
   customerImgWoman1,
   customerImgWoman2,
   customerImgWoman3,
-} from "../Images";
+} from "../components/Images";
 
 export const customerReview = [
   {

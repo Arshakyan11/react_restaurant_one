@@ -12,7 +12,7 @@ import {
   yerRestImg2,
   yerRestImg3,
   yerRestImg4,
-} from "../Images";
+} from "../components/Images";
 
 export const eachRestaurantData = [
   {

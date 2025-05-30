@@ -1,6 +1,6 @@
 import React from "react";
 import { starRating } from "../Images";
-import { customerReview } from "../data/customerData";
+import { customerReview } from "../../data/customerData";
 import {
   Autoplay,
   EffectCoverflow,

@@ -14,7 +14,7 @@ import {
   chiefImg13,
   chiefImg14,
   chiefImg15,
-} from "../Images";
+} from "../components/Images";
 
 export const restaurantChefs = [
   {

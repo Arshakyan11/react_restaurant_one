@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import LittleMenuSection from "../../components/LittleMenuSection/LittleMenuSection";
-import { restaurantChefs } from "../../components/data/chiefsData";
+import { restaurantChefs } from "../../data/chiefsData";
 import CustomersComment from "../../components/CustomersComment/CustomersComment";
 const Home = () => {
   return (
