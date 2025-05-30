@@ -76,7 +76,7 @@ const LittleMenuSection = () => {
           slicedData?.map((elm, index) => {
             const each = elm.recipe;
             let randomStar = Math.round(Math.random() * 2 + 3);
-            let ingredients = each.ingredientLines.slice(0, 4);
+            let ingredients = each.ingredientLines.slice(0, 2);
             return (
               <div key={index} className={styles.eachMenu}>
                 <img
