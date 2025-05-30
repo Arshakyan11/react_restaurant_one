@@ -1,0 +1,12 @@
+.pagination {
+  .buttons {
+    display: flex;
+    gap: 5px;
+    button {
+      padding: 20px;
+    }
+    .activePage {
+      background: red;
+    }
+  }
+}
