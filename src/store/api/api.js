@@ -82,7 +82,6 @@ export const fetchingGlobalMenu = createAsyncThunk(
     try {
       const response = await instant({
         method: "GET",
-
         baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
       }).then((res) => res.data.hits);
       response.forEach((elm) => {

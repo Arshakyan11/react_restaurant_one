@@ -12,6 +12,14 @@ const MenuSlice = createSlice({
   selectors: {
     getAllMenuInfo: (state) => state,
   },
+  reducers: {
+    setFilteredDataByPrice: (state, action) => {
+      const { min, max } = action.payload;
+      state.selectedItems = state.selectedItems.filter(
+        (elm) => elm.recipe.price >= min && elm.recipe.price <= max
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchingGlobalMenu.pending, (state) => {
       state.loading = true;
@@ -32,4 +40,5 @@ const MenuSlice = createSlice({
 });
 
 export default MenuSlice.reducer;
+export const { setFilteredDataByPrice } = MenuSlice.actions;
 export const { getAllMenuInfo } = MenuSlice.selectors;

@@ -7,19 +7,46 @@ import {
   topCategories,
 } from "../../data/menuData";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllMenuInfo } from "../../store/MenuSlice/MenuSlice";
+import {
+  getAllMenuInfo,
+  setFilteredDataByPrice,
+} from "../../store/MenuSlice/MenuSlice";
 import { fetchingGlobalMenu } from "../../store/api/api";
 import { starRating } from "../../components/Images";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
+import {
+  getAllPagination,
+  setInfoAboutPagination,
+} from "../../store/PaginationSlice/paginationSlice";
 const Menu = () => {
   const dispatch = useDispatch();
-  const { selectedItems } = useSelector(getAllMenuInfo);
-  console.log(selectedItems);
+  const { selectedItems, selectedParams } = useSelector(getAllMenuInfo);
+  const { slicedData } = useSelector(getAllPagination);
 
   useEffect(() => {
-    dispatch(fetchingGlobalMenu("bbq"));
+    dispatch(fetchingGlobalMenu("BreakFast"));
   }, []);
+  useEffect(() => {
+    dispatch(
+      setInfoAboutPagination({
+        data: selectedItems,
+        postsPerPage: 6,
+        currentPage: 1,
+      })
+    );
+  }, [selectedItems]);
+
+  const handleMenuChoosing = (query) => {
+    if (query != selectedParams) {
+      dispatch(fetchingGlobalMenu(query));
+    }
+  };
+
+  const handleFilteringData = (min, max) => {
+    dispatch(setFilteredDataByPrice({ min, max }));
+  };
+
   return (
     <section className={styles.menuSec}>
       <div className={styles.container}>
@@ -40,77 +67,113 @@ const Menu = () => {
                   <ul className={styles.mealTime}>
                     <h2>MealTime</h2>
                     {mealTime.map((elm) => {
-                      return <li key={nanoid(2)}>{elm}</li>;
+                      return (
+                        <li
+                          key={nanoid(5)}
+                          onClick={() => handleMenuChoosing(elm)}
+                          className={
+                            selectedParams == elm
+                              ? styles.activatedMenuFilter
+                              : ""
+                          }
+                        >
+                          {elm}
+                        </li>
+                      );
                     })}
                   </ul>
                   <ul className={styles.mealTime}>
                     <h2>Top Categories</h2>
                     {topCategories.map((elm) => {
-                      return <li key={nanoid(2)}>{elm}</li>;
+                      return (
+                        <li
+                          key={nanoid(6)}
+                          onClick={() => handleMenuChoosing(elm)}
+                          className={
+                            selectedParams == elm
+                              ? styles.activatedMenuFilter
+                              : ""
+                          }
+                        >
+                          {elm}
+                        </li>
+                      );
                     })}
                   </ul>
                   <ul className={styles.mealTime}>
                     <h2>Desserts & Drinks</h2>
                     {dessertsAndDrinks.map((elm) => {
-                      return <li key={nanoid(2)}>{elm}</li>;
+                      return (
+                        <li
+                          key={nanoid(4)}
+                          onClick={() => handleMenuChoosing(elm)}
+                          className={
+                            selectedParams == elm
+                              ? styles.activatedMenuFilter
+                              : ""
+                          }
+                        >
+                          {elm}
+                        </li>
+                      );
                     })}
                   </ul>
                   <ul className={styles.mealTime}>
                     <h2>By Price</h2>
-                    <li>up to 5$</li>
-                    <li>5$ - 10$</li>
-                    <li>10$ - 20$</li>
-                    <li>20$ - 30$</li>
-                    <li>30$ - 40$</li>
-                    <li>40$ - 50$</li>
-                    <li>50$ and more</li>
+                    <li onClick={() => handleFilteringData(0, 5)}>up to 5$</li>
+                    <li onClick={() => handleFilteringData(6, 10)}>6$ - 10$</li>
+                    <li onClick={() => handleFilteringData(11, 20)}>
+                      11$ - 20$
+                    </li>
+                    <li onClick={() => handleFilteringData(21, 30)}>
+                      21$ - 30$
+                    </li>
+                    <li onClick={() => handleFilteringData(31, 40)}>
+                      31$ - 40$
+                    </li>
+                    <li onClick={() => handleFilteringData(41, 50)}>
+                      41$ - 50$
+                    </li>
+                    <li onClick={() => handleFilteringData(51, 1000)}>
+                      51$ and more
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className={styles.allMenuIngredients}>
-              {selectedItems.map((elm, index) => {
-                const each = elm.recipe;
-                let randomStar = Math.round(Math.random() * 2 + 3);
-                let ingredients = each.ingredientLines.slice(0, 2);
-                return (
-                  <div key={index} className={styles.eachMenu}>
-                    <img
-                      src={each.images?.REGULAR.url}
-                      alt=""
-                      className={styles.mealImg}
-                    />
-                    <div className={styles.infoOfMeal}>
-                      <h2>{each.label}</h2>
-                      <div className={styles.stars}>
-                        <span>Rate:</span>
-                        {[...Array(randomStar)].map((_, i) => {
-                          return <img key={i} src={starRating} alt="star" />;
-                        })}
-                      </div>
-                      <div className={styles.ingredients}>
-                        <h3>Ingredients:</h3>
-                        <div className={styles.ingredientsName}>
-                          {ingredients.map((elm, ind) => {
-                            return (
-                              <p key={ind}>
-                                {`${ind + 1})`} {elm}
-                              </p>
-                            );
-                          })}
+            <div className={styles.menuBox}>
+              <div className={styles.allMenuIngredients}>
+                {slicedData.map((elm, index) => {
+                  const each = elm.recipe;
+                  let randomStar = Math.round(Math.random() * 2 + 3);
+                  return (
+                    <div key={nanoid(4)} className={styles.eachMenu}>
+                      <img
+                        src={each.images?.REGULAR.url}
+                        alt="img"
+                        className={styles.mealImg}
+                      />
+                      <div className={styles.infoOfMeal}>
+                        <h2>{each.label}</h2>
+                        <div className={styles.stars}>
+                          <div className={styles.onlyStars}>
+                            {[...Array(randomStar)].map((_, i) => {
+                              return (
+                                <img key={i} src={starRating} alt="star" />
+                              );
+                            })}
+                          </div>
                         </div>
-                      </div>
-                      <div className={styles.priceAndOrderNow}>
-                        <div className={styles.priceBox}>
-                          <span>Price:</span>
-                          <p> ${each.price}</p>
+                        <div className={styles.priceAndWeight}>
+                          <p>{each.totalWeight.toFixed(1)}g</p>
+                          <p> {each.price}$</p>
                         </div>
-                        <Link>Order Now</Link>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              <Pagination length={selectedItems.length} />
             </div>
           </div>
         </div>
