@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./Menu.module.scss";
 import Pagination from "../../components/Pagination/Pagination";
 import {
@@ -10,15 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllMenuInfo,
   setFilteredDataByPrice,
+  setFilteredMainData,
 } from "../../store/MenuSlice/MenuSlice";
 import { fetchingGlobalMenu } from "../../store/api/api";
 import { starRating } from "../../components/Images";
-import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import {
   getAllPagination,
   setInfoAboutPagination,
 } from "../../store/PaginationSlice/paginationSlice";
+
 const Menu = () => {
   const dispatch = useDispatch();
   const {
@@ -27,6 +28,7 @@ const Menu = () => {
     filterActivated,
     loading,
     filteredData,
+    filterInfo,
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
@@ -34,22 +36,26 @@ const Menu = () => {
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
   }, []);
-
   useEffect(() => {
-    if (displayData.length > 0) {
-      dispatch(
-        setInfoAboutPagination({
-          data: displayData,
-          postsPerPage: 9,
-          currentPage: 1,
-        })
-      );
-    }
-  }, [selectedParams]);
+    // if (displayData.length > 0 && !didPaginate.current) {
+    dispatch(
+      setInfoAboutPagination({
+        data: selectedItems,
+        postsPerPage: 9,
+        currentPage: 1,
+      })
+    );
+    // }
+  }, [selectedItems]);
 
   const handleMenuChoosing = (query) => {
     if (query != selectedParams) {
       dispatch(fetchingGlobalMenu(query));
+      if (filterActivated) {
+        setTimeout(() => {
+          dispatch(setFilteredMainData());
+        }, 5000);
+      }
     }
   };
 
@@ -82,7 +88,7 @@ const Menu = () => {
                           key={elm}
                           onClick={() => handleMenuChoosing(elm)}
                           className={
-                            selectedParams == elm
+                            selectedParams === elm
                               ? styles.activatedMenuFilter
                               : ""
                           }
@@ -100,7 +106,7 @@ const Menu = () => {
                           key={elm}
                           onClick={() => handleMenuChoosing(elm)}
                           className={
-                            selectedParams == elm
+                            selectedParams === elm
                               ? styles.activatedMenuFilter
                               : ""
                           }
@@ -118,7 +124,7 @@ const Menu = () => {
                           key={elm}
                           onClick={() => handleMenuChoosing(elm)}
                           className={
-                            selectedParams == elm
+                            selectedParams === elm
                               ? styles.activatedMenuFilter
                               : ""
                           }
@@ -194,7 +200,8 @@ const Menu = () => {
                     );
                   })}
                 </div>
-                <Pagination length={displayData.length} />
+                {/* <Pagination length={displayData.length} /> */}
+                <Pagination length={selectedItems.length} />
               </div>
             )}
           </div>

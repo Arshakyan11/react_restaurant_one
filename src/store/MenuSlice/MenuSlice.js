@@ -10,6 +10,7 @@ const MenuSlice = createSlice({
     error: null,
     filterActivated: false,
     filteredData: [],
+    filterInfo: [],
   },
   selectors: {
     getAllMenuInfo: (state) => state,
@@ -22,11 +23,19 @@ const MenuSlice = createSlice({
         state.filteredData = [];
         state.filterActivated = false;
       } else {
+        state.filterInfo = [min, max];
         state.filterActivated = true;
         state.filteredData = state.selectedItems.filter(
           (elm) => elm.recipe.price >= min && elm.recipe.price <= max
         );
       }
+    },
+    setFilteredMainData: (state) => {
+      const min = state.filterInfo[0];
+      const max = state.filterInfo[1];
+      state.filteredData = state.selectedItems.filter(
+        (elm) => elm.recipe.price >= min && elm.recipe.price <= max
+      );
     },
   },
   extraReducers: (builder) => {
@@ -49,5 +58,6 @@ const MenuSlice = createSlice({
 });
 
 export default MenuSlice.reducer;
-export const { setFilteredDataByPrice } = MenuSlice.actions;
+export const { setFilteredDataByPrice, setFilteredMainData } =
+  MenuSlice.actions;
 export const { getAllMenuInfo } = MenuSlice.selectors;
