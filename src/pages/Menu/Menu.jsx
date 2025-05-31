@@ -8,6 +8,7 @@ import {
 } from "../../data/menuData";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearSelectedData,
   getAllMenuInfo,
   setFilteredDataByPrice,
   setFilteredMainData,
@@ -51,11 +52,6 @@ const Menu = () => {
   const handleMenuChoosing = (query) => {
     if (query != selectedParams) {
       dispatch(fetchingGlobalMenu(query));
-      if (filterActivated) {
-        setTimeout(() => {
-          dispatch(setFilteredMainData());
-        }, 5000);
-      }
     }
   };
 
@@ -171,7 +167,7 @@ const Menu = () => {
             ) : (
               <div className={styles.menuBox}>
                 <div className={styles.allMenuIngredients}>
-                  {displayData.map((elm) => {
+                  {displayData?.map((elm) => {
                     const each = elm.recipe;
                     return (
                       <div key={nanoid(4)} className={styles.eachMenu}>
@@ -184,7 +180,7 @@ const Menu = () => {
                           <h2>{each.label}</h2>
                           <div className={styles.stars}>
                             <div className={styles.onlyStars}>
-                              {each.starCount.map((_, i) => {
+                              {each.starCount?.map((_, i) => {
                                 return (
                                   <img key={i} src={starRating} alt="star" />
                                 );

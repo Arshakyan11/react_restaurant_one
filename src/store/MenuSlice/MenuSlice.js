@@ -30,13 +30,6 @@ const MenuSlice = createSlice({
         );
       }
     },
-    setFilteredMainData: (state) => {
-      const min = state.filterInfo[0];
-      const max = state.filterInfo[1];
-      state.filteredData = state.selectedItems.filter(
-        (elm) => elm.recipe.price >= min && elm.recipe.price <= max
-      );
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchingGlobalMenu.pending, (state) => {
@@ -49,6 +42,12 @@ const MenuSlice = createSlice({
       state.error = null;
       state.selectedItems = action.payload.response;
       state.selectedParams = action.payload.query;
+      if (state.filterActivated) {
+        const [min, max] = state.filterInfo;
+        state.filteredData = state.selectedItems.filter(
+          (elm) => elm.recipe.price >= min && elm.recipe.price <= max
+        );
+      }
     });
     builder.addCase(fetchingGlobalMenu.rejected, (state, action) => {
       state.loading = false;
