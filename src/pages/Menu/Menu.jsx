@@ -29,7 +29,6 @@ const Menu = () => {
     filterActivated,
     loading,
     filteredData,
-    filterInfo,
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
