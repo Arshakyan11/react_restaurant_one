@@ -85,7 +85,9 @@ export const fetchingGlobalMenu = createAsyncThunk(
         baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
       }).then((res) => res.data.hits);
       response.forEach((elm) => {
+        let randomStar = Math.round(Math.random() * 2 + 3);
         elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.starCount = [...Array(randomStar)];
       });
       return { response, query };
     } catch (error) {

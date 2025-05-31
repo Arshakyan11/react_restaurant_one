@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import styles from "./Menu.module.scss";
 import Pagination from "../../components/Pagination/Pagination";
 import {
@@ -21,21 +21,31 @@ import {
 } from "../../store/PaginationSlice/paginationSlice";
 const Menu = () => {
   const dispatch = useDispatch();
-  const { selectedItems, selectedParams } = useSelector(getAllMenuInfo);
+  const {
+    selectedItems,
+    selectedParams,
+    filterActivated,
+    loading,
+    filteredData,
+  } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
+  const displayData = filterActivated ? filteredData : slicedData;
 
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
   }, []);
+
   useEffect(() => {
-    dispatch(
-      setInfoAboutPagination({
-        data: selectedItems,
-        postsPerPage: 6,
-        currentPage: 1,
-      })
-    );
-  }, [selectedItems]);
+    if (displayData.length > 0) {
+      dispatch(
+        setInfoAboutPagination({
+          data: displayData,
+          postsPerPage: 9,
+          currentPage: 1,
+        })
+      );
+    }
+  }, [selectedParams]);
 
   const handleMenuChoosing = (query) => {
     if (query != selectedParams) {
@@ -43,8 +53,8 @@ const Menu = () => {
     }
   };
 
-  const handleFilteringData = (min, max) => {
-    dispatch(setFilteredDataByPrice({ min, max }));
+  const handleFilteringData = (min, max, filterArg = true) => {
+    dispatch(setFilteredDataByPrice({ min, max, filterArg }));
   };
 
   return (
@@ -69,7 +79,7 @@ const Menu = () => {
                     {mealTime.map((elm) => {
                       return (
                         <li
-                          key={nanoid(5)}
+                          key={elm}
                           onClick={() => handleMenuChoosing(elm)}
                           className={
                             selectedParams == elm
@@ -87,7 +97,7 @@ const Menu = () => {
                     {topCategories.map((elm) => {
                       return (
                         <li
-                          key={nanoid(6)}
+                          key={elm}
                           onClick={() => handleMenuChoosing(elm)}
                           className={
                             selectedParams == elm
@@ -105,7 +115,7 @@ const Menu = () => {
                     {dessertsAndDrinks.map((elm) => {
                       return (
                         <li
-                          key={nanoid(4)}
+                          key={elm}
                           onClick={() => handleMenuChoosing(elm)}
                           className={
                             selectedParams == elm
@@ -137,44 +147,56 @@ const Menu = () => {
                     <li onClick={() => handleFilteringData(51, 1000)}>
                       51$ and more
                     </li>
+                    <li onClick={() => handleFilteringData(0, 1000, false)}>
+                      Remove the price filter
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className={styles.menuBox}>
-              <div className={styles.allMenuIngredients}>
-                {slicedData.map((elm, index) => {
-                  const each = elm.recipe;
-                  let randomStar = Math.round(Math.random() * 2 + 3);
-                  return (
-                    <div key={nanoid(4)} className={styles.eachMenu}>
-                      <img
-                        src={each.images?.REGULAR.url}
-                        alt="img"
-                        className={styles.mealImg}
-                      />
-                      <div className={styles.infoOfMeal}>
-                        <h2>{each.label}</h2>
-                        <div className={styles.stars}>
-                          <div className={styles.onlyStars}>
-                            {[...Array(randomStar)].map((_, i) => {
-                              return (
-                                <img key={i} src={starRating} alt="star" />
-                              );
-                            })}
+            {loading ? (
+              <div className={styles.allLoaders}>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+              </div>
+            ) : (
+              <div className={styles.menuBox}>
+                <div className={styles.allMenuIngredients}>
+                  {displayData.map((elm) => {
+                    const each = elm.recipe;
+                    return (
+                      <div key={nanoid(4)} className={styles.eachMenu}>
+                        <img
+                          src={each.images?.REGULAR.url}
+                          alt="img"
+                          className={styles.mealImg}
+                        />
+                        <div className={styles.infoOfMeal}>
+                          <h2>{each.label}</h2>
+                          <div className={styles.stars}>
+                            <div className={styles.onlyStars}>
+                              {each.starCount.map((_, i) => {
+                                return (
+                                  <img key={i} src={starRating} alt="star" />
+                                );
+                              })}
+                            </div>
+                          </div>
+                          <div className={styles.priceAndWeight}>
+                            <p>{each.totalWeight.toFixed(1)}g</p>
+                            <p> {each.price}$</p>
                           </div>
                         </div>
-                        <div className={styles.priceAndWeight}>
-                          <p>{each.totalWeight.toFixed(1)}g</p>
-                          <p> {each.price}$</p>
-                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+                <Pagination length={displayData.length} />
               </div>
-              <Pagination length={selectedItems.length} />
-            </div>
+            )}
           </div>
         </div>
       </div>

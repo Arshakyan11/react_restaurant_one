@@ -8,16 +8,25 @@ const MenuSlice = createSlice({
     selectedParams: null,
     loading: false,
     error: null,
+    filterActivated: false,
+    filteredData: [],
   },
   selectors: {
     getAllMenuInfo: (state) => state,
   },
   reducers: {
     setFilteredDataByPrice: (state, action) => {
-      const { min, max } = action.payload;
-      state.selectedItems = state.selectedItems.filter(
-        (elm) => elm.recipe.price >= min && elm.recipe.price <= max
-      );
+      const { min, max, filterArg } = action.payload;
+      state.filterActivated = filterArg;
+      if (filterArg === false) {
+        state.filteredData = [];
+        state.filterActivated = false;
+      } else {
+        state.filterActivated = true;
+        state.filteredData = state.selectedItems.filter(
+          (elm) => elm.recipe.price >= min && elm.recipe.price <= max
+        );
+      }
     },
   },
   extraReducers: (builder) => {
