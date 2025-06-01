@@ -63,8 +63,8 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="right">
-            <Link to={ROUTES.RESERVATION}>Sign Up</Link>
-            <Link to={ROUTES.RESERVATION}>Sign In</Link>
+            <Link to={ROUTES.REGISTRATION}>Sign Up</Link>
+            <Link to={ROUTES.REGISTRATION}>Sign In</Link>
           </div>
         </div>
       </div>

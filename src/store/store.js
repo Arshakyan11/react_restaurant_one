@@ -4,6 +4,7 @@ import ContactUsReducer from "./ContactUsSlice/ContactUsSlice";
 import SearchingReducer from "./SearchSlice/SearchSlice";
 import PaginationReducer from "./PaginationSlice/paginationSlice";
 import MenuReducer from "./MenuSlice/MenuSlice";
+import RegistrationReducer from "./RegistrationSlice/RegistrationSlice";
 const store = configureStore({
   reducer: {
     littleMenu: littleMenuReducer,
@@ -11,6 +12,7 @@ const store = configureStore({
     searching: SearchingReducer,
     pagination: PaginationReducer,
     menu: MenuReducer,
+    registration: RegistrationReducer,
   },
 });
 

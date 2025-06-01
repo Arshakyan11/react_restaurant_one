@@ -1,0 +1,24 @@
+.regSec {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .registationSection {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        .leftSec{
+            display: flex;
+            flex-direction: column;
+
+            gap: 5px;
+            h2{
+                font-size: 40px;
+                font-weight: bold;
+            }
+            .loginBox{
+                font-size: 23px;
+            }
+        }
+    }
+  }
+}
