@@ -28,7 +28,7 @@ export const fetchingLittleMenu = createAsyncThunk(
         response.length = 12;
       }
       response.forEach((elm) => {
-        elm.recipe.price = Math.round(Math.random() * 45 + 5);
+        elm.recipe.price = Math.round(Math.random() * 55 + 2);
         delete elm.recipe.digest;
         delete elm.recipe.healthLabels;
         delete elm.recipe.totalCO2Emissions;
@@ -67,11 +67,31 @@ export const fetchingSearchMenu = createAsyncThunk(
         baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
       }).then((res) => res.data.hits);
       response.forEach((elm) => {
-        elm.recipe.price = Math.round(Math.random() * 45 + 5);
+        elm.recipe.price = Math.round(Math.random() * 55 + 2);
       });
       return { queryName: query, data: response };
     } catch (error) {
       return rejectWithValue("Error 404");
+    }
+  }
+);
+
+export const fetchingGlobalMenu = createAsyncThunk(
+  "menu/fetchingGlobalMenu",
+  async (query, { rejectWithValue }) => {
+    try {
+      const response = await instant({
+        method: "GET",
+        baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
+      }).then((res) => res.data.hits);
+      await response.forEach((elm) => {
+        let randomStar = Math.round(Math.random() * 2 + 3);
+        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.starCount = [...Array(randomStar)];
+      });
+      return { response, query };
+    } catch (error) {
+      return rejectWithValue("Error 404 while getting Result");
     }
   }
 );

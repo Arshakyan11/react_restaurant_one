@@ -4,9 +4,9 @@ export const ROUTES = {
   STAFF: "/staff",
   CONTACTUS: "/contactUs",
   RESTAURANTS: "restaurants",
-
   Search: "search",
   MENU: "menu",
+
   RESERVATION: "reservation",
   REGISTRATION: "registration",
   LOGIN: "login",
@@ -18,3 +18,4 @@ export const ROUTES = {
 //contactUS
 //restaurants
 //search
+//menu
