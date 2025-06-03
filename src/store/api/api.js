@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { notifyForConnecting } from "../../helpers/notifyUser";
+import {
+  notifyForConnecting,
+  notifyForLogin,
+  notifyForUserNotFound,
+} from "../../helpers/notifyUser";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -116,12 +120,21 @@ export const creatingUserData = createAsyncThunk(
 
 export const checkingUserExisting = createAsyncThunk(
   "login/checkingUserExisting",
-  async (obj, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await localStorageUsers({ method: "GET" }).then(
-        (res) => res.data.results
+        (res) => res.data
       );
-      console.log(response);
+      const lastResult = await response.filter(
+        (elm) => elm.email === email && elm.password === password
+      );
+
+      if (lastResult.length > 0) {
+        localStorage.setItem("userInfo", JSON.stringify(lastResult));
+        notifyForLogin();
+      } else {
+        notifyForUserNotFound();
+      }
       return "Success";
     } catch (error) {
       return rejectWithValue("Error While Checking User");

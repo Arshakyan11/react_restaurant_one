@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllLoginInfo } from "../../store/LoginSlice/LoginSlice";
+import {
+  getAllLoginInfo,
+  setLogVisiblePass,
+} from "../../store/LoginSlice/LoginSlice";
 import { userLoginValidation } from "../../helpers/useValidation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { checkingUserExisting } from "../../store/api/api";
+import { checkUserSendingData } from "../../helpers/sendData";
 
 const Login = () => {
   const dispatch = useDispatch();
   const { isHidenPASS, initialValues } = useSelector(getAllLoginInfo);
+
   return (
     <section className={styles.navBox}>
       <div className={styles.container}>
@@ -25,13 +31,14 @@ const Login = () => {
             <div className={styles.registration}>
               <h2>Login</h2>
               <span>
-                Don't have an account?{" "}
-                <Link to={ROUTES.REGISTRATION}>Sign up</Link>
+                Don't have an account?
+                <Link to={`/${ROUTES.REGISTRATION}`}> Sign up</Link>
               </span>
             </div>
             <Formik
               initialValues={initialValues}
               validationSchema={userLoginValidation}
+              onSubmit={(e, form) => checkUserSendingData(e, form, dispatch)}
             >
               <Form>
                 <fieldset>
@@ -50,10 +57,15 @@ const Login = () => {
                   </legend>
                   <Field
                     name="password"
-                    type={isHidenPASS ? "password" : "text"}
+                    type={isHidenPASS ? "text" : "password"}
                     placeholder="Password"
                   />
-                  <p>{isHidenPASS ? <FaEyeSlash /> : <FaEye />}</p>
+                  <p
+                    className={styles.seePass}
+                    onClick={() => dispatch(setLogVisiblePass(!isHidenPASS))}
+                  >
+                    {isHidenPASS ? <FaEyeSlash /> : <FaEye />}
+                  </p>
                 </fieldset>
                 <div className={styles.buttons}>
                   <button type="submit">Login</button>
@@ -61,6 +73,9 @@ const Login = () => {
                 </div>
               </Form>
             </Formik>
+            <p className={styles.copyRight}>
+              Copyright © 2025. All rights reserved.
+            </p>
           </div>
         </div>
       </div>

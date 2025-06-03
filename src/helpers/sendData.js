@@ -1,5 +1,9 @@
 import { nanoid } from "nanoid";
-import { creatingUserData, sendingMessage } from "../store/api/api";
+import {
+  checkingUserExisting,
+  creatingUserData,
+  sendingMessage,
+} from "../store/api/api";
 
 export const createDataContact = (e, form, dispatch) => {
   const { name, lastname, email, subject, message } = e;
@@ -34,6 +38,6 @@ export const checkUserSendingData = (event, form, dispatch) => {
     email,
     password,
   };
-  form.resetForm();
-  dispatch(checkUserSendingData(data));
+  // form.resetForm();
+  dispatch(checkingUserExisting(data));
 };

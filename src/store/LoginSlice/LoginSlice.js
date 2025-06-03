@@ -7,6 +7,7 @@ const LoginSlice = createSlice({
     isHidenPASS: false,
     loading: false,
     error: null,
+    succesMessage: false,
     initialValues: {
       email: "",
       password: "",
@@ -16,26 +17,28 @@ const LoginSlice = createSlice({
     getAllLoginInfo: (state) => state,
   },
   reducers: {
-    setPasswordType: (state, action) => {
+    setLogVisiblePass: (state, action) => {
       state.isHidenPASS = action.payload;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(checkingUserExisting.pending, (state, action) => {
+    builder.addCase(checkingUserExisting.pending, (state) => {
       state.loading = true;
       state.error = false;
     });
-    builder.addCase(checkingUserExisting.fulfilled, (state, action) => {
+    builder.addCase(checkingUserExisting.fulfilled, (state) => {
       state.loading = false;
       state.error = false;
+      state.succesMessage = true;
     });
     builder.addCase(checkingUserExisting.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
+      state.succesMessage = false;
     });
   },
 });
 
 export default LoginSlice.reducer;
-export const { setPasswordType } = LoginSlice.actions;
+export const { setLogVisiblePass } = LoginSlice.actions;
 export const { getAllLoginInfo } = LoginSlice.selectors;
