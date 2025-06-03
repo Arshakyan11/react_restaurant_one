@@ -5,4 +5,14 @@ import AboutUS from "./AboutUS/AboutUS";
 import Menu from "./Menu/Menu";
 import Home from "./Home/Home";
 import ContactUs from "./ContactUs/ContactUs";
-export { Search, OurRestourants, Reservation, AboutUS, Menu, Home  , ContactUs};
+import Registration from "./Registration/Registration";
+export {
+  Search,
+  OurRestourants,
+  Reservation,
+  AboutUS,
+  Menu,
+  Home,
+  ContactUs,
+  Registration,
+};

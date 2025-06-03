@@ -95,3 +95,21 @@ export const fetchingGlobalMenu = createAsyncThunk(
     }
   }
 );
+
+const localStorageUsers = axios.create({
+  baseURL: "http://localhost:8000/users",
+  timeout: 10000,
+  timeoutErrorMessage: "Too much time for fetching data",
+});
+
+export const creatingUserData = createAsyncThunk(
+  "registration/creatingUserData",
+  (arg, { rejectWithValue }) => {
+    try {
+      localStorageUsers({ method: "POST", data: arg });
+      return "Success";
+    } catch (error) {
+      return rejectWithValue("Cant Add User to list, PLs try again later");
+    }
+  }
+);

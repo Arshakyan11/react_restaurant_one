@@ -8,6 +8,7 @@ import {
   Home,
   Menu,
   OurRestourants,
+  Registration,
   Reservation,
   Search,
 } from "./pages";
@@ -41,6 +42,7 @@ function App() {
           <Route path={ROUTES.RESERVATION} element={<Reservation />} />
           <Route path={ROUTES.STAFF} element={<Staff />} />
           <Route path={ROUTES.CONTACTUS} element={<ContactUs />} />
+          <Route path={ROUTES.REGISTRATION} element={<Registration />} />
         </Route>
       </Routes>
     </div>

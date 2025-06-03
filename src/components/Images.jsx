@@ -54,6 +54,7 @@ import tokyoRestImg1 from "../assets/images/tokyoRestaurant/tokyo1.jpg";
 import tokyoRestImg2 from "../assets/images/tokyoRestaurant/tokyo2.jpg";
 import tokyoRestImg3 from "../assets/images/tokyoRestaurant/tokyo3.jpg";
 import tokyoRestImg4 from "../assets/images/tokyoRestaurant/tokyo4.webp";
+import regImg from "../assets/images/defaultImages/registration.png";
 export {
   logo,
   logo1,
@@ -111,4 +112,5 @@ export {
   tokyoRestImg2,
   tokyoRestImg3,
   tokyoRestImg4,
+  regImg,
 };

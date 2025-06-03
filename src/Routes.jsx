@@ -6,9 +6,9 @@ export const ROUTES = {
   RESTAURANTS: "restaurants",
   Search: "search",
   MENU: "menu",
+  REGISTRATION: "registration",
 
   RESERVATION: "reservation",
-  REGISTRATION: "registration",
   LOGIN: "login",
 };
 
@@ -18,4 +18,5 @@ export const ROUTES = {
 //contactUS
 //restaurants
 //search
-//menu
+//menu 95%
+//registration
