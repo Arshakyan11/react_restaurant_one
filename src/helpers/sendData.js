@@ -27,3 +27,13 @@ export const createUserData = (event, form, dispatch) => {
   form.resetForm();
   dispatch(creatingUserData(data));
 };
+
+export const checkUserSendingData = (event, form, dispatch) => {
+  const { email, password } = event;
+  const data = {
+    email,
+    password,
+  };
+  form.resetForm();
+  dispatch(checkUserSendingData(data));
+};

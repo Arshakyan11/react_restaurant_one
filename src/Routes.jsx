@@ -7,9 +7,9 @@ export const ROUTES = {
   Search: "search",
   MENU: "menu",
   REGISTRATION: "registration",
+  LOGIN: "login",
 
   RESERVATION: "reservation",
-  LOGIN: "login",
 };
 
 //home
@@ -20,3 +20,4 @@ export const ROUTES = {
 //search
 //menu 95%
 //registration
+//login

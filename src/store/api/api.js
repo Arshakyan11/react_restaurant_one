@@ -113,3 +113,18 @@ export const creatingUserData = createAsyncThunk(
     }
   }
 );
+
+export const checkingUserExisting = createAsyncThunk(
+  "login/checkingUserExisting",
+  async (obj, { rejectWithValue }) => {
+    try {
+      const response = await localStorageUsers({ method: "GET" }).then(
+        (res) => res.data.results
+      );
+      console.log(response);
+      return "Success";
+    } catch (error) {
+      return rejectWithValue("Error While Checking User");
+    }
+  }
+);
