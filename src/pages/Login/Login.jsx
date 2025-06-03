@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Login.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,11 +10,11 @@ import {
 } from "../../store/LoginSlice/LoginSlice";
 import { userLoginValidation } from "../../helpers/useValidation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { checkingUserExisting } from "../../store/api/api";
 import { checkUserSendingData } from "../../helpers/sendData";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isHidenPASS, initialValues } = useSelector(getAllLoginInfo);
 
   return (
@@ -38,7 +38,9 @@ const Login = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={userLoginValidation}
-              onSubmit={(e, form) => checkUserSendingData(e, form, dispatch)}
+              onSubmit={(e, form) =>
+                checkUserSendingData(e, form, dispatch, navigate)
+              }
             >
               <Form>
                 <fieldset>

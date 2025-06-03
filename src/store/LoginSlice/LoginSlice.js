@@ -7,7 +7,7 @@ const LoginSlice = createSlice({
     isHidenPASS: false,
     loading: false,
     error: null,
-    succesMessage: false,
+    userExisting: false,
     initialValues: {
       email: "",
       password: "",
@@ -26,10 +26,10 @@ const LoginSlice = createSlice({
       state.loading = true;
       state.error = false;
     });
-    builder.addCase(checkingUserExisting.fulfilled, (state) => {
+    builder.addCase(checkingUserExisting.fulfilled, (state, action) => {
       state.loading = false;
       state.error = false;
-      state.succesMessage = true;
+      state.userExisting = action.payload;
     });
     builder.addCase(checkingUserExisting.rejected, (state, action) => {
       state.loading = false;

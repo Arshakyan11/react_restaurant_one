@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   notifyForConnecting,
   notifyForLogin,
+  notifyForRegistration,
   notifyForUserNotFound,
 } from "../../helpers/notifyUser";
 
@@ -111,6 +112,7 @@ export const creatingUserData = createAsyncThunk(
   (arg, { rejectWithValue }) => {
     try {
       localStorageUsers({ method: "POST", data: arg });
+      notifyForRegistration();
       return "Success";
     } catch (error) {
       return rejectWithValue("Cant Add User to list, PLs try again later");
@@ -125,17 +127,18 @@ export const checkingUserExisting = createAsyncThunk(
       const response = await localStorageUsers({ method: "GET" }).then(
         (res) => res.data
       );
-      const lastResult = await response.filter(
+      const lastResult = await response.find(
         (elm) => elm.email === email && elm.password === password
       );
 
-      if (lastResult.length > 0) {
+      if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
         notifyForLogin();
+        return true;
       } else {
         notifyForUserNotFound();
+        return false;
       }
-      return "Success";
     } catch (error) {
       return rejectWithValue("Error While Checking User");
     }
