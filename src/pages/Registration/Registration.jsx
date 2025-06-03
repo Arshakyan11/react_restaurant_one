@@ -1,25 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./Registration.module.scss";
 import { regImg } from "../../components/Images";
 import { Link } from "react-router-dom";
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRegInfo } from "../../store/RegistrationSlice/RegistrationSlice";
+import {
+  getAllRegInfo,
+  setPasswordType,
+} from "../../store/RegistrationSlice/RegistrationSlice";
 import { createUserData } from "../../helpers/sendData";
 import { userRegistrationValidation } from "../../helpers/useValidation";
 const Registration = () => {
   const dispatch = useDispatch();
-  const { initialValues, loading } = useSelector(getAllRegInfo);
+  const { initialValues, loading, isHidden } = useSelector(getAllRegInfo);
+
   return (
     <section className={styles.regSec}>
       <div className={styles.container}>
         <div className={styles.registationSection}>
           <div className={styles.leftSec}>
-            <h2>Sign Up</h2>
             <div className={styles.loginBox}>
-              <span>Don't have an account?</span>
-              <Link> Log in</Link>
+              <h2>Sign Up</h2>
+              <span>
+                Don't have an account?
+                <Link> Log in</Link>
+              </span>
             </div>
             <Formik
               initialValues={initialValues}
@@ -53,8 +59,17 @@ const Registration = () => {
                   <legend>
                     <ErrorMessage name="password" component="div" />
                   </legend>
-                  <Field name="password" placeholder="Password" type="text" />
-                  <FaEye />
+                  <Field
+                    name="password"
+                    placeholder="Password"
+                    type={isHidden ? "text" : "password"}
+                  />
+                  <p
+                    onClick={() => dispatch(setPasswordType(!isHidden))}
+                    className={styles.seePass}
+                  >
+                    {isHidden ? <FaEyeSlash /> : <FaEye />}
+                  </p>
                 </fieldset>
                 <fieldset>
                   <legend>
@@ -63,14 +78,24 @@ const Registration = () => {
                   <Field
                     name="repeatedpassword"
                     placeholder="Confirm Password"
-                    type="text"
+                    type={isHidden ? "text" : "password"}
                   />
-                  <FaEye />
+                  <p
+                    onClick={() => dispatch(setPasswordType(!isHidden))}
+                    className={styles.seePass}
+                  >
+                    {isHidden ? <FaEyeSlash /> : <FaEye />}
+                  </p>
                 </fieldset>
-                <button type="submit">Submit</button>
-                <button type="reset">Cancel</button>
+                <div className={styles.buttons}>
+                  <button type="submit">Submit</button>
+                  <button type="reset">Cancel</button>
+                </div>
               </Form>
             </Formik>
+            <div className={styles.copyRight}>
+              Copyright © 2025. All rights reserved.
+            </div>
           </div>
           <div className={styles.rightSec}>
             <img src={regImg} alt="regImg" />

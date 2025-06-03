@@ -14,6 +14,12 @@ const RegistrationSlice = createSlice({
       password: "",
       repeatedpassword: "",
     },
+    isHidden: false,
+  },
+  reducers: {
+    setPasswordType: (state, action) => {
+      state.isHidden = action.payload;
+    },
   },
   selectors: {
     getAllRegInfo: (state) => state,
@@ -36,4 +42,5 @@ const RegistrationSlice = createSlice({
 });
 
 export default RegistrationSlice.reducer;
+export const { setPasswordType } = RegistrationSlice.actions;
 export const { getAllRegInfo } = RegistrationSlice.selectors;
