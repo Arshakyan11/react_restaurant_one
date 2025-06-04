@@ -100,12 +100,18 @@ nav {
         button {
           color: white;
           background: #3fa72f;
-          padding: 10px 40px;
+          padding: 10px 30px;
           border-radius: 50px;
           font-size: 18px;
           border: none;
           cursor: pointer;
           transition: all 0.3s ease;
+          vertical-align: middle;
+          svg {
+            vertical-align: top;
+            margin-right: 5px;
+            margin-top: 1px;
+          }
           &:hover {
             background: #329125;
           }

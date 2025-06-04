@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./NavBar.scss";
 import { logo, logo1 } from "../Images";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../Routes";
+import { FaAddressCard, FaUser } from "react-icons/fa";
+import { FaRightToBracket } from "react-icons/fa6";
+import { LogOutFromAccount } from "../../helpers/logOut";
 const NavBar = () => {
+  const dropDownRef = useRef();
+  const navigate = useNavigate();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const toogleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
-  const dropDownRef = useRef();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  console.log(userInfo);
   useEffect(() => {
     const handleOffingDrop = (event) => {
       if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
@@ -65,15 +68,29 @@ const NavBar = () => {
           </div>
           {userInfo ? (
             <div className="right">
-              <Link>Profile</Link>
-              <button onClick={() => localStorage.removeItem("userInfo")}>
+              <Link>
+                <FaUser />
+                Profile
+              </Link>
+              <button
+                onClick={() => {
+                  LogOutFromAccount(navigate);
+                }}
+              >
+                <FaRightToBracket />
                 Log Out
               </button>
             </div>
           ) : (
             <div className="right">
-              <Link to={ROUTES.REGISTRATION}>Sign Up</Link>
-              <Link to={ROUTES.LOGIN}>Sign In</Link>
+              <Link to={ROUTES.REGISTRATION}>
+                <FaAddressCard />
+                Sign Up
+              </Link>
+              <Link to={ROUTES.LOGIN}>
+                <FaRightToBracket />
+                Sign In
+              </Link>
             </div>
           )}
         </div>
