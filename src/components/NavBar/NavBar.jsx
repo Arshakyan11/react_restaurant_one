@@ -9,7 +9,8 @@ const NavBar = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
   const dropDownRef = useRef();
-
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  console.log(userInfo);
   useEffect(() => {
     const handleOffingDrop = (event) => {
       if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
@@ -62,10 +63,19 @@ const NavBar = () => {
               </li>
             </ul>
           </div>
-          <div className="right">
-            <Link to={ROUTES.REGISTRATION}>Sign Up</Link>
-            <Link to={ROUTES.LOGIN}>Sign In</Link>
-          </div>
+          {userInfo ? (
+            <div className="right">
+              <Link>Profile</Link>
+              <button onClick={() => localStorage.removeItem("userInfo")}>
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <div className="right">
+              <Link to={ROUTES.REGISTRATION}>Sign Up</Link>
+              <Link to={ROUTES.LOGIN}>Sign In</Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>
