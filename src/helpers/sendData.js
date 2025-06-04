@@ -39,7 +39,7 @@ export const checkUserSendingData = (event, form, dispatch, navigate) => {
   const data = {
     email,
     password,
+    navigate
   };
-  navigate(`/${ROUTES.MENU}`);
   dispatch(checkingUserExisting(data));
 };

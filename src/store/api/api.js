@@ -6,6 +6,7 @@ import {
   notifyForRegistration,
   notifyForUserNotFound,
 } from "../../helpers/notifyUser";
+import { ROUTES } from "../../Routes";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -122,7 +123,7 @@ export const creatingUserData = createAsyncThunk(
 
 export const checkingUserExisting = createAsyncThunk(
   "login/checkingUserExisting",
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ email, password, navigate }, { rejectWithValue }) => {
     try {
       const response = await localStorageUsers({ method: "GET" }).then(
         (res) => res.data
@@ -134,6 +135,7 @@ export const checkingUserExisting = createAsyncThunk(
       if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
         notifyForLogin();
+        navigate(`/${ROUTES.MENU}`);
         return true;
       } else {
         notifyForUserNotFound();
