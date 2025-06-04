@@ -11,6 +11,7 @@ import {
 } from "../../store/RegistrationSlice/RegistrationSlice";
 import { createUserData } from "../../helpers/sendData";
 import { userRegistrationValidation } from "../../helpers/useValidation";
+import { ROUTES } from "../../Routes";
 const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Registration = () => {
               <h2>Sign Up</h2>
               <span>
                 Don't have an account?
-                <Link> Log in</Link>
+                <Link to={`/${ROUTES.LOGIN}`}> Log in</Link>
               </span>
             </div>
             <Formik

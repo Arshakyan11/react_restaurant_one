@@ -11,6 +11,7 @@ import {
 import { userLoginValidation } from "../../helpers/useValidation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { checkUserSendingData } from "../../helpers/sendData";
+import { loginPic } from "../../components/Images";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Login = () => {
         <div className={styles.navSection}>
           <div className={styles.leftSec}>
             <img
-              src="https://cdn.pixabay.com/photo/2017/01/19/10/28/food-1991987_1280.jpg"
+              src={loginPic}
               alt=""
             />
           </div>
