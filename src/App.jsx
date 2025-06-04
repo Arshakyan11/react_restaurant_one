@@ -15,9 +15,11 @@ import {
 } from "./pages";
 import Staff from "./pages/Staff/Staff";
 import { Bounce, ToastContainer } from "react-toastify";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <ToastContainer
         position="top-right"
         autoClose={3000}
