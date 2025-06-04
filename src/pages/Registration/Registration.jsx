@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./Registration.module.scss";
 import { regImg } from "../../components/Images";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +11,10 @@ import {
 } from "../../store/RegistrationSlice/RegistrationSlice";
 import { createUserData } from "../../helpers/sendData";
 import { userRegistrationValidation } from "../../helpers/useValidation";
+import { ROUTES } from "../../Routes";
 const Registration = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { initialValues, loading, isHidden } = useSelector(getAllRegInfo);
 
   return (
@@ -24,13 +26,15 @@ const Registration = () => {
               <h2>Sign Up</h2>
               <span>
                 Don't have an account?
-                <Link> Log in</Link>
+                <Link to={`/${ROUTES.LOGIN}`}> Log in</Link>
               </span>
             </div>
             <Formik
               initialValues={initialValues}
               validationSchema={userRegistrationValidation}
-              onSubmit={(e, form) => createUserData(e, form, dispatch)}
+              onSubmit={(e, form) =>
+                createUserData(e, form, dispatch, navigate)
+              }
             >
               <Form>
                 <fieldset>

@@ -1,5 +1,10 @@
 import { nanoid } from "nanoid";
-import { creatingUserData, sendingMessage } from "../store/api/api";
+import {
+  checkingUserExisting,
+  creatingUserData,
+  sendingMessage,
+} from "../store/api/api";
+import { ROUTES } from "../Routes";
 
 export const createDataContact = (e, form, dispatch) => {
   const { name, lastname, email, subject, message } = e;
@@ -15,15 +20,26 @@ export const createDataContact = (e, form, dispatch) => {
   dispatch(sendingMessage(data));
 };
 
-export const createUserData = (event, form, dispatch) => {
-  const { userName, phoneNum, email, password, repeatedpassword } = event;
+export const createUserData = (event, form, dispatch, navigate) => {
+  const { userName, phoneNum, email, password } = event;
   const data = {
     id: nanoid(7),
     userName,
     phoneNumber: phoneNum,
     email,
-    repeatedpassword,
+    password,
   };
   form.resetForm();
+  navigate(`/${ROUTES.LOGIN}`);
   dispatch(creatingUserData(data));
+};
+
+export const checkUserSendingData = (event, form, dispatch, navigate) => {
+  const { email, password } = event;
+  const data = {
+    email,
+    password,
+  };
+  navigate(`/${ROUTES.MENU}`);
+  dispatch(checkingUserExisting(data));
 };

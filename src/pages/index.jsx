@@ -6,6 +6,7 @@ import Menu from "./Menu/Menu";
 import Home from "./Home/Home";
 import ContactUs from "./ContactUs/ContactUs";
 import Registration from "./Registration/Registration";
+import Login from "./Login/Login";
 export {
   Search,
   OurRestourants,
@@ -15,4 +16,5 @@ export {
   Home,
   ContactUs,
   Registration,
+  Login,
 };

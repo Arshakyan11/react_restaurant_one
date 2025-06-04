@@ -14,3 +14,48 @@ export const notifyForConnecting = () => {
     type: "success",
   });
 };
+
+export const notifyForLogin = () => {
+  toast("You Logged In", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+    type: "success",
+  });
+};
+
+export const notifyForRegistration = () => {
+  toast("Account Registered Successfuly", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+    type: "success",
+  });
+};
+
+export const notifyForUserNotFound = () => {
+  toast("User not found", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+    type: "error",
+  });
+};

@@ -6,6 +6,7 @@ import {
   AboutUS,
   ContactUs,
   Home,
+  Login,
   Menu,
   OurRestourants,
   Registration,
@@ -43,6 +44,7 @@ function App() {
           <Route path={ROUTES.STAFF} element={<Staff />} />
           <Route path={ROUTES.CONTACTUS} element={<ContactUs />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
         </Route>
       </Routes>
     </div>
