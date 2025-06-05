@@ -1,0 +1,51 @@
+.resSec {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .reserveSec {
+      .header {
+        background: url("../../../public/img/reservationP.png");
+        height: 600px;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 25px;
+        color: white;
+        font-weight: bold;
+        p {
+          text-transform: uppercase;
+        }
+        p:first-child {
+          letter-spacing: 7px;
+          font-size: 20px;
+        }
+        p:nth-child(2) {
+          font-size: 60px;
+          letter-spacing: 10px;
+        }
+        .buttons {
+          display: flex;
+          gap: 20px;
+          a {
+            background: transparent;
+            padding: 20px;
+            border: 2px solid #fff;
+            font-size: 20px;
+            color: white;
+            transition: all 1s ease;
+            &:hover {
+              background: #fff;
+              color: black;
+              border-color: black;
+              transform: translateY(-5px);
+              box-shadow: 10px 10px 10px rgb(233, 214, 217);
+            }
+          }
+        }
+      }
+    }
+  }
+}

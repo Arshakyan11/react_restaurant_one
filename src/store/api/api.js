@@ -146,3 +146,15 @@ export const checkingUserExisting = createAsyncThunk(
     }
   }
 );
+
+export const addingReserveTable = createAsyncThunk(
+  "reservation/addingReserveTable",
+  (obj, { rejectWithValue }) => {
+    try {
+      localStorageUsers({ method: "POST", data: obj });
+      return "Success";
+    } catch (error) {
+      return rejectWithValue("Error 404");
+    }
+  }
+);
