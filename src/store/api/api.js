@@ -149,9 +149,19 @@ export const checkingUserExisting = createAsyncThunk(
 
 export const addingReserveTable = createAsyncThunk(
   "reservation/addingReserveTable",
-  (obj, { rejectWithValue }) => {
+  async (obj, { rejectWithValue }) => {
     try {
-      localStorageUsers({ method: "POST", data: obj });
+      let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const response = await localStorageUsers().then((res) => res.data);
+      const findedUser = await response.find((elm) => elm.id === userInfo.id);
+      const reservation = {
+        reservation: obj,
+      };
+      localStorageUsers({
+        method: "PATCH",
+        data: reservation,
+        url: `/${findedUser["id"]}`,
+      });
       return "Success";
     } catch (error) {
       return rejectWithValue("Error 404");
