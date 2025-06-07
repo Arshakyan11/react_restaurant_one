@@ -1,7 +1,7 @@
 import { Bounce, toast } from "react-toastify";
 
-export const notifyForConnecting = () => {
-  toast("Message was send Successfuly", {
+export const notifyForSMth = (mess) => {
+  toast(mess, {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -15,43 +15,13 @@ export const notifyForConnecting = () => {
   });
 };
 
-export const notifyForLogin = () => {
-  toast("You Logged In", {
+export const notifyForError = (mess) => {
+  toast(mess, {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    transition: Bounce,
-    type: "success",
-  });
-};
-
-export const notifyForRegistration = () => {
-  toast("Account Registered Successfuly", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    transition: Bounce,
-    type: "success",
-  });
-};
-
-export const notifyForUserNotFound = () => {
-  toast("User not found", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
+    pauseOnHover: true,
     draggable: true,
     progress: undefined,
     theme: "light",

@@ -56,6 +56,9 @@ import tokyoRestImg3 from "../assets/images/tokyoRestaurant/tokyo3.jpg";
 import tokyoRestImg4 from "../assets/images/tokyoRestaurant/tokyo4.webp";
 import regImg from "../assets/images/defaultImages/registration.png";
 import loginPic from "../assets/images/defaultImages/loginP.jpg";
+import restInfo1 from "../assets/images/defaultImages/restaurantInfo1.png";
+import restInfo2 from "../assets/images/defaultImages/restaurantInfo2.png";
+import restInfo3 from "../assets/images/defaultImages/restaurantInfo3.png";
 export {
   logo,
   logo1,
@@ -115,4 +118,7 @@ export {
   tokyoRestImg4,
   regImg,
   loginPic,
+  restInfo1,
+  restInfo2,
+  restInfo3,
 };

@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
-  notifyForConnecting,
-  notifyForLogin,
-  notifyForRegistration,
+  notifyForError,
+  notifyForSMth,
   notifyForUserNotFound,
 } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
@@ -56,7 +55,7 @@ export const sendingMessage = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       localStorageContacts({ method: "POST", data: data });
-      notifyForConnecting();
+      notifyForSMth("Message was send Successfuly");
       return "Success";
     } catch (error) {
       return rejectWithValue("Smth Went Wrong!");
@@ -113,7 +112,7 @@ export const creatingUserData = createAsyncThunk(
   (arg, { rejectWithValue }) => {
     try {
       localStorageUsers({ method: "POST", data: arg });
-      notifyForRegistration();
+      notifyForSMth("Account Registered Successfuly");
       return "Success";
     } catch (error) {
       return rejectWithValue("Cant Add User to list, PLs try again later");
@@ -134,15 +133,46 @@ export const checkingUserExisting = createAsyncThunk(
 
       if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
-        notifyForLogin();
+        notifyForSMth("You Logged In");
         navigate(`/${ROUTES.MENU}`);
         return true;
       } else {
-        notifyForUserNotFound();
+        notifyForError("User not found");
         return false;
       }
     } catch (error) {
       return rejectWithValue("Error While Checking User");
+    }
+  }
+);
+
+export const addingReserveTable = createAsyncThunk(
+  "reservation/addingReserveTable",
+  async (obj, { rejectWithValue }) => {
+    try {
+      let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const response = await localStorageUsers().then((res) => res.data);
+      const findedUser = await response.find(
+        (elm) => elm.id === userInfo.id && !elm.reservation
+      );
+      if (findedUser) {
+        const reservation = {
+          reservation: obj,
+        };
+        localStorageUsers({
+          method: "PATCH",
+          data: reservation,
+          url: `/${findedUser["id"]}`,
+        });
+        return "Success";
+      } else {
+        notifyForError(
+          "You have already had reservation, Go to Profile for concelation"
+        );
+        return false;
+      }
+    } catch (error) {
+      return rejectWithValue("Error 404");
     }
   }
 );

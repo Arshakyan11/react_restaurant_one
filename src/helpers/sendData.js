@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import {
+  addingReserveTable,
   checkingUserExisting,
   creatingUserData,
   sendingMessage,
@@ -29,9 +30,9 @@ export const createUserData = (event, form, dispatch, navigate) => {
     email,
     password,
   };
-  form.resetForm();
   navigate(`/${ROUTES.LOGIN}`);
   dispatch(creatingUserData(data));
+  form.resetForm();
 };
 
 export const checkUserSendingData = (event, form, dispatch, navigate) => {
@@ -39,7 +40,12 @@ export const checkUserSendingData = (event, form, dispatch, navigate) => {
   const data = {
     email,
     password,
-    navigate
+    navigate,
   };
   dispatch(checkingUserExisting(data));
+};
+
+export const reserveTableInfo = (event, form, dispatch) => {
+  dispatch(addingReserveTable(event));
+  form.resetForm();
 };

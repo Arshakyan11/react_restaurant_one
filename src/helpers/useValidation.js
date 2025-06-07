@@ -1,4 +1,4 @@
-import { object, ref, string } from "yup";
+import { date, number, object, ref, string } from "yup";
 
 export const contactUsValidation = object({
   name: string()
@@ -50,4 +50,16 @@ export const userLoginValidation = object({
     .min(6, "Write Minimum 6 symbols")
     .max(16, "Write Maximum 16 symbols")
     .required("Pls Write Your Password"),
+});
+
+export const userReservationValidation = object({
+  address: string().required("Choose Restaurant Address"),
+  date: string().required("Choose Time Arriving"),
+  count: number()
+    .min(1, "Minimum 1 person")
+    .max(24, "Maximum 24 person")
+    .typeError("Only numbers are allowed")
+    .integer("Must be a whole number")
+    .required("Choose how many people would come"),
+  tableType: string().required("Choose Table Type"),
 });

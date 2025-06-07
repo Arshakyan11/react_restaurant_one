@@ -1,0 +1,166 @@
+@import "../../global/global.scss";
+.resSec {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .reserveSec {
+      background: linear-gradient(to right, #1f1f1f, #2c2c2c);
+      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+      .header {
+        background: url("../../../public/img/reservationP.png");
+        height: 600px;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 25px;
+        color: white;
+        font-weight: bold;
+        p {
+          text-transform: uppercase;
+        }
+        p:first-child {
+          letter-spacing: 7px;
+          font-size: 20px;
+        }
+        p:nth-child(2) {
+          font-size: 60px;
+          letter-spacing: 10px;
+        }
+        .buttons {
+          display: flex;
+          gap: 20px;
+          a {
+            background: transparent;
+            padding: 20px;
+            border: 2px solid #fff;
+            font-size: 20px;
+            color: white;
+            transition: all 1s ease;
+            &:hover {
+              background: #fff;
+              color: black;
+              border-color: black;
+              transform: translateY(-5px);
+              box-shadow: 10px 10px 10px rgb(233, 214, 217);
+            }
+          }
+        }
+      }
+      .forLoginedPeople {
+        display: flex;
+        flex-direction: column;
+        .reservation {
+          display: flex;
+          align-items: center;
+          padding: 20px;
+          flex-direction: column;
+          gap: 20px;
+          h3 {
+            @include reserveTitleStyle();
+          }
+          form {
+            @include boxStyleAndForm();
+            fieldset {
+              border: none;
+              width: 100%;
+              position: relative;
+              legend {
+                color: red;
+                position: absolute;
+                left: 1%;
+                top: -50%;
+              }
+              input,
+              select {
+                background: rgba(255, 255, 255, 0.07);
+                color: #f5f5f5;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                padding: 16px 20px;
+                font-size: 17px;
+                font-family: "Georgia", serif;
+                border-radius: 12px;
+                transition: all 0.3s;
+                width: 100%;
+                &::placeholder {
+                  color: #ccc;
+                }
+                &:focus {
+                  outline: none;
+                  border-color: #e8c27c;
+                  box-shadow: 0 0 0 3px rgba(232, 194, 124, 0.3);
+                }
+                option {
+                  color: black;
+                }
+              }
+              select {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+              }
+              svg {
+                position: absolute;
+                right: 5%;
+                top: 35%;
+                transform: translate(-50%, -10%);
+              }
+            }
+            .diferentInput {
+              background: rgba(255, 255, 255, 0.07);
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              padding: 0 20px;
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              label {
+                color: #e8c27c;
+                font-weight: 600;
+              }
+              input {
+                background: transparent;
+                border: none;
+                flex: 1;
+                font-size: 16px;
+                color: #fff;
+                &:focus {
+                  outline: none;
+                }
+              }
+            }
+            .buttons {
+              @include twoButtonStyles();
+            }
+          }
+        }
+        .infoAboutRestaurant {
+          display: flex;
+          flex-direction: column;
+          gap: 50px;
+          padding: 50px 0;
+        }
+      }
+      .forNotlogined {
+        display: flex;
+        padding: 50px;
+        .sectionInfo {
+          @include boxStyleAndForm();
+          gap: 40px;
+          h3 {
+            @include reserveTitleStyle();
+          }
+          p {
+            font-size: 20px;
+            word-spacing: 2px;
+          }
+          .buttons {
+            @include twoButtonStyles();
+          }
+        }
+      }
+    }
+  }
+}
