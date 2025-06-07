@@ -47,5 +47,5 @@ export const checkUserSendingData = (event, form, dispatch, navigate) => {
 
 export const reserveTableInfo = (event, form, dispatch) => {
   dispatch(addingReserveTable(event));
-  // form.resetForm();
+  form.resetForm();
 };
