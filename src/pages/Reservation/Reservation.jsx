@@ -126,7 +126,7 @@ const Reservation = () => {
               </div>
             </div>
           )}
-          <div className={styles.infoAboutRestaurant} >
+          <div className={styles.infoAboutRestaurant}>
             <LineInfo
               img={restInfo1}
               eachElName={"Discover Our Story"}
@@ -137,7 +137,7 @@ const Reservation = () => {
               linkTo={`/${ROUTES.ABOUTUS}`}
             />
             <LineInfo
-            data-aos="fade-up"
+              data-aos="fade-up"
               img={restInfo2}
               eachElName={"Our Staff"}
               middleTitle={"Meet the masters behind the menu"}
@@ -148,7 +148,7 @@ const Reservation = () => {
               order={-1}
             />
             <LineInfo
-            data-aos="fade-up"
+              data-aos="fade-up"
               img={restInfo3}
               eachElName={"Search Meals"}
               middleTitle={"Looking for something specific?"}
