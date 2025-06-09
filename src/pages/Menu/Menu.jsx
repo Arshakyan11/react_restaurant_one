@@ -20,6 +20,8 @@ import {
   getAllPagination,
   setInfoAboutPagination,
 } from "../../store/PaginationSlice/paginationSlice";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../Routes";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const Menu = () => {
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
+  console.log(slicedData);
 
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
@@ -175,6 +178,13 @@ const Menu = () => {
                           alt="img"
                           className={styles.mealImg}
                         />
+                        <Link
+                          className={styles.infoMore}
+                          to={`/${ROUTES.MENU}/eachProduct/${each.label}`}
+                          state={{ data: elm }}
+                        >
+                          More Info
+                        </Link>
                         <div className={styles.infoOfMeal}>
                           <h2>{each.label}</h2>
                           <div className={styles.stars}>

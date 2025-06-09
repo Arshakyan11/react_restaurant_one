@@ -43,6 +43,13 @@ const Search = () => {
                       alt=""
                       className={styles.mealImg}
                     />
+                    <Link
+                      className={styles.infoMore}
+                      to={`/${ROUTES.MENU}/eachProduct/${each.label}`}
+                      state={{ data: elm }}
+                    >
+                      More Info
+                    </Link>
                     <div className={styles.infoOfMeal}>
                       <h2>{each.label}</h2>
                       <div className={styles.stars}>
