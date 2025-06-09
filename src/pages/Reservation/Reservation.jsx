@@ -14,7 +14,7 @@ import Aos from "aos";
 const Reservation = () => {
   useEffect(() => {
     Aos.init({ duration: 800 });
-  });
+  }, []);
   const dispatch = useDispatch();
   const { initialValues } = useSelector(getAllReservationInfo);
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Home.module.scss";
 import HeaderCuisine from "../../components/Header/HeaderCuisine";
 import {
@@ -13,13 +13,17 @@ import { ROUTES } from "../../Routes";
 import LittleMenuSection from "../../components/LittleMenuSection/LittleMenuSection";
 import { restaurantChefs } from "../../data/chiefsData";
 import CustomersComment from "../../components/CustomersComment/CustomersComment";
+import Aos from "aos";
 const Home = () => {
+  useEffect(() => {
+    Aos.init({ duration: 800 });
+  }, []);
   return (
     <div className={styles.homeSection}>
       <div className={styles.container}>
         <div className={styles.homeBox}>
           <HeaderCuisine />
-          <div className={styles.welcomeSec}>
+          <div className={styles.welcomeSec} data-aos="fade-up">
             <div className={styles.leftSide}>
               <img src={welcomeImg} alt="welcomeImg" />
             </div>
@@ -39,7 +43,7 @@ const Home = () => {
             </div>
           </div>
           <LittleMenuSection />
-          <div className={styles.reservationSec}>
+          <div className={styles.reservationSec} data-aos="fade-up">
             <div className={styles.leftSideReserve}>
               <img src={reserveImg1} alt="img" className={styles.mainImg} />
               <img
@@ -70,7 +74,7 @@ const Home = () => {
               <Link>Reservation</Link>
             </div>
           </div>
-          <div className={styles.chiefSection}>
+          <div className={styles.chiefSection} data-aos="fade-up">
             <h2 className={styles.mainTitle}>Our greatest chef</h2>
             <div className={styles.chiefsBox}>
               {restaurantChefs.slice(0, 3).map((chief, ind) => {
@@ -86,7 +90,7 @@ const Home = () => {
             <Link to={ROUTES.STAFF}>See Our Chef Team</Link>
           </div>
           <CustomersComment />
-          <div className={styles.workingTimeAll}>
+          <div className={styles.workingTimeAll} data-aos="fade-up">
             <div className={styles.workingDays}>
               <h2>We are open from</h2>
               <h3>Monday-Sunday</h3>

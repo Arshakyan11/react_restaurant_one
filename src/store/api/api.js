@@ -33,7 +33,9 @@ export const fetchingLittleMenu = createAsyncThunk(
         response.length = 12;
       }
       response.forEach((elm) => {
+        let randomStar = Math.round(Math.random() * 2 + 3);
         elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.starrArr = [...Array(randomStar)];
         delete elm.recipe.digest;
         delete elm.recipe.healthLabels;
         delete elm.recipe.totalCO2Emissions;

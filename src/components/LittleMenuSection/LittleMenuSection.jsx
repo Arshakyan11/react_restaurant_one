@@ -13,6 +13,7 @@ import {
   getAllPagination,
   setInfoAboutPagination,
 } from "../../store/PaginationSlice/paginationSlice";
+import Aos from "aos";
 
 const LittleMenuSection = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const LittleMenuSection = () => {
   useEffect(() => {
     dispatch(fetchingLittleMenu("BBQ"));
     dispatch(setActiveCategory("BBQ"));
+    Aos.init({ duration: 800 });
   }, []);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const LittleMenuSection = () => {
     }
   };
   return (
-    <div className={styles.littleMenuSec}>
+    <div className={styles.littleMenuSec} data-aos="fade-up">
       <p className={styles.mainText}>Our popular Menu</p>
       <div className={styles.foodType}>
         {categories?.map((each, ind) => {
@@ -75,10 +77,9 @@ const LittleMenuSection = () => {
         ) : (
           slicedData?.map((elm, index) => {
             const each = elm.recipe;
-            let randomStar = Math.round(Math.random() * 2 + 3);
             let ingredients = each.ingredientLines.slice(0, 2);
             return (
-              <div key={index} className={styles.eachMenu}>
+              <div key={index} className={styles.eachMenu} data-aos="fade-up">
                 <img
                   src={each.images?.REGULAR.url}
                   alt=""
@@ -88,7 +89,7 @@ const LittleMenuSection = () => {
                   <h2>{each.label}</h2>
                   <div className={styles.stars}>
                     <span>Rate:</span>
-                    {[...Array(randomStar)].map((_, i) => {
+                    {each.starrArr.map((_, i) => {
                       return <img key={i} src={starRating} alt="star" />;
                     })}
                   </div>
