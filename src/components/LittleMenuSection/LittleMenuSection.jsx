@@ -21,7 +21,6 @@ const LittleMenuSection = () => {
   const { slicedData } = useSelector(getAllPagination);
   const categories = ["BBQ", "pizza", "sushi", "desserts top", "coffee drink"];
   const buttonNames = ["All Category", "Dinner", "Lunch", "Dessert", "Drink"];
-
   useEffect(() => {
     dispatch(fetchingLittleMenu("BBQ"));
     dispatch(setActiveCategory("BBQ"));
@@ -89,7 +88,7 @@ const LittleMenuSection = () => {
                   <h2>{each.label}</h2>
                   <div className={styles.stars}>
                     <span>Rate:</span>
-                    {each.starrArr.map((_, i) => {
+                    {each.starrArr?.map((_, i) => {
                       return <img key={i} src={starRating} alt="star" />;
                     })}
                   </div>

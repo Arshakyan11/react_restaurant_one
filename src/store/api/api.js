@@ -35,7 +35,7 @@ export const fetchingLittleMenu = createAsyncThunk(
       response.forEach((elm) => {
         let randomStar = Math.round(Math.random() * 2 + 3);
         elm.recipe.price = Math.round(Math.random() * 55 + 2);
-        elm.recipe.starrArr = [...Array(randomStar)];
+        elm.recipe.starrArr = [...Array(randomStar)].map((_, i) => i + 1);
         delete elm.recipe.digest;
         delete elm.recipe.healthLabels;
         delete elm.recipe.totalCO2Emissions;
@@ -94,7 +94,7 @@ export const fetchingGlobalMenu = createAsyncThunk(
       await response.forEach((elm) => {
         let randomStar = Math.round(Math.random() * 2 + 3);
         elm.recipe.price = Math.round(Math.random() * 55 + 2);
-        elm.recipe.starCount = [...Array(randomStar)];
+        elm.recipe.starCount = [...Array(randomStar)].map((_, i) => i + 1);
       });
       return { response, query };
     } catch (error) {

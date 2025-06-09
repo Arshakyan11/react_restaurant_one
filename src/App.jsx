@@ -5,6 +5,7 @@ import { ROUTES } from "./Routes";
 import {
   AboutUS,
   ContactUs,
+  EachProduct,
   Home,
   Login,
   Menu,
@@ -47,6 +48,7 @@ function App() {
           <Route path={ROUTES.CONTACTUS} element={<ContactUs />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />
+          <Route path={ROUTES.EACHPRODUCT} element={<EachProduct />} />
         </Route>
       </Routes>
     </div>

@@ -110,9 +110,18 @@
           width: 300px;
           height: 550px;
           margin: 16px;
+          position: relative;
+          .infoMore {
+            @include moreInfoBtn();
+          }
           &:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            .infoMore {
+              opacity: 1;
+              left: 30%;
+              top: 15%; 
+            }
           }
           .mealImg {
             width: 100%;

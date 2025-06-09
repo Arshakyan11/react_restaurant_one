@@ -106,3 +106,16 @@
     }
   }
 }
+
+@mixin moreInfoBtn() {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  font-size: 20px;
+  color: white;
+  background: orange;
+  padding: 10px 20px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 0.5s;
+}

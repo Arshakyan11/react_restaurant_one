@@ -9,6 +9,9 @@ export const ROUTES = {
   REGISTRATION: "registration",
   LOGIN: "login",
   RESERVATION: "reservation",
+  EACHPRODUCT: "menu/eachProduct/:name",
+
+  NOTFOUND: "*",
 };
 
 //home
@@ -20,3 +23,4 @@ export const ROUTES = {
 //menu 95%
 //registration
 //login
+//each
