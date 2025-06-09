@@ -134,7 +134,7 @@ export const checkingUserExisting = createAsyncThunk(
       if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
         notifyForSMth("You Logged In");
-        navigate(`/${ROUTES.MENU}`);
+        navigate(ROUTES.HOME);
         return true;
       } else {
         notifyForError("User not found");
