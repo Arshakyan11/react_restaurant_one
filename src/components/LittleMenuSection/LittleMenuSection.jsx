@@ -76,7 +76,7 @@ const LittleMenuSection = () => {
         ) : (
           slicedData?.map((elm, index) => {
             const each = elm.recipe;
-            let ingredients = each.ingredientLines.slice(0, 2);
+            let ingredients = each.ingredients.slice(0, 4);
             return (
               <div key={index} className={styles.eachMenu} data-aos="fade-up">
                 <img
@@ -98,7 +98,7 @@ const LittleMenuSection = () => {
                       {ingredients.map((elm, ind) => {
                         return (
                           <p key={ind}>
-                            {`${ind + 1})`} {elm}
+                            {`${ind + 1})`} {elm.food}
                           </p>
                         );
                       })}
