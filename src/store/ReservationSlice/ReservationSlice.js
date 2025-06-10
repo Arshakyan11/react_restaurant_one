@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addingReserveTable } from "../api/api";
+import { addingReserveTable, deletingReservationTime } from "../api/api";
 
 const ReservationSlice = createSlice({
   name: "reservation",
@@ -28,6 +28,19 @@ const ReservationSlice = createSlice({
       state.message = action.payload;
     });
     builder.addCase(addingReserveTable.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(deletingReservationTime.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(deletingReservationTime.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      state.message = action.payload;
+    });
+    builder.addCase(deletingReservationTime.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

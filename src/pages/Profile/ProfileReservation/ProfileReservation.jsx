@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ProfileReservation.module.scss";
 import { reserveDate } from "../../../components/Images";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../Routes";
+import { useDispatch } from "react-redux";
+import { deletingReservationTime } from "../../../store/api/api";
 
 const ProfileReservation = () => {
   const userinfo = JSON.parse(localStorage.getItem("userInfo"));
   const isTrue = userinfo.reservation ? true : false;
   const date = userinfo.reservation?.date.split("T");
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.reserveDate}>
@@ -49,7 +52,9 @@ const ProfileReservation = () => {
               <p>Reservation Status:</p>
               <p>Confirmed✅</p>
             </div>
-            <button>Delete Reservation</button>
+            <button onClick={() => dispatch(deletingReservationTime())}>
+              Delete Reservation
+            </button>
           </div>
         ) : (
           <div className={styles.reserveNotFound}>
