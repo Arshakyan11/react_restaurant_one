@@ -27,7 +27,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav>
+    <nav className="mainNav">
       <div className="container">
         <div className="navSection">
           <div className="left">
@@ -68,7 +68,7 @@ const NavBar = () => {
           </div>
           {userInfo ? (
             <div className="right">
-              <Link>
+              <Link to={ROUTES.PROFILE}>
                 <FaUser />
                 Profile
               </Link>

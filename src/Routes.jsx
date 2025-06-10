@@ -10,6 +10,9 @@ export const ROUTES = {
   LOGIN: "login",
   RESERVATION: "reservation",
   EACHPRODUCT: "menu/eachProduct/:name",
+  PROFILE: "profile",
+  PROFILERESERVEDATE: "reserveDate",
+  PROFILEWISHLIST: "wishlist",
 
   NOTFOUND: "*",
 };

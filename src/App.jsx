@@ -10,13 +10,17 @@ import {
   Login,
   Menu,
   OurRestourants,
+  Profile,
+  ProfileReservation,
+  ProfileWishList,
   Registration,
   Reservation,
   Search,
+  Staff,
 } from "./pages";
-import Staff from "./pages/Staff/Staff";
 import { Bounce, ToastContainer } from "react-toastify";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import ProfileLayOut from "./pages/Profile/ProfileLayOut/ProfileLayOut";
 function App() {
   return (
     <div>
@@ -49,6 +53,17 @@ function App() {
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.EACHPRODUCT} element={<EachProduct />} />
+          <Route path={ROUTES.PROFILE} element={<ProfileLayOut />}>
+            <Route path={ROUTES.PROFILE} element={<Profile />} />
+            <Route
+              path={ROUTES.PROFILERESERVEDATE}
+              element={<ProfileReservation />}
+            />
+            <Route
+              path={ROUTES.PROFILEWISHLIST}
+              element={<ProfileWishList />}
+            />
+          </Route>
         </Route>
       </Routes>
     </div>
