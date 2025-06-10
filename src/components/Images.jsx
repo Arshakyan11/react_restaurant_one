@@ -59,6 +59,7 @@ import loginPic from "../assets/images/defaultImages/loginP.jpg";
 import restInfo1 from "../assets/images/defaultImages/restaurantInfo1.png";
 import restInfo2 from "../assets/images/defaultImages/restaurantInfo2.png";
 import restInfo3 from "../assets/images/defaultImages/restaurantInfo3.png";
+import reserveDate from "../assets/images/defaultImages/reserveDate.png";
 export {
   logo,
   logo1,
@@ -121,4 +122,5 @@ export {
   restInfo1,
   restInfo2,
   restInfo3,
+  reserveDate,
 };

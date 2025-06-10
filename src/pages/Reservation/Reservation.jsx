@@ -51,13 +51,13 @@ const Reservation = () => {
                         <option value="" hidden>
                           Select Restaurnat Address
                         </option>
-                        <option value="Yerevan">
+                        <option value="5125 Melrose Avenue Los Angeles, CA 90038">
                           3 Amiryan Street, Yerevan 0010, Armenia
                         </option>
-                        <option value="Los Angeles">
+                        <option value="5125 Melrose Avenue Los Angeles, CA 90038">
                           5125 Melrose Avenue Los Angeles, CA 90038
                         </option>
-                        <option value="Tokyo">
+                        <option value="1-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan">
                           1-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan
                         </option>
                       </Field>
@@ -97,9 +97,9 @@ const Reservation = () => {
                         <option value="" hidden>
                           Select Your Table Experience
                         </option>
-                        <option value="middle-">Standard Seating</option>
-                        <option value="middle">Premium Service Table</option>
-                        <option value="best">Scenic View Table</option>
+                        <option value="Standard Seating">Standard Seating</option>
+                        <option value="Premium Service Table">Premium Service Table</option>
+                        <option value="Scenic View Table">Scenic View Table</option>
                       </Field>
                     </fieldset>
                     <div className={styles.buttons}>

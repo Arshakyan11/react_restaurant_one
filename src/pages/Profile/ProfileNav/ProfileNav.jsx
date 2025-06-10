@@ -18,7 +18,10 @@ const ProfileNav = () => {
             Welcome back! <br />
             {userInfo.userName}
           </p>
-          <p>Phone <br />{userInfo.phoneNumber}</p>
+          <p>
+            Phone <br />
+            {userInfo.phoneNumber}
+          </p>
         </div>
         <div className="bottomSide">
           <NavLink to={`${ROUTES.PROFILE}`}>Profile</NavLink>

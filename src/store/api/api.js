@@ -166,6 +166,7 @@ export const addingReserveTable = createAsyncThunk(
           data: reservation,
           url: `/${findedUser["id"]}`,
         });
+        notifyForSMth("Reservation passed Successfuly");
         return "Success";
       } else {
         notifyForError(
