@@ -1,10 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import {
-  notifyForError,
-  notifyForSMth,
-  notifyForUserNotFound,
-} from "../../helpers/notifyUser";
+import { notifyForError, notifyForSMth } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
 
 const instant = axios.create({
@@ -166,7 +162,13 @@ export const addingReserveTable = createAsyncThunk(
           data: reservation,
           url: `/${findedUser["id"]}`,
         });
-        return "Success";
+        const updatedData = {
+          ...userInfo,
+          reservation: obj,
+        };
+        localStorage.setItem("userInfo", JSON.stringify(updatedData));
+        notifyForSMth("Reservation passed Successfuly");
+        return updatedData;
       } else {
         notifyForError(
           "You have already had reservation, Go to Profile for concelation"
@@ -175,6 +177,31 @@ export const addingReserveTable = createAsyncThunk(
       }
     } catch (error) {
       return rejectWithValue("Error 404");
+    }
+  }
+);
+
+export const deletingReservationTime = createAsyncThunk(
+  "reservation/deletingReservationTime",
+  async (_, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const response = await localStorageUsers({ url: userInfo.id }).then(
+        (res) => {
+          delete res.data.reservation;
+          return res.data;
+        }
+      );
+      localStorageUsers({
+        method: "PUT",
+        data: response,
+        url: userInfo.id,
+      });
+      localStorage.setItem("userInfo", JSON.stringify(response));
+      notifyForSMth("Reservation deleted successfuly");
+      return response;
+    } catch (error) {
+      return rejectWithValue("Error while deleting Reservation");
     }
   }
 );

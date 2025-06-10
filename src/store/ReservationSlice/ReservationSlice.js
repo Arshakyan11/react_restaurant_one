@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addingReserveTable } from "../api/api";
+import { addingReserveTable, deletingReservationTime } from "../api/api";
 
 const ReservationSlice = createSlice({
   name: "reservation",
   initialState: {
-    message: null,
+    userData: JSON.parse(localStorage.getItem("userInfo")),
     loading: false,
     error: null,
     initialValues: {
@@ -25,9 +25,22 @@ const ReservationSlice = createSlice({
     builder.addCase(addingReserveTable.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.message = action.payload;
+      state.userData = action.payload;
     });
     builder.addCase(addingReserveTable.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(deletingReservationTime.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(deletingReservationTime.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      state.userData = action.payload;
+    });
+    builder.addCase(deletingReservationTime.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });
