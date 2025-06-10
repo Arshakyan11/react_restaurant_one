@@ -1,81 +1,132 @@
 @import "../../../global/global.scss";
 .reserveDate {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 40px auto;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  font-family: "Inter", sans-serif;
+  padding: 30px;
+  color: #333;
   .header {
+    text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
-    object-fit: contain;
-    max-width: 1140px;
-    position: relative;
+    img {
+      width: 600px;
+      height: 184px;
+object-fit: cover;
+      margin-bottom: 20px;
+    }
     .resereveInfoTextMain {
-      font-size: 40px;
-      color: white;
-      text-align: center;
-      @include reserveTitleStyle();
-      position: absolute;
-      top: 10%;
-      &::after {
-        width: 300px;
-      }
+      font-size: 38px;
+      color: #111;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
-    .resereveInfoTextMiddle,
+    .resereveInfoTextMiddle {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 8px;
+    }
     .resereveInfoTextLast {
-      text-align: center;
-      position: absolute;
-      color: white;
-      color: #e8c27c;
-      font-size: 32px;
-    }
-    p:nth-child(3) {
-      top: 40%;
-    }
-    p:nth-child(4) {
-      top: 65%;
-    }
-    p {
-      left: 50%;
-      transform: translateX(-50%);
-      max-width: 900px;
-      width: 100%;
+      font-size: 17px;
+      color: #999;
     }
   }
   .reserveDateInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     .reserveMainInfo {
       display: flex;
       flex-direction: column;
       gap: 20px;
-      border-radius: 20px;
       box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-      padding: 20px;
+      background: #f8f9fa;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #ddd;
       .eachLine {
         display: flex;
         justify-content: space-between;
-        font-size: 21px;
+        padding: 10px 0;
         border-bottom: 1px solid #333;
-        padding-bottom: 5px;
+        p:first-child {
+          font-weight: 500;
+          color: #555;
+        }
+        p:last-child {
+          color: #111;
+        }
+      }
+      button {
+        padding: 12px 24px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 18px;
+        max-width: 400px;
+        outline: none;
+        transition: all 0.3s ease;
+        &:hover {
+          background: #c0392b;
+        }
       }
     }
     .reserveNotFound {
       display: flex;
       flex-direction: column;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
       padding: 20px;
       gap: 20px;
       border-radius: 20px;
       box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+      font-size: 20px;
+      color: red;
       p {
-        font-size: 30px;
+        font-weight: bold;
       }
       a {
         color: white;
         background: orange;
-        padding: 20px;
+        padding: 15px 20px;
         border-radius: 20px;
-        max-width: 300px;
+        max-width: 350px;
+        width: 100%;
+        margin: auto;
+      }
+    }
+    .noteSec {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      background: #f0f4ff;
+      padding: 20px 24px;
+      border-left: 5px solid #4c8bf5;
+      border-radius: 12px;
+      box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.2);
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: #2a4bb4;
+        margin-bottom: 8px;
+      }
+      p {
+        strong {
+          color: #333;
+        }
       }
     }
   }

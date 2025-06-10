@@ -22,7 +22,13 @@
       "userName": "Ero",
       "phoneNumber": "+37477354450",
       "email": "erikarshakyan111@gmail.com",
-      "password": "123123"
+      "password": "123123",
+      "reservation": {
+        "address": "1-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+        "date": "2025-06-27T03:02",
+        "count": "19",
+        "tableType": "Scenic View Table"
+      }
     }
   ]
 }

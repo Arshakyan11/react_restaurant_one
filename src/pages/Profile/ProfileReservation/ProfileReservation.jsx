@@ -45,6 +45,11 @@ const ProfileReservation = () => {
               <p>Table Experience:</p>
               <p>{userinfo.reservation.tableType}</p>
             </div>
+            <div className={styles.eachLine}>
+              <p>Reservation Status:</p>
+              <p>Confirmed✅</p>
+            </div>
+            <button>Delete Reservation</button>
           </div>
         ) : (
           <div className={styles.reserveNotFound}>
@@ -55,6 +60,33 @@ const ProfileReservation = () => {
             <Link to={`/${ROUTES.RESERVATION}`}>Reservation</Link>
           </div>
         )}
+        <div className={styles.noteSec}>
+          <h2>attention!!</h2>
+          <p>
+            <strong>Arrival:</strong> Please arrive at least 10 minutes before
+            your reservation time to ensure timely seating.
+          </p>
+          <p>
+            <strong>Running Late?</strong> Let us know by calling us at (123)
+            456-7890 so we can hold your table a little longer.
+          </p>
+          <p>
+            <strong>Group Changes:</strong> If the number of guests changes,
+            please update your reservation in advance.
+          </p>
+          <p>
+            <strong>Cancellations:</strong> You can cancel or reschedule your
+            booking up to 2 hours before your reserved time.
+          </p>
+          <p>
+            <strong>Special Requests:</strong> Have allergies or special needs?
+            Leave a note when reserving or contact us directly.
+          </p>
+          <p>
+            <strong>Payment:</strong> Payments are made at the restaurant. No
+            upfront charges are required for reservations.
+          </p>
+        </div>
       </div>
     </div>
   );

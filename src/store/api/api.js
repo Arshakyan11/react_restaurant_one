@@ -166,6 +166,13 @@ export const addingReserveTable = createAsyncThunk(
           data: reservation,
           url: `/${findedUser["id"]}`,
         });
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({
+            ...userInfo,
+            reservation: obj,
+          })
+        );
         notifyForSMth("Reservation passed Successfuly");
         return "Success";
       } else {
