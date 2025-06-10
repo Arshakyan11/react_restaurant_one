@@ -3,13 +3,14 @@ import styles from "./ProfileReservation.module.scss";
 import { reserveDate } from "../../../components/Images";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../Routes";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deletingReservationTime } from "../../../store/api/api";
+import { getAllReservationInfo } from "../../../store/ReservationSlice/ReservationSlice";
 
 const ProfileReservation = () => {
-  const userinfo = JSON.parse(localStorage.getItem("userInfo"));
-  const isTrue = userinfo.reservation ? true : false;
-  const date = userinfo.reservation?.date.split("T");
+  const { userData } = useSelector(getAllReservationInfo);
+  const isTrue = userData?.reservation ? true : false;
+  const date = userData?.reservation?.date.split("T");
   const dispatch = useDispatch();
 
   return (
@@ -30,7 +31,7 @@ const ProfileReservation = () => {
           <div className={styles.reserveMainInfo}>
             <div className={styles.eachLine}>
               <p>Address:</p>
-              <p>{userinfo.reservation.address}</p>
+              <p>{userData.reservation.address}</p>
             </div>
             <div className={styles.eachLine}>
               <p>Date:</p>
@@ -42,11 +43,11 @@ const ProfileReservation = () => {
             </div>
             <div className={styles.eachLine}>
               <p>Number of Guests:</p>
-              <p>{userinfo.reservation.count} people</p>
+              <p>{userData.reservation.count} people</p>
             </div>
             <div className={styles.eachLine}>
               <p>Table Experience:</p>
-              <p>{userinfo.reservation.tableType}</p>
+              <p>{userData.reservation.tableType}</p>
             </div>
             <div className={styles.eachLine}>
               <p>Reservation Status:</p>

@@ -4,7 +4,7 @@ import { addingReserveTable, deletingReservationTime } from "../api/api";
 const ReservationSlice = createSlice({
   name: "reservation",
   initialState: {
-    message: null,
+    userData: JSON.parse(localStorage.getItem("userInfo")),
     loading: false,
     error: null,
     initialValues: {
@@ -25,7 +25,7 @@ const ReservationSlice = createSlice({
     builder.addCase(addingReserveTable.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.message = action.payload;
+      state.userData = action.payload;
     });
     builder.addCase(addingReserveTable.rejected, (state, action) => {
       state.loading = false;
@@ -38,7 +38,7 @@ const ReservationSlice = createSlice({
     builder.addCase(deletingReservationTime.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.message = action.payload;
+      state.userData = action.payload;
     });
     builder.addCase(deletingReservationTime.rejected, (state, action) => {
       state.loading = false;

@@ -162,15 +162,13 @@ export const addingReserveTable = createAsyncThunk(
           data: reservation,
           url: `/${findedUser["id"]}`,
         });
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({
-            ...userInfo,
-            reservation: obj,
-          })
-        );
+        const updatedData = {
+          ...userInfo,
+          reservation: obj,
+        };
+        localStorage.setItem("userInfo", JSON.stringify(updatedData));
         notifyForSMth("Reservation passed Successfuly");
-        return "Success";
+        return updatedData;
       } else {
         notifyForError(
           "You have already had reservation, Go to Profile for concelation"
@@ -201,7 +199,7 @@ export const deletingReservationTime = createAsyncThunk(
       });
       localStorage.setItem("userInfo", JSON.stringify(response));
       notifyForSMth("Reservation deleted successfuly");
-      return "Success";
+      return response;
     } catch (error) {
       return rejectWithValue("Error while deleting Reservation");
     }
