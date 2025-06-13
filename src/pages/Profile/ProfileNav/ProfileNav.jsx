@@ -27,8 +27,8 @@ const ProfileNav = () => {
           <NavLink to={`/${ROUTES.PROFILE}`} end>
             Profile
           </NavLink>
-          <NavLink to={`${ROUTES.PROFILERESERVEDATE}`}>Reserve Date</NavLink>
-          <NavLink to={`${ROUTES.PROFILEWISHLIST}`}>WishList</NavLink>
+          <NavLink to={`${ROUTES.PROFILERESERVEDATE}`}>Reservations</NavLink>
+          <NavLink to={`${ROUTES.PROFILEWISHLIST}`}>Wishlist</NavLink>
           <button
             onClick={() => {
               LogOutFromAccount(navigate);

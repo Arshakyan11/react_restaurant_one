@@ -63,3 +63,16 @@ export const userReservationValidation = object({
     .required("Choose how many people would come"),
   tableType: string().required("Choose Table Type"),
 });
+
+export const userDataEditing = object({
+  userEmail: string()
+    .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Pls enter valid email")
+    .required("Pls write Your Email"),
+  userNewPass: string()
+    .min(6, "Write Minimum 6 symbols")
+    .max(16, "Write Maximum 16 symbols")
+    .required("Pls write Your password"),
+  userOldPassRepeat: string()
+    .oneOf([ref("userNewPass")], "The password is not the same")
+    .required("Pls repeat your passowrd"),
+});
