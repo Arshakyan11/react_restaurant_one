@@ -43,7 +43,7 @@ export const checkUserSendingData = (event, form, dispatch, navigate) => {
     password,
     navigate,
   };
-  dispatch(checkingUserExisting(data));
+  dispatch(checkingUserExisting({ data, dispatch }));
 };
 
 export const reserveTableInfo = (event, form, dispatch) => {

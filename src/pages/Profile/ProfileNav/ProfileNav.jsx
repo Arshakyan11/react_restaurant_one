@@ -6,7 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { LogOutFromAccount } from "../../../helpers/logOut";
 import { FaRightToBracket } from "react-icons/fa6";
 const ProfileNav = () => {
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
   const navigate = useNavigate();
 
   return (
@@ -16,11 +16,11 @@ const ProfileNav = () => {
           <FaUser />
           <p>
             Welcome back! <br />
-            {userInfo.userName}
+            {userInfo.userName ? userInfo.userName : null}
           </p>
           <p>
             Phone <br />
-            {userInfo.phoneNumber}
+            {userInfo.phoneNumber ? userInfo.phoneNumber : null}
           </p>
         </div>
         <div className="bottomSide">

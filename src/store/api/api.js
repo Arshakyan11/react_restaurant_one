@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { notifyForError, notifyForSMth } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
-import { data } from "react-router-dom";
+import { setEmailManualy } from "../ProfileSlice/ProfileSlice";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -121,17 +121,18 @@ export const creatingUserData = createAsyncThunk(
 
 export const checkingUserExisting = createAsyncThunk(
   "login/checkingUserExisting",
-  async ({ email, password, navigate }, { rejectWithValue }) => {
+  async ({ data, dispatch }, { rejectWithValue }) => {
     try {
+      const { email, password, navigate } = data;
       const response = await localStorageUsers({ method: "GET" }).then(
         (res) => res.data
       );
       const lastResult = await response.find(
         (elm) => elm.email === email && elm.password === password
       );
-
       if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
+        dispatch(setEmailManualy(email));
         notifyForSMth("You Logged In");
         navigate(ROUTES.HOME);
         return true;

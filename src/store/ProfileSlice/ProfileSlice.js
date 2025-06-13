@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { updatingProfileInformation } from "../api/api";
+const userInfo = JSON.parse(localStorage.getItem("userInfo")) || null;
 const ProfileSlice = createSlice({
   name: "profile",
   initialState: {
@@ -8,7 +9,7 @@ const ProfileSlice = createSlice({
     error: null,
     loading: false,
     initialValues: {
-      userEmail: "",
+      userEmail: userInfo?.email || "",
       userOldPass: "",
       userNewPass: "",
       userNewPassRepeat: "",
@@ -24,6 +25,9 @@ const ProfileSlice = createSlice({
     },
     setTypeofOldPassowrd: (state, action) => {
       state.isHideemOld = action.payload;
+    },
+    setEmailManualy: (state, action) => {
+      state.initialValues.userEmail = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -43,6 +47,6 @@ const ProfileSlice = createSlice({
 });
 
 export default ProfileSlice.reducer;
-export const { setTypeOfChanginPass, setTypeofOldPassowrd } =
+export const { setTypeOfChanginPass, setTypeofOldPassowrd, setEmailManualy } =
   ProfileSlice.actions;
 export const { getAllProfileInfo } = ProfileSlice.selectors;
