@@ -22,7 +22,13 @@
       "userName": "Ero",
       "phoneNumber": "+37477354450",
       "email": "erikarshakyan111@gmail.com",
-      "password": "123123"
+      "password": "123123",
+      "reservation": {
+        "address": "5125 Melrose Avenue Los Angeles, CA 90038",
+        "date": "2025-06-05T14:09",
+        "count": "23",
+        "tableType": "Standard Seating"
+      }
     }
   ]
 }

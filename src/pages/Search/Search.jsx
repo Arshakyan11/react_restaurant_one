@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Search.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { gettAllDataSearching } from "../../store/SearchSlice/SearchSlice";
@@ -8,14 +8,17 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import { nanoid } from "nanoid";
 import { starRating } from "../../components/Images";
+import Aos from "aos";
 const Search = () => {
   const dispatch = useDispatch();
   const { foundedData, loading } = useSelector(gettAllDataSearching);
-  console.log(foundedData);
+  useEffect(() => {
+    Aos.init({ duration: 800 });
+  });
   return (
     <section className={styles.searching}>
       <div className={styles.container}>
-        <div className={styles.searchBox}>
+        <div className={styles.searchBox}  data-aos="fade-up">
           <div className={styles.searchLine}>
             <FaSearch />
             <input

@@ -22,6 +22,7 @@ import {
 } from "../../store/PaginationSlice/paginationSlice";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
+import Aos from "aos";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const Menu = () => {
 
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
+    Aos.init({ duration: 800 });
   }, []);
   useEffect(() => {
     // if (displayData.length > 0 && !didPaginate.current) {
@@ -65,15 +67,15 @@ const Menu = () => {
     <section className={styles.menuSec}>
       <div className={styles.container}>
         <div className={styles.restaurantMenu}>
-          <div className={styles.tutorialMenu}>
+          <div className={styles.tutorialMenu} data-aos="fade-left">
             <span>Eriso</span>
             <h2>
               View Our <br /> New Menu
             </h2>
             <p>The freshest ingredients for you every day</p>
           </div>
-          <h3 className={styles.menuTitle}>Menu</h3>
-          <div className={styles.filtersAndMeals}>
+          <h3 className={styles.menuTitle } >Menu</h3>
+          <div className={styles.filtersAndMeals}  data-aos="fade-up">
             <div className={styles.filterBox}>
               <h2>Filters</h2>
               <div className={styles.forBackground}>
