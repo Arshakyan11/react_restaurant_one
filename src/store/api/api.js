@@ -3,6 +3,7 @@ import axios from "axios";
 import { notifyForError, notifyForSMth } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
 import { setEmailManualy } from "../ProfileSlice/ProfileSlice";
+import { setUserInfoManualy } from "../ReservationSlice/ReservationSlice";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -132,7 +133,8 @@ export const checkingUserExisting = createAsyncThunk(
       );
       if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
-        dispatch(setEmailManualy(email));
+        await dispatch(setEmailManualy(email));
+        await dispatch(setUserInfoManualy(lastResult));
         notifyForSMth("You Logged In");
         navigate(ROUTES.HOME);
         return true;

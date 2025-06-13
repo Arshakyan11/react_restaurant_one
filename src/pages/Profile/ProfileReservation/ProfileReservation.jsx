@@ -12,6 +12,8 @@ const ProfileReservation = () => {
   const { userData } = useSelector(getAllReservationInfo);
   const isTrue = userData?.reservation ? true : false;
   const date = userData?.reservation?.date.split("T");
+  console.log(userData);
+  
   const dispatch = useDispatch();
   useEffect(() => {
     Aos.init({ duration: 800 });
@@ -29,6 +31,7 @@ const ProfileReservation = () => {
           cancel a booking.
         </p>
       </div>
+      {/* <h2>{userData.email}</h2> */}
       <div className={styles.reserveDateInfo} data-aos="fade-up">
         {isTrue ? (
           <div className={styles.reserveMainInfo}>

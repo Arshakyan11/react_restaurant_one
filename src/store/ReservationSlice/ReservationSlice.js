@@ -17,6 +17,11 @@ const ReservationSlice = createSlice({
   selectors: {
     getAllReservationInfo: (state) => state,
   },
+  reducers: {
+    setUserInfoManualy: (state, action) => {
+      state.userData = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(addingReserveTable.pending, (state) => {
       state.loading = true;
@@ -48,4 +53,5 @@ const ReservationSlice = createSlice({
 });
 
 export default ReservationSlice.reducer;
+export const { setUserInfoManualy } = ReservationSlice.actions;
 export const { getAllReservationInfo } = ReservationSlice.selectors;
