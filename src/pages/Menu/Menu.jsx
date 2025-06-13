@@ -13,7 +13,7 @@ import {
   setFilteredDataByPrice,
   setFilteredMainData,
 } from "../../store/MenuSlice/MenuSlice";
-import { fetchingGlobalMenu } from "../../store/api/api";
+import { addingWishlistToData, fetchingGlobalMenu } from "../../store/api/api";
 import { starRating } from "../../components/Images";
 import { nanoid } from "nanoid";
 import {
@@ -35,8 +35,6 @@ const Menu = () => {
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
-  console.log(slicedData);
-
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
     Aos.init({ duration: 800 });
@@ -74,8 +72,8 @@ const Menu = () => {
             </h2>
             <p>The freshest ingredients for you every day</p>
           </div>
-          <h3 className={styles.menuTitle } >Menu</h3>
-          <div className={styles.filtersAndMeals}  data-aos="fade-up">
+          <h3 className={styles.menuTitle}>Menu</h3>
+          <div className={styles.filtersAndMeals} data-aos="fade-up">
             <div className={styles.filterBox}>
               <h2>Filters</h2>
               <div className={styles.forBackground}>
@@ -187,6 +185,20 @@ const Menu = () => {
                         >
                           More Info
                         </Link>
+                        <button
+                          onClick={() => {
+                            dispatch(
+                              addingWishlistToData({
+                                id: nanoid(4),
+                                name: each.label,
+                                img: each.images?.REGULAR.url,
+                                price: each.price,
+                              })
+                            );
+                          }}
+                        >
+                          Buy Now
+                        </button>
                         <div className={styles.infoOfMeal}>
                           <h2>{each.label}</h2>
                           <div className={styles.stars}>

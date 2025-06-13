@@ -242,3 +242,65 @@ export const updatingProfileInformation = createAsyncThunk(
     }
   }
 );
+
+export const addingWishlistToData = createAsyncThunk(
+  "wishlist/addingWishlistToData",
+  async (wishObj, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const updatedWishlist = [...(userInfo.wishList || []), wishObj];
+      const response = await localStorageUsers({
+        method: "PATCH",
+        url: userInfo.id,
+        data: {
+          wishList: updatedWishlist,
+        },
+      });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...userInfo, wishList: updatedWishlist })
+      );
+      notifyForSMth("Successfully added to Cart");
+      return updatedWishlist;
+    } catch (error) {
+      notifyForError("Smth goes to bad");
+      return rejectWithValue("Error while adding Wishlist");
+    }
+  }
+);
+
+export const deleteWishListFromData = createAsyncThunk(
+  "wishlist/deleteWishListFromData",
+  async (mealId, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const response = await localStorageUsers({
+        method: "GET",
+        url: userInfo.id,
+      }).then((res) => {
+        console.log(res.data);
+        console.log(userInfo.id);
+
+        return res.data;
+      });
+      const newWishList = response.wishList.filter((elm) => elm.id !== mealId);
+      console.log(newWishList, "g");
+      console.log(mealId);
+      localStorageUsers({
+        method: "PATCH",
+        url: userInfo.id,
+        data: {
+          wishList: newWishList,
+        },
+      });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...userInfo, wishList: newWishList })
+      );
+      notifyForSMth("Item Successfuly Removed");
+      return newWishList;
+    } catch (error) {
+      return rejectWithValue("Error wFhile deleting data from WatchList");
+    }
+  }
+);
