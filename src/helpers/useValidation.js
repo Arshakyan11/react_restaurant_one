@@ -1,4 +1,4 @@
-import { date, number, object, ref, string } from "yup";
+import { number, object, ref, string } from "yup";
 
 export const contactUsValidation = object({
   name: string()
@@ -68,11 +68,12 @@ export const userDataEditing = object({
   userEmail: string()
     .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Pls enter valid email")
     .required("Pls write Your Email"),
+  userOldPass: string().required("Pls Write Your Old Password"),
   userNewPass: string()
     .min(6, "Write Minimum 6 symbols")
     .max(16, "Write Maximum 16 symbols")
-    .required("Pls write Your password"),
-  userOldPassRepeat: string()
+    .required("Pls write New password"),
+  userNewPassRepeat: string()
     .oneOf([ref("userNewPass")], "The password is not the same")
-    .required("Pls repeat your passowrd"),
+    .required("Pls Repeat Your New Passowrd"),
 });

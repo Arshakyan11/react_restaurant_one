@@ -4,6 +4,7 @@ import {
   checkingUserExisting,
   creatingUserData,
   sendingMessage,
+  updatingProfileInformation,
 } from "../store/api/api";
 import { ROUTES } from "../Routes";
 
@@ -47,5 +48,10 @@ export const checkUserSendingData = (event, form, dispatch, navigate) => {
 
 export const reserveTableInfo = (event, form, dispatch) => {
   dispatch(addingReserveTable(event));
+  form.resetForm();
+};
+
+export const updateDataOnProfile = (event, form, dispatch) => {
+  dispatch(updatingProfileInformation(event));
   form.resetForm();
 };

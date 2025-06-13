@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { notifyForError, notifyForSMth } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
+import { data } from "react-router-dom";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -202,6 +203,39 @@ export const deletingReservationTime = createAsyncThunk(
       return response;
     } catch (error) {
       return rejectWithValue("Error while deleting Reservation");
+    }
+  }
+);
+
+export const updatingProfileInformation = createAsyncThunk(
+  "profile/updatingProfileInformation",
+  async (data, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      if (
+        data.userOldPass === userInfo.password &&
+        userInfo.password !== data.userNewPass
+      ) {
+        const response = await localStorageUsers({
+          method: "PATCH",
+          url: userInfo.id,
+          data: {
+            password: data.userNewPass,
+          },
+        });
+        userInfo.password = data.userNewPass;
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        notifyForSMth("Password Changed Successfuly");
+      } else if (
+        data.userOldPass === userInfo.password &&
+        userInfo.password === data.userNewPass
+      ) {
+        notifyForError("Password must be different from your current password");
+      } else {
+        notifyForError("The current password is incorrect");
+      }
+    } catch (error) {
+      return rejectWithValue("Error 404");
     }
   }
 );

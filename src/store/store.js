@@ -7,6 +7,7 @@ import MenuReducer from "./MenuSlice/MenuSlice";
 import RegistrationReducer from "./RegistrationSlice/RegistrationSlice";
 import LoginReducer from "./LoginSlice/LoginSlice";
 import ReservationReducer from "./ReservationSlice/ReservationSlice";
+import ProfileReducer from "./ProfileSlice/ProfileSlice";
 const store = configureStore({
   reducer: {
     littleMenu: littleMenuReducer,
@@ -17,6 +18,7 @@ const store = configureStore({
     registration: RegistrationReducer,
     login: LoginReducer,
     reservation: ReservationReducer,
+    profile: ProfileReducer,
   },
 });
 
