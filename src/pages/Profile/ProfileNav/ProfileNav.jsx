@@ -24,7 +24,9 @@ const ProfileNav = () => {
           </p>
         </div>
         <div className="bottomSide">
-          <NavLink to={`${ROUTES.PROFILE}`}>Profile</NavLink>
+          <NavLink to={`/${ROUTES.PROFILE}`} end>
+            Profile
+          </NavLink>
           <NavLink to={`${ROUTES.PROFILERESERVEDATE}`}>Reserve Date</NavLink>
           <NavLink to={`${ROUTES.PROFILEWISHLIST}`}>WishList</NavLink>
           <button

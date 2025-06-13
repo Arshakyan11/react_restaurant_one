@@ -8,10 +8,10 @@ import ContactUs from "./ContactUs/ContactUs";
 import Registration from "./Registration/Registration";
 import Login from "./Login/Login";
 import EachProduct from "./EachProduct/EachProduct";
+import Staff from "./Staff/Staff";
 import Profile from "./Profile/Profile";
 import ProfileReservation from "./Profile/ProfileReservation/ProfileReservation";
 import ProfileWishList from "./Profile/ProfileWishList/ProfileWishList";
-import Staff from "./Staff/Staff";
 export {
   Search,
   OurRestourants,
