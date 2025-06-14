@@ -50,7 +50,15 @@
       "phoneNumber": "+37498167307",
       "email": "milenaarshakyan2002@gmail.com",
       "password": "hambal",
-      "wishList": []
+      "wishList": [
+        {
+          "id": "FvMh",
+          "name": "BBQ Chicken and Peach Quesadillas",
+          "img": "https://edamam-product-images.s3.amazonaws.com/web-img/07c/07ca416d6292ac80a7c3b2a33b3f0ec0.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEsaCXVzLWVhc3QtMSJGMEQCIGzI2wPeodWtbsL57SsTukBWCn7tqRZoM1esR0sz9cPQAiBSILc48ZjJTmURZwtmYyEUqw0VpncwBsvEfKiCkvhQVyq4BQg0EAAaDDE4NzAxNzE1MDk4NiIMP4YMPI4p5grdGV6FKpUFFlx%2BeFoAxMRwOwN0kqbcATt7sdyZL1uwzEld1uwWHA8Xcm12aPF3ZR7aBVKJF9cXyEDgs2b9qNC4MsS7CMd%2BU17Ljm8wCEQGgbXGirkCfQ5xp8ACVpEIq34cpOTPEG6BIosSu1SzmhjFiznkX2gX6HymnJXPO8I7Zw0iB1Ca%2FxooZGfqCdEhf3VZY6LtpieJF%2BXZEgSGbzVrZF9NyQmcf2Kc%2FoQGpqby4UjyntMSSoIug7WDaPQfbVUg1UBFDtiL2IF12G3r0Cru6jd5q%2F50ZLnQb0tizd%2FMLLd9bBWJLeu75C4dMK3%2FExzRMZFhDSzAtS5o0j%2FyO2cUpyQwy5NYCAqlVzJSqmlWtCwVvzgKdRLK%2B1O2tRLajcUjvfUpxxZiuBA6ahZlU7X9wYw9myrbLnOlf0TIskzn%2BahGMkus9DWEyBu359BxRGqdh7oKWlUUT0Fdn2scMDEj3Mag%2B%2BqIQmr9dlV90j2NKCjRruG%2Fx6Am12YiP4KTEWCWzDm4TaCfkzq8ZbERN8Ktmy52LeER%2FBpsKNUHpp3dTaf9BaHvl2EDrnNHPIKlxPpQ9wr%2F43NUY7SKYBZ8jN6M%2BQU1Dg7QWwBa%2FM4c1o%2BDBBhOx0KV%2B5aOnxgo8pDiE%2BAMj%2FuudaLBWYupInsJt%2BmV4OjdF9bNXlow7RXyESpSkCgVg6%2FFsfSnrjQAAOyvyfEYr2raepSeWLVL03Sr3GYnhSScKfu%2Bf%2B7UVLxgq6RhoViLYFNG5D9Pp52yB5rhRvnJJZ1JZ7jvk5P%2FF%2B1W%2BeT3tjefajS%2FwhCnNJz1b1D9hMWFpeygPsg3ubHL0uB0KuVyHRddCLBu9qP1WOsvHLVGJo2gXyvO50kOwabhnq182cu0ceP7AbuSjLV9XzCui7fCBjqyAY5Gv%2BxdfOhVybPEuHQtQxGudcKrm0jC9by8Yquc1bZqUPT78M7QsFxecl%2FWm58w4DX9bp5U5BKuB9k8%2BFfvedNjBR0K61uu0v1hO54ccp%2F39CMzPO58kwp3bXd9LCMPxtkYD1MaDy7Tdq2z07C4AWOtJPhnxDF8ElvGqHeJ4AOWO6VxchhaBDFc6zHPceFCu4wDHBUi2TUFVaerbI%2Bl6LNqHzQ0tOmkZeGH9Lbb%2FAfNIAA%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250614T192957Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIASXCYXIIFA63HUCZS%2F20250614%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=dd5f89732f9687cc8836b193256123a79ed476067a89975d7ac7c5a8db820e14",
+          "price": "19.59",
+          "calories": 451.94285833333333
+        }
+      ]
     }
   ]
 }
