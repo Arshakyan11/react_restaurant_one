@@ -71,7 +71,7 @@ const Home = () => {
                 the perfect spot for you and your guests. Simply select your
                 preferred date, time, and party size — and leave the rest to us.
               </p>
-              <Link to={ROUTES.REGISTRATION}>Reservation</Link>
+              <Link to={ROUTES.RESERVATION}>Reservation</Link>
             </div>
           </div>
           <div className={styles.chiefSection} data-aos="fade-up">
