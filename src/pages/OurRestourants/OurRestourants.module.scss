@@ -1,0 +1,58 @@
+.OurAddressSec {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .ourRestaurants {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding: 40px;
+      background: linear-gradient(to bottom, #f7f6f4, #fff);
+      .firstRestaurant {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        max-width: 1100px;
+        margin: auto;
+        .title {
+          font-size: 50px;
+          text-align: center;
+          span {
+            color: orange;
+            font-weight: bold;
+          }
+        }
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          p {
+            vertical-align: middle;
+            font-size: 20px;
+            svg {
+              vertical-align: middle;
+              margin-right: 10px;
+            }
+          }
+        }
+        .location {
+          display: flex;
+          justify-content: space-between;
+          line-height: 1.5;
+          gap: 20px;
+          p {
+            span {
+              font-size: 50px;
+            }
+            max-width: 500px;
+            font-size: 20px;
+            color: #333;
+          }
+          iframe {
+            max-width: 600px;
+          }
+        }
+      }
+    }
+  }
+}

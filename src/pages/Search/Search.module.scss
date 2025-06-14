@@ -1,0 +1,285 @@
+@import "../../global/global.scss";
+.searching {
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    .searchBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      padding: 40px 0;
+      background: linear-gradient(to bottom, #f7f6f4, #fff);
+      .searchLine {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #e0d4bc;
+        max-width: 800px;
+        width: 100%;
+        border-radius: 40px;
+        margin: auto;
+        padding: 0 20px;
+        svg {
+          color: #333;
+          font-size: 25px;
+          margin-bottom: 5px;
+          margin-left: 10px;
+        }
+        input {
+          border: none;
+          background: transparent;
+          outline: none;
+          width: 100%;
+          padding: 20px;
+          color: #333;
+          font-size: 22px;
+          padding-left: 0;
+          &::placeholder {
+            color: #333;
+            font-size: 22px;
+          }
+        }
+      }
+      .noMealFound {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 20px;
+        gap: 10px;
+        margin: 20% auto;
+        max-width: 600px;
+        text-align: center;
+        border-radius: 8px;
+        background-color: #cab366;
+        .searchingIcon {
+          font-size: 50px;
+          color: #ffffff;
+          opacity: 0.7;
+          display: block;
+          margin-bottom: 10px;
+        }
+        .searchingTitle {
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          color: #333;
+        }
+        .searchingMessage {
+          font-size: 18px;
+          color: #333;
+          line-height: 1.5;
+          margin-bottom: 20px;
+          line-height: 26px;
+          max-width: 500px;
+        }
+        .buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2d3436;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            &:hover {
+              color: #2d3436;
+              background: white;
+            }
+          }
+        }
+      }
+      .allMeals {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        .eachMenu {
+          display: flex;
+          flex-direction: column;
+          background-color: #ffffff;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          width: 300px;
+          height: 550px;
+          margin: 16px;
+          position: relative;
+          .infoMore {
+            @include moreInfoBtn();
+            left: 30%;
+            top: 15%;
+          }
+          &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            .infoMore {
+              opacity: 1;
+            }
+            button,
+            .goLogin {
+              opacity: 1;
+            }
+          }
+          .mealImg {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+          .infoOfMeal {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
+            h2 {
+              font-size: 20px;
+              font-weight: 600;
+              color: #333;
+              margin-bottom: 4px;
+            }
+            .stars {
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              span {
+                font-weight: 500;
+                color: #555;
+              }
+              img {
+                width: 16px;
+                height: 16px;
+              }
+            }
+            .cousine,
+            .dietLabels,
+            .mealType {
+              display: flex;
+              flex-direction: column;
+              text-transform: capitalize;
+              span {
+                font-size: 14px;
+                font-weight: 600;
+                color: #888;
+              }
+              p {
+                font-size: 14px;
+                color: #333;
+              }
+            }
+            .priceAndOrderNow {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 12px;
+              margin-top: auto;
+              .priceBox {
+                span {
+                  font-weight: 600;
+                  color: #666;
+                }
+                p {
+                  color: #111;
+                  font-weight: bold;
+                  font-size: 16px;
+                }
+              }
+              a,
+              button {
+                background-color: #ff6f61;
+                border: 1px solid #ff6f61;
+                cursor: pointer;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 8px;
+                font-weight: 600;
+                max-width: 150px;
+                width: 100%;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+                &:hover {
+                  background-color: #e85c4f;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.loaders {
+  display: flex;
+  justify-content: space-between;
+  gap: 200px;
+  height: 400px;
+  .loader {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: auto;
+    position: relative;
+    background: #222;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transform-origin: 170px 50px;
+    border: 4px solid #333;
+    box-shadow: 3px 4px #0003 inset, 0 0 6px #0002 inset;
+    animation: panmov 0.4s ease-in-out infinite alternate;
+  }
+  .loader::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) skew(-15deg, 15deg) rotate(-15deg);
+    width: 55px;
+    height: 53px;
+    background: #fff;
+    background-image: radial-gradient(circle 3px, #fff6 90%, transparent 10%),
+      radial-gradient(circle 12px, #ffc400 90%, transparent 10%),
+      radial-gradient(circle 12px, #ffae00 100%, transparent 0);
+    background-repeat: no-repeat;
+    background-position: -4px -6px, -2px -2px, -1px -1px;
+    box-shadow: -2px -3px #0002 inset, 0 0 4px #0003 inset;
+    border-radius: 47% 36% 50% 50% / 49% 45% 42% 44%;
+    animation: ylmov 0.6s ease-in-out infinite alternate;
+  }
+  .loader::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 48px;
+    height: 15px;
+    width: 70px;
+    background: #222222;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 3px 0 3px #eee2 inset;
+    transform: rotate(5deg) translateX(3px);
+  }
+
+  @keyframes panmov {
+    0%,
+    10% {
+      transform: rotate(5deg);
+    }
+    90%,
+    100% {
+      transform: rotate(-5deg);
+    }
+  }
+  @keyframes ylmov {
+    to {
+      border-radius: 50% 36% 50% 50% / 49% 50% 45% 45%;
+
+      background-position: -2px -4px, 2px 2px, 1px 1px;
+    }
+  }
+}

@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./NavBar.scss";
 import { logo, logo1 } from "../Images";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../Routes";
+import { FaAddressCard, FaUser } from "react-icons/fa";
+import { FaRightToBracket } from "react-icons/fa6";
+import { LogOutFromAccount } from "../../helpers/logOut";
 const NavBar = () => {
+  const dropDownRef = useRef();
+  const navigate = useNavigate();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const toogleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
-  const dropDownRef = useRef();
-
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   useEffect(() => {
     const handleOffingDrop = (event) => {
       if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
@@ -23,11 +27,11 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav>
+    <nav className="mainNav">
       <div className="container">
         <div className="navSection">
           <div className="left">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" onClick={() => navigate(ROUTES.HOME)} />
           </div>
           <div className="middle">
             <ul>
@@ -55,17 +59,40 @@ const NavBar = () => {
                   <div className="dropDownMenu">
                     <NavLink to={ROUTES.RESERVATION}>Reservation</NavLink>
                     <NavLink to={ROUTES.RESTAURANTS}>Our Addresses</NavLink>
-                    <NavLink to={ROUTES.RESTAURANTS}>Contact Us</NavLink>
+                    <NavLink to={ROUTES.CONTACTUS}>Contact Us</NavLink>
                     <NavLink to={ROUTES.STAFF}>Our Staff</NavLink>
                   </div>
                 )}
               </li>
             </ul>
           </div>
-          <div className="right">
-            <Link to={ROUTES.RESERVATION}>Sign Up</Link>
-            <Link to={ROUTES.RESERVATION}>Sign In</Link>
-          </div>
+          {userInfo ? (
+            <div className="right">
+              <Link to={ROUTES.PROFILE}>
+                <FaUser />
+                Profile
+              </Link>
+              <button
+                onClick={() => {
+                  LogOutFromAccount(navigate);
+                }}
+              >
+                <FaRightToBracket />
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <div className="right">
+              <Link to={ROUTES.REGISTRATION}>
+                <FaAddressCard />
+                Sign Up
+              </Link>
+              <Link to={ROUTES.LOGIN}>
+                <FaRightToBracket />
+                Sign In
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>

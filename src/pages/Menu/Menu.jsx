@@ -1,11 +1,241 @@
-import React from 'react'
-import styles from "./Menu.module.scss"
-const Menu = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import React, { useEffect } from "react";
+import styles from "./Menu.module.scss";
+import Pagination from "../../components/Pagination/Pagination";
+import {
+  dessertsAndDrinks,
+  mealTime,
+  topCategories,
+} from "../../data/menuData";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllMenuInfo,
+  setFilteredDataByPrice,
+} from "../../store/MenuSlice/MenuSlice";
+import { addingWishlistToData, fetchingGlobalMenu } from "../../store/api/api";
+import { starRating } from "../../components/Images";
+import { nanoid } from "nanoid";
+import {
+  getAllPagination,
+  setInfoAboutPagination,
+} from "../../store/PaginationSlice/paginationSlice";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../Routes";
+import Aos from "aos";
+import { notifyForError } from "../../helpers/notifyUser";
+import { sendingWatchList } from "../../helpers/sendData";
 
-export default Menu
+const Menu = () => {
+  const dispatch = useDispatch();
+  const {
+    selectedItems,
+    selectedParams,
+    filterActivated,
+    loading,
+    filteredData,
+  } = useSelector(getAllMenuInfo);
+  const { slicedData } = useSelector(getAllPagination);
+  const displayData = filterActivated ? filteredData : slicedData;
+  const userInfo = localStorage.getItem("userInfo");
+
+  useEffect(() => {
+    dispatch(fetchingGlobalMenu("BreakFast"));
+    Aos.init({ duration: 800 });
+  }, []);
+  useEffect(() => {
+    // if (displayData.length > 0 && !didPaginate.current) {
+    dispatch(
+      setInfoAboutPagination({
+        data: selectedItems,
+        postsPerPage: 9,
+        currentPage: 1,
+      })
+    );
+    // }
+  }, [selectedItems]);
+
+  const handleMenuChoosing = (query) => {
+    if (query != selectedParams) {
+      dispatch(fetchingGlobalMenu(query));
+    }
+  };
+
+  const handleFilteringData = (min, max, filterArg = true) => {
+    dispatch(setFilteredDataByPrice({ min, max, filterArg }));
+  };
+
+  return (
+    <section className={styles.menuSec}>
+      <div className={styles.container}>
+        <div className={styles.restaurantMenu}>
+          <div className={styles.tutorialMenu} data-aos="fade-left">
+            <span>Eriso</span>
+            <h2>
+              View Our <br /> New Menu
+            </h2>
+            <p>The freshest ingredients for you every day</p>
+          </div>
+          <h3 className={styles.menuTitle}>Menu</h3>
+          <div className={styles.filtersAndMeals} data-aos="fade-up">
+            <div className={styles.filterBox}>
+              <h2>Filters</h2>
+              <div className={styles.forBackground}>
+                <div className={styles.filtersMain}>
+                  <ul className={styles.mealTime}>
+                    <h2>MealTime</h2>
+                    {mealTime.map((elm) => {
+                      return (
+                        <li
+                          key={elm}
+                          onClick={() => handleMenuChoosing(elm)}
+                          className={
+                            selectedParams === elm
+                              ? styles.activatedMenuFilter
+                              : ""
+                          }
+                        >
+                          {elm}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ul className={styles.mealTime}>
+                    <h2>Top Categories</h2>
+                    {topCategories.map((elm) => {
+                      return (
+                        <li
+                          key={elm}
+                          onClick={() => handleMenuChoosing(elm)}
+                          className={
+                            selectedParams === elm
+                              ? styles.activatedMenuFilter
+                              : ""
+                          }
+                        >
+                          {elm}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ul className={styles.mealTime}>
+                    <h2>Desserts & Drinks</h2>
+                    {dessertsAndDrinks.map((elm) => {
+                      return (
+                        <li
+                          key={elm}
+                          onClick={() => handleMenuChoosing(elm)}
+                          className={
+                            selectedParams === elm
+                              ? styles.activatedMenuFilter
+                              : ""
+                          }
+                        >
+                          {elm}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ul className={styles.mealTime}>
+                    <h2>By Price</h2>
+                    <li onClick={() => handleFilteringData(0, 5)}>up to 5$</li>
+                    <li onClick={() => handleFilteringData(6, 10)}>6$ - 10$</li>
+                    <li onClick={() => handleFilteringData(11, 20)}>
+                      11$ - 20$
+                    </li>
+                    <li onClick={() => handleFilteringData(21, 30)}>
+                      21$ - 30$
+                    </li>
+                    <li onClick={() => handleFilteringData(31, 40)}>
+                      31$ - 40$
+                    </li>
+                    <li onClick={() => handleFilteringData(41, 50)}>
+                      41$ - 50$
+                    </li>
+                    <li onClick={() => handleFilteringData(51, 1000)}>
+                      51$ and more
+                    </li>
+                    <li onClick={() => handleFilteringData(0, 1000, false)}>
+                      Remove the price filter
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {loading ? (
+              <div className={styles.allLoaders}>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+                <span className={styles.loader}></span>
+              </div>
+            ) : (
+              <div className={styles.menuBox}>
+                <div className={styles.allMenuIngredients}>
+                  {displayData?.map((elm) => {
+                    const each = elm.recipe;
+                    return (
+                      <div key={nanoid(4)} className={styles.eachMenu}>
+                        <img
+                          src={each.images?.REGULAR.url}
+                          alt="img"
+                          className={styles.mealImg}
+                        />
+                        <Link
+                          className={styles.infoMore}
+                          to={`/${ROUTES.MENU}/eachProduct/${each.label}`}
+                          state={{ data: elm }}
+                        >
+                          More Info
+                        </Link>
+                        <div className={styles.infoOfMeal}>
+                          <h2>{each.label}</h2>
+                          <div className={styles.stars}>
+                            <div className={styles.onlyStars}>
+                              {each.starCount?.map((_, i) => {
+                                return (
+                                  <img key={i} src={starRating} alt="star" />
+                                );
+                              })}
+                            </div>
+                            <p> {each.price}$</p>
+                          </div>
+                          <div className={styles.priceAndWeight}>
+                            <p>{each.totalWeight.toFixed(1)}g</p>
+                            <p>Weight</p>
+                          </div>
+                        </div>
+                        {userInfo ? (
+                          <button
+                            onClick={() => {
+                              sendingWatchList(dispatch, each);
+                            }}
+                          >
+                            Buy Now
+                          </button>
+                        ) : (
+                          <Link
+                            to={`/${ROUTES.LOGIN}`}
+                            onClick={() =>
+                              notifyForError("Login required to add to cart.")
+                            }
+                            className={styles.goLogin}
+                          >
+                            Buy Now
+                          </Link>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                {/* <Pagination length={displayData.length} /> */}
+                <Pagination length={selectedItems.length} />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Menu;

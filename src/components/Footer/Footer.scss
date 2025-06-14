@@ -1,0 +1,76 @@
+.footerSec {
+  background: #311f09;
+  .container {
+    max-width: 1440px;
+    margin: auto;
+    padding: 80px;
+    .footerSecMain {
+      display: flex;
+      gap: 50px;
+      .firstLine {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 36px;
+        color: white;
+        max-width: 330px;
+        word-spacing: 0.5px;
+        font-size: 18px;
+        border-right: 1px solid orange;
+        padding-right: 40px;
+        .logoTitle {
+          font-size: 50px;
+          text-transform: uppercase;
+          letter-spacing: 10px;
+          color: #fff;
+        }
+        .welcomeText {
+          line-height: 35px;
+        }
+        .socialLinks {
+          display: flex;
+          gap: 30px;
+          padding-top: 20px;
+          svg {
+            font-size: 46px;
+            color: white;
+            border: 1px solid white;
+            border-radius: 50%;
+            padding: 10px;
+            transition: all 0.5s;
+            &:hover {
+              color: red;
+              border-color: red;
+            }
+          }
+        }
+      }
+      .secondLine {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        border-right: 1px solid orange;
+        padding-right: 40px;
+        h2 {
+          color: #ff8a00;
+          padding-top: 10px;
+        }
+        a,
+        p {
+          color: #fff;
+          font-size: 20px;
+          transition: all 0.5s;
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+    .copyright {
+      color: #fff;
+      font-size: 20px;
+      padding-top: 70px;
+      letter-spacing: 4px;
+    }
+  }
+}

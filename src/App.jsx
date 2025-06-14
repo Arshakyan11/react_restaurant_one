@@ -2,18 +2,44 @@ import { Route, Routes } from "react-router-dom";
 import styles from ".//App.module.scss";
 import LayOut from "./LayOut/LayOut";
 import { ROUTES } from "./Routes";
+import { Bounce, ToastContainer } from "react-toastify";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import ProfileLayOut from "./pages/Profile/ProfileLayOut/ProfileLayOut";
 import {
   AboutUS,
+  ContactUs,
+  EachProduct,
   Home,
+  Login,
   Menu,
   OurRestourants,
+  Profile,
+  ProfileReservation,
+  ProfileWishList,
+  Registration,
   Reservation,
   Search,
+  Staff,
 } from "./pages";
-import Staff from "./pages/Staff/Staff";
 function App() {
   return (
     <div>
+      <ScrollToTop />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+        style={{ zIndex: "1000", top: "10px" }}
+        limit={5}
+      />
       <Routes>
         <Route path={ROUTES.HOME} element={<LayOut />}>
           <Route path={ROUTES.HOME} element={<Home />} />
@@ -23,6 +49,22 @@ function App() {
           <Route path={ROUTES.Search} element={<Search />} />
           <Route path={ROUTES.RESERVATION} element={<Reservation />} />
           <Route path={ROUTES.STAFF} element={<Staff />} />
+          <Route path={ROUTES.CONTACTUS} element={<ContactUs />} />
+          <Route path={ROUTES.REGISTRATION} element={<Registration />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
+          <Route path={ROUTES.EACHPRODUCT} element={<EachProduct />} />
+
+          <Route path={ROUTES.PROFILE} element={<ProfileLayOut />}>
+            <Route index element={<Profile />} />
+            <Route
+              path={ROUTES.PROFILERESERVEDATE}
+              element={<ProfileReservation />}
+            />
+            <Route
+              path={ROUTES.PROFILEWISHLIST}
+              element={<ProfileWishList />}
+            />
+          </Route>
         </Route>
       </Routes>
     </div>

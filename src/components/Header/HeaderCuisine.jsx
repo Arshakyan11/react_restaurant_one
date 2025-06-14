@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,12 +11,15 @@ import {
   Navigation,
   Pagination,
 } from "swiper/modules";
-import { cuisines } from "../data/data";
+import { cuisines } from "../../data/data";
+import Aos from "aos";
 
 const HeaderCuisine = () => {
-  const arr = [1, 2, 3, 4, 5, 6];
+  useEffect(() => {
+    Aos.init({ duration: 800 });
+  }, []);
   return (
-    <div className="cuisinesBox">
+    <div className="cuisinesBox" data-aos="fade-up">
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

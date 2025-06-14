@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Staff.module.scss";
-import { restaurantChefs } from "../../components/data/chiefsData";
+import { restaurantChefs } from "../../data/chiefsData";
+import Aos from "aos";
 const Staff = () => {
+  useEffect(() => {
+    Aos.init({ duration: 800 });
+  });
   return (
     <section className={styles.chiefsS}>
       <div className={styles.container}>
-        <div className={styles.staffSec}>
+        <div className={styles.staffSec} data-aos="fade-up">
           <h2 className={styles.titleMain}>ERISO Restaurant</h2>
           <p className={styles.info}>
             At <span>ERISO</span>, we believe that truly exceptional cuisine
@@ -29,7 +33,7 @@ const Staff = () => {
           <div className={styles.allChefs}>
             {restaurantChefs.map((chef, ind) => {
               return (
-                <div key={ind} className={styles.eachChef}>
+                <div key={ind} className={styles.eachChef} data-aos="fade-up">
                   <img src={chef.img} alt="imgChef" />
                   <div className={styles.infoSec}>
                     <p>
