@@ -60,6 +60,7 @@ import restInfo1 from "../assets/images/defaultImages/restaurantInfo1.png";
 import restInfo2 from "../assets/images/defaultImages/restaurantInfo2.png";
 import restInfo3 from "../assets/images/defaultImages/restaurantInfo3.png";
 import reserveDate from "../assets/images/defaultImages/reserveDate.png";
+import burgerProfile from "../assets/images/defaultImages/burgerProfile.png";
 export {
   logo,
   logo1,
@@ -123,4 +124,5 @@ export {
   restInfo2,
   restInfo3,
   reserveDate,
+  burgerProfile,
 };

@@ -1,9 +1,11 @@
 import { nanoid } from "nanoid";
 import {
   addingReserveTable,
+  addingWishlistToData,
   checkingUserExisting,
   creatingUserData,
   sendingMessage,
+  updatingProfileInformation,
 } from "../store/api/api";
 import { ROUTES } from "../Routes";
 
@@ -42,10 +44,27 @@ export const checkUserSendingData = (event, form, dispatch, navigate) => {
     password,
     navigate,
   };
-  dispatch(checkingUserExisting(data));
+  dispatch(checkingUserExisting({ data, dispatch }));
 };
 
 export const reserveTableInfo = (event, form, dispatch) => {
   dispatch(addingReserveTable(event));
   form.resetForm();
+};
+
+export const updateDataOnProfile = (event, form, dispatch) => {
+  dispatch(updatingProfileInformation(event));
+  form.resetForm();
+};
+
+export const sendingWatchList = (dispatch, item) => {
+  dispatch(
+    addingWishlistToData({
+      id: item.mealId,
+      name: item.label,
+      img: item.images?.REGULAR.url,
+      price: item.price,
+      calories: item.calories,
+    })
+  );
 };

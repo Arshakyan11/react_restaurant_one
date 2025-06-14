@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import styles from ".//App.module.scss";
 import LayOut from "./LayOut/LayOut";
 import { ROUTES } from "./Routes";
+import { Bounce, ToastContainer } from "react-toastify";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import ProfileLayOut from "./pages/Profile/ProfileLayOut/ProfileLayOut";
 import {
   AboutUS,
   ContactUs,
@@ -18,9 +21,6 @@ import {
   Search,
   Staff,
 } from "./pages";
-import { Bounce, ToastContainer } from "react-toastify";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import ProfileLayOut from "./pages/Profile/ProfileLayOut/ProfileLayOut";
 function App() {
   return (
     <div>
@@ -53,8 +53,9 @@ function App() {
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.EACHPRODUCT} element={<EachProduct />} />
+
           <Route path={ROUTES.PROFILE} element={<ProfileLayOut />}>
-            <Route path={ROUTES.PROFILE} element={<Profile />} />
+            <Route index element={<Profile />} />
             <Route
               path={ROUTES.PROFILERESERVEDATE}
               element={<ProfileReservation />}

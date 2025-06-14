@@ -2,6 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { notifyForError, notifyForSMth } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
+import { setEmailManualy } from "../ProfileSlice/ProfileSlice";
+import { setUserInfoManualy } from "../ReservationSlice/ReservationSlice";
+import { nanoid } from "nanoid";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -30,7 +33,7 @@ export const fetchingLittleMenu = createAsyncThunk(
       }
       response.forEach((elm) => {
         let randomStar = Math.round(Math.random() * 2 + 3);
-        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
         elm.recipe.starrArr = [...Array(randomStar)].map((_, i) => i + 1);
         delete elm.recipe.digest;
         delete elm.recipe.healthLabels;
@@ -70,7 +73,10 @@ export const fetchingSearchMenu = createAsyncThunk(
         baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
       }).then((res) => res.data.hits);
       response.forEach((elm) => {
-        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        const randomStar = Math.round(Math.random() * 2 + 3);
+        elm.recipe.starCountArr = [...Array(randomStar)].map((elm) => elm + 1);
+        elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
+        elm.recipe.mealId = nanoid(4);
       });
       return { queryName: query, data: response };
     } catch (error) {
@@ -89,8 +95,9 @@ export const fetchingGlobalMenu = createAsyncThunk(
       }).then((res) => res.data.hits);
       await response.forEach((elm) => {
         let randomStar = Math.round(Math.random() * 2 + 3);
-        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
         elm.recipe.starCount = [...Array(randomStar)].map((_, i) => i + 1);
+        elm.recipe.mealId = nanoid(4);
       });
       return { response, query };
     } catch (error) {
@@ -120,17 +127,19 @@ export const creatingUserData = createAsyncThunk(
 
 export const checkingUserExisting = createAsyncThunk(
   "login/checkingUserExisting",
-  async ({ email, password, navigate }, { rejectWithValue }) => {
+  async ({ data, dispatch }, { rejectWithValue }) => {
     try {
+      const { email, password, navigate } = data;
       const response = await localStorageUsers({ method: "GET" }).then(
         (res) => res.data
       );
       const lastResult = await response.find(
         (elm) => elm.email === email && elm.password === password
       );
-
       if (lastResult) {
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
+        await dispatch(setEmailManualy(email));
+        await dispatch(setUserInfoManualy(lastResult));
         notifyForSMth("You Logged In");
         navigate(ROUTES.HOME);
         return true;
@@ -202,6 +211,107 @@ export const deletingReservationTime = createAsyncThunk(
       return response;
     } catch (error) {
       return rejectWithValue("Error while deleting Reservation");
+    }
+  }
+);
+
+export const updatingProfileInformation = createAsyncThunk(
+  "profile/updatingProfileInformation",
+  async (data, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      if (
+        data.userOldPass === userInfo.password &&
+        userInfo.password !== data.userNewPass
+      ) {
+        const response = await localStorageUsers({
+          method: "PATCH",
+          url: userInfo.id,
+          data: {
+            password: data.userNewPass,
+          },
+        });
+        userInfo.password = data.userNewPass;
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        notifyForSMth("Password Changed Successfuly");
+      } else if (
+        data.userOldPass === userInfo.password &&
+        userInfo.password === data.userNewPass
+      ) {
+        notifyForError("Password must be different from your current password");
+      } else {
+        notifyForError("The current password is incorrect");
+      }
+    } catch (error) {
+      return rejectWithValue("Error 404");
+    }
+  }
+);
+
+export const addingWishlistToData = createAsyncThunk(
+  "wishlist/addingWishlistToData",
+  async (wishObj, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const checkingExistingMeal = await localStorageUsers({
+        method: "GET",
+        url: userInfo.id,
+      }).then((res) => res.data?.wishList);
+      const isExisting = checkingExistingMeal.find(
+        (elm) => elm.name === wishObj.name && elm.calories === wishObj.calories
+      );
+      if (!isExisting) {
+        const updatedWishlist = [...(userInfo.wishList || []), wishObj];
+        const response = await localStorageUsers({
+          method: "PATCH",
+          url: userInfo.id,
+          data: {
+            wishList: updatedWishlist,
+          },
+        });
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({ ...userInfo, wishList: updatedWishlist })
+        );
+        notifyForSMth("Successfully added to Cart");
+        return updatedWishlist;
+      } else {
+        notifyForError("Item is already on wishlist!");
+        return userInfo.wishList;
+      }
+    } catch (error) {
+      return rejectWithValue("Error while adding Wishlist");
+    }
+  }
+);
+
+export const deleteWishListFromData = createAsyncThunk(
+  "wishlist/deleteWishListFromData",
+  async (mealId, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const response = await localStorageUsers({
+        method: "GET",
+        url: userInfo.id,
+      }).then((res) => {
+        return res.data;
+      });
+      const newWishList = response.wishList.filter((elm) => elm.id !== mealId);
+      localStorageUsers({
+        method: "PATCH",
+        url: userInfo.id,
+        data: {
+          wishList: newWishList,
+        },
+      });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...userInfo, wishList: newWishList })
+      );
+      notifyForError("Item Removed from Wishlist");
+      return newWishList;
+    } catch (error) {
+      return rejectWithValue("Error wFhile deleting data from WatchList");
     }
   }
 );

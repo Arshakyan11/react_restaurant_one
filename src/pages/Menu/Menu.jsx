@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect } from "react";
 import styles from "./Menu.module.scss";
 import Pagination from "../../components/Pagination/Pagination";
 import {
@@ -8,12 +8,10 @@ import {
 } from "../../data/menuData";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearSelectedData,
   getAllMenuInfo,
   setFilteredDataByPrice,
-  setFilteredMainData,
 } from "../../store/MenuSlice/MenuSlice";
-import { fetchingGlobalMenu } from "../../store/api/api";
+import { addingWishlistToData, fetchingGlobalMenu } from "../../store/api/api";
 import { starRating } from "../../components/Images";
 import { nanoid } from "nanoid";
 import {
@@ -22,6 +20,9 @@ import {
 } from "../../store/PaginationSlice/paginationSlice";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
+import Aos from "aos";
+import { notifyForError } from "../../helpers/notifyUser";
+import { sendingWatchList } from "../../helpers/sendData";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -34,10 +35,12 @@ const Menu = () => {
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
+  const userInfo = localStorage.getItem("userInfo");
   console.log(slicedData);
 
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
+    Aos.init({ duration: 800 });
   }, []);
   useEffect(() => {
     // if (displayData.length > 0 && !didPaginate.current) {
@@ -65,7 +68,7 @@ const Menu = () => {
     <section className={styles.menuSec}>
       <div className={styles.container}>
         <div className={styles.restaurantMenu}>
-          <div className={styles.tutorialMenu}>
+          <div className={styles.tutorialMenu} data-aos="fade-left">
             <span>Eriso</span>
             <h2>
               View Our <br /> New Menu
@@ -73,7 +76,7 @@ const Menu = () => {
             <p>The freshest ingredients for you every day</p>
           </div>
           <h3 className={styles.menuTitle}>Menu</h3>
-          <div className={styles.filtersAndMeals}>
+          <div className={styles.filtersAndMeals} data-aos="fade-up">
             <div className={styles.filterBox}>
               <h2>Filters</h2>
               <div className={styles.forBackground}>
@@ -195,12 +198,32 @@ const Menu = () => {
                                 );
                               })}
                             </div>
+                            <p> {each.price}$</p>
                           </div>
                           <div className={styles.priceAndWeight}>
                             <p>{each.totalWeight.toFixed(1)}g</p>
-                            <p> {each.price}$</p>
+                            <p>Weight</p>
                           </div>
                         </div>
+                        {userInfo ? (
+                          <button
+                            onClick={() => {
+                              sendingWatchList(dispatch, each);
+                            }}
+                          >
+                            Buy Now
+                          </button>
+                        ) : (
+                          <Link
+                            to={`/${ROUTES.LOGIN}`}
+                            onClick={() =>
+                              notifyForError("Login required to add to cart.")
+                            }
+                            className={styles.goLogin}
+                          >
+                            Buy Now
+                          </Link>
+                        )}
                       </div>
                     );
                   })}
