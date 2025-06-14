@@ -31,7 +31,7 @@ const NavBar = () => {
       <div className="container">
         <div className="navSection">
           <div className="left">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" onClick={() => navigate(ROUTES.HOME)} />
           </div>
           <div className="middle">
             <ul>

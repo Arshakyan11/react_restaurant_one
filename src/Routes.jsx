@@ -6,14 +6,13 @@ export const ROUTES = {
   RESTAURANTS: "restaurants",
   Search: "search",
   MENU: "menu",
-  REGISTRATION: "registration",
-  LOGIN: "login",
   RESERVATION: "reservation",
   EACHPRODUCT: "menu/eachProduct/:name",
+  REGISTRATION: "registration",
+  LOGIN: "login",
   PROFILE: "profile",
   PROFILERESERVEDATE: "reserveDate",
   PROFILEWISHLIST: "wishlist",
-
   NOTFOUND: "*",
 };
 

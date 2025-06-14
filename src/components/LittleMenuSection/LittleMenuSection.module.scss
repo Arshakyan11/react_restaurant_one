@@ -39,7 +39,7 @@
       justify-content: flex-start;
       flex-direction: column;
       max-width: 380px;
-      height: 560px;
+      height: 500px;
       width: 100%;
       background: rgba(208, 204, 199, 0.2);
       border-radius: 70px;
@@ -83,7 +83,9 @@
           text-align: center;
           .ingredientsName {
             display: flex;
-            flex-direction: column;
+            text-transform: capitalize;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 10px;
             font-size: 18px;
           }
@@ -97,10 +99,12 @@
             display: flex;
             gap: 5px;
           }
-          a {
+          a,
+          button {
             @include btnStylesAndHover();
             padding: 12px 40px;
             font-weight: bold;
+            font-size: 16px;
           }
         }
       }

@@ -36,7 +36,6 @@ const Menu = () => {
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
   const userInfo = localStorage.getItem("userInfo");
-  console.log(slicedData);
 
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
