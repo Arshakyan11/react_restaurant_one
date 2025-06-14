@@ -4,8 +4,10 @@ import { logo } from "../Images";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { ROUTES } from "../../Routes";
+import { useSelector } from "react-redux";
+import { getAllReservationInfo } from "../../store/ReservationSlice/ReservationSlice";
 const Footer = () => {
-  const userInfo = localStorage.getItem("userInfo");
+  const { userData } = useSelector(getAllReservationInfo);
   return (
     <section className="footerSec">
       <div className="container">
@@ -58,7 +60,7 @@ const Footer = () => {
           </div>
           <div className="secondLine">
             <h2>Account</h2>
-            {userInfo ? (
+            {userData ? (
               <>
                 <NavLink to={ROUTES.PROFILE}>Profile</NavLink>
                 <NavLink to={ROUTES.PROFILERESERVEDATE}>Reserve Date</NavLink>
