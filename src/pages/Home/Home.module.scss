@@ -182,19 +182,14 @@
             }
             & a:first-child {
               @include btnStylesAndHover();
+              transition: all 0.8s;
             }
             & a:nth-child(2) {
-              background: white;
-              color: #ff8a00;
+              @include btnStylesAndHover();
+              transition: all 0.8s;
               font-size: 22px;
               border-radius: 60px;
-              transition: all 0.5s;
               border: 1px solid transparent;
-              &:hover {
-                background: #ff8a00;
-                color: white;
-                border: 1px solid white;
-              }
             }
           }
         }

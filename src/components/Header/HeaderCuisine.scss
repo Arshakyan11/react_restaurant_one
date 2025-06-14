@@ -36,4 +36,9 @@
       }
     }
   }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 50px;
+  }
 }
+

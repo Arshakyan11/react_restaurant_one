@@ -8,8 +8,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
 import "./RestaurantSlider.scss";
-const RestaurantSlider = ({imagesArr}) => {
-      const [thumbsSwiper, setThumbsSwiper] = useState(null);
+const RestaurantSlider = ({ imagesArr }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <div className="allSwipers">
       <div className="firstSwiper">
@@ -29,7 +29,7 @@ const RestaurantSlider = ({imagesArr}) => {
           {imagesArr.map((elm, ind) => {
             return (
               <SwiperSlide key={ind}>
-                <img src={elm} alt="img"  loading="lazy"/>
+                <img src={elm} alt="img" />
               </SwiperSlide>
             );
           })}
