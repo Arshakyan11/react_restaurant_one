@@ -31,6 +31,7 @@ export const createUserData = (event, form, dispatch, navigate) => {
     phoneNumber: phoneNum,
     email,
     password,
+    wishList: [],
   };
   navigate(`/${ROUTES.LOGIN}`);
   dispatch(creatingUserData(data));

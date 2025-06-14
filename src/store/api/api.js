@@ -35,6 +35,7 @@ export const fetchingLittleMenu = createAsyncThunk(
         let randomStar = Math.round(Math.random() * 2 + 3);
         elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
         elm.recipe.starrArr = [...Array(randomStar)].map((_, i) => i + 1);
+        elm.recipe.mealId = nanoid(4);
         delete elm.recipe.digest;
         delete elm.recipe.healthLabels;
         delete elm.recipe.totalCO2Emissions;
