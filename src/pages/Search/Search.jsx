@@ -9,16 +9,19 @@ import { ROUTES } from "../../Routes";
 import { nanoid } from "nanoid";
 import { starRating } from "../../components/Images";
 import Aos from "aos";
+import { notifyForError } from "../../helpers/notifyUser";
+import { sendingWatchList } from "../../helpers/sendData";
 const Search = () => {
   const dispatch = useDispatch();
   const { foundedData, loading } = useSelector(gettAllDataSearching);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   useEffect(() => {
     Aos.init({ duration: 800 });
   });
   return (
     <section className={styles.searching}>
       <div className={styles.container}>
-        <div className={styles.searchBox}  data-aos="fade-up">
+        <div className={styles.searchBox} data-aos="fade-up">
           <div className={styles.searchLine}>
             <FaSearch />
             <input
@@ -38,7 +41,6 @@ const Search = () => {
             ) : foundedData.length > 1 ? (
               foundedData?.map((elm) => {
                 const each = elm.recipe;
-                let randomStar = Math.round(Math.random() * 2 + 3);
                 return (
                   <div key={nanoid(5)} className={styles.eachMenu}>
                     <img
@@ -57,7 +59,7 @@ const Search = () => {
                       <h2>{each.label}</h2>
                       <div className={styles.stars}>
                         <span>Rate:</span>
-                        {[...Array(randomStar)].map((_, i) => {
+                        {each.starCountArr.map((_, i) => {
                           return <img key={i} src={starRating} alt="star" />;
                         })}
                       </div>
@@ -79,7 +81,25 @@ const Search = () => {
                           <span>Price:</span>
                           <p> ${each.price}</p>
                         </div>
-                        <Link>Order Now</Link>
+                        {userInfo ? (
+                          <button
+                            onClick={() => {
+                              sendingWatchList(dispatch, each);
+                            }}
+                          >
+                            Order Now
+                          </button>
+                        ) : (
+                          <Link
+                            to={`/${ROUTES.LOGIN}`}
+                            onClick={() =>
+                              notifyForError("Login required to add to cart.")
+                            }
+                            className={styles.goLogin}
+                          >
+                            Order Now
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>

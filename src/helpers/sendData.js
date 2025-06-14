@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import {
   addingReserveTable,
+  addingWishlistToData,
   checkingUserExisting,
   creatingUserData,
   sendingMessage,
@@ -54,4 +55,16 @@ export const reserveTableInfo = (event, form, dispatch) => {
 export const updateDataOnProfile = (event, form, dispatch) => {
   dispatch(updatingProfileInformation(event));
   form.resetForm();
+};
+
+export const sendingWatchList = (dispatch, item) => {
+  dispatch(
+    addingWishlistToData({
+      id: item.mealId,
+      name: item.label,
+      img: item.images?.REGULAR.url,
+      price: item.price,
+      calories: item.calories,
+    })
+  );
 };

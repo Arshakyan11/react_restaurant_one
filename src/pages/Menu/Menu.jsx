@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect } from "react";
 import styles from "./Menu.module.scss";
 import Pagination from "../../components/Pagination/Pagination";
 import {
@@ -8,10 +8,8 @@ import {
 } from "../../data/menuData";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearSelectedData,
   getAllMenuInfo,
   setFilteredDataByPrice,
-  setFilteredMainData,
 } from "../../store/MenuSlice/MenuSlice";
 import { addingWishlistToData, fetchingGlobalMenu } from "../../store/api/api";
 import { starRating } from "../../components/Images";
@@ -23,6 +21,8 @@ import {
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import Aos from "aos";
+import { notifyForError } from "../../helpers/notifyUser";
+import { sendingWatchList } from "../../helpers/sendData";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -35,6 +35,9 @@ const Menu = () => {
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
+  const userInfo = localStorage.getItem("userInfo");
+  console.log(slicedData);
+
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
     Aos.init({ duration: 800 });
@@ -185,20 +188,6 @@ const Menu = () => {
                         >
                           More Info
                         </Link>
-                        <button
-                          onClick={() => {
-                            dispatch(
-                              addingWishlistToData({
-                                id: nanoid(4),
-                                name: each.label,
-                                img: each.images?.REGULAR.url,
-                                price: each.price,
-                              })
-                            );
-                          }}
-                        >
-                          Buy Now
-                        </button>
                         <div className={styles.infoOfMeal}>
                           <h2>{each.label}</h2>
                           <div className={styles.stars}>
@@ -209,12 +198,32 @@ const Menu = () => {
                                 );
                               })}
                             </div>
+                            <p> {each.price}$</p>
                           </div>
                           <div className={styles.priceAndWeight}>
                             <p>{each.totalWeight.toFixed(1)}g</p>
-                            <p> {each.price}$</p>
+                            <p>Weight</p>
                           </div>
                         </div>
+                        {userInfo ? (
+                          <button
+                            onClick={() => {
+                              sendingWatchList(dispatch, each);
+                            }}
+                          >
+                            Buy Now
+                          </button>
+                        ) : (
+                          <Link
+                            to={`/${ROUTES.LOGIN}`}
+                            onClick={() =>
+                              notifyForError("Login required to add to cart.")
+                            }
+                            className={styles.goLogin}
+                          >
+                            Buy Now
+                          </Link>
+                        )}
                       </div>
                     );
                   })}

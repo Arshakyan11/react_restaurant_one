@@ -4,6 +4,7 @@ import { notifyForError, notifyForSMth } from "../../helpers/notifyUser";
 import { ROUTES } from "../../Routes";
 import { setEmailManualy } from "../ProfileSlice/ProfileSlice";
 import { setUserInfoManualy } from "../ReservationSlice/ReservationSlice";
+import { nanoid } from "nanoid";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -32,7 +33,7 @@ export const fetchingLittleMenu = createAsyncThunk(
       }
       response.forEach((elm) => {
         let randomStar = Math.round(Math.random() * 2 + 3);
-        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
         elm.recipe.starrArr = [...Array(randomStar)].map((_, i) => i + 1);
         delete elm.recipe.digest;
         delete elm.recipe.healthLabels;
@@ -72,7 +73,10 @@ export const fetchingSearchMenu = createAsyncThunk(
         baseURL: `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&diet=balanced&app_id=${process.env.REACT_APP_FOODS_API_ID}&app_key=${process.env.REACT_APP_FOODS_API_KEY}`,
       }).then((res) => res.data.hits);
       response.forEach((elm) => {
-        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        const randomStar = Math.round(Math.random() * 2 + 3);
+        elm.recipe.starCountArr = [...Array(randomStar)].map((elm) => elm + 1);
+        elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
+        elm.recipe.mealId = nanoid(4);
       });
       return { queryName: query, data: response };
     } catch (error) {
@@ -91,8 +95,9 @@ export const fetchingGlobalMenu = createAsyncThunk(
       }).then((res) => res.data.hits);
       await response.forEach((elm) => {
         let randomStar = Math.round(Math.random() * 2 + 3);
-        elm.recipe.price = Math.round(Math.random() * 55 + 2);
+        elm.recipe.price = (Math.random() * 55 + 2).toFixed(2);
         elm.recipe.starCount = [...Array(randomStar)].map((_, i) => i + 1);
+        elm.recipe.mealId = nanoid(4);
       });
       return { response, query };
     } catch (error) {
@@ -248,22 +253,33 @@ export const addingWishlistToData = createAsyncThunk(
   async (wishObj, { rejectWithValue }) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-      const updatedWishlist = [...(userInfo.wishList || []), wishObj];
-      const response = await localStorageUsers({
-        method: "PATCH",
+      const checkingExistingMeal = await localStorageUsers({
+        method: "GET",
         url: userInfo.id,
-        data: {
-          wishList: updatedWishlist,
-        },
-      });
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({ ...userInfo, wishList: updatedWishlist })
+      }).then((res) => res.data?.wishList);
+      const isExisting = checkingExistingMeal.find(
+        (elm) => elm.name === wishObj.name && elm.calories === wishObj.calories
       );
-      notifyForSMth("Successfully added to Cart");
-      return updatedWishlist;
+      if (!isExisting) {
+        const updatedWishlist = [...(userInfo.wishList || []), wishObj];
+        const response = await localStorageUsers({
+          method: "PATCH",
+          url: userInfo.id,
+          data: {
+            wishList: updatedWishlist,
+          },
+        });
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({ ...userInfo, wishList: updatedWishlist })
+        );
+        notifyForSMth("Successfully added to Cart");
+        return updatedWishlist;
+      } else {
+        notifyForError("Item is already on wishlist!");
+        return userInfo.wishList;
+      }
     } catch (error) {
-      notifyForError("Smth goes to bad");
       return rejectWithValue("Error while adding Wishlist");
     }
   }
@@ -278,14 +294,9 @@ export const deleteWishListFromData = createAsyncThunk(
         method: "GET",
         url: userInfo.id,
       }).then((res) => {
-        console.log(res.data);
-        console.log(userInfo.id);
-
         return res.data;
       });
       const newWishList = response.wishList.filter((elm) => elm.id !== mealId);
-      console.log(newWishList, "g");
-      console.log(mealId);
       localStorageUsers({
         method: "PATCH",
         url: userInfo.id,
@@ -297,7 +308,7 @@ export const deleteWishListFromData = createAsyncThunk(
         "userInfo",
         JSON.stringify({ ...userInfo, wishList: newWishList })
       );
-      notifyForSMth("Item Successfuly Removed");
+      notifyForError("Item Removed from Wishlist");
       return newWishList;
     } catch (error) {
       return rejectWithValue("Error wFhile deleting data from WatchList");
