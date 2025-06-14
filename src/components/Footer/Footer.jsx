@@ -63,8 +63,10 @@ const Footer = () => {
             {userData ? (
               <>
                 <NavLink to={ROUTES.PROFILE}>Profile</NavLink>
-                <NavLink to={ROUTES.PROFILERESERVEDATE}>Reserve Date</NavLink>
-                <NavLink to={ROUTES.PROFILEWISHLIST}>Wishlist</NavLink>
+                <NavLink to={`/${ROUTES.PROFILERESERVEDATE}`}>
+                  Reserve Date
+                </NavLink>
+                <NavLink to={`/${ROUTES.PROFILEWISHLIST}`}>Wishlist</NavLink>
               </>
             ) : (
               <>
