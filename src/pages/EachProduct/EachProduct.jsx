@@ -3,11 +3,14 @@ import styles from "./EachProduct.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import { FaCartShopping } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { notifyForError } from "../../helpers/notifyUser";
+import { sendingWatchList } from "../../helpers/sendData";
 const EachProduct = () => {
   const { data } = useLocation().state;
+  const userInfo = localStorage.getItem("userInfo");
   const mealObj = data.recipe;
-  console.log(mealObj);
-
+  const dispatch = useDispatch();
   return (
     <section className={styles.eachMealSec}>
       <div className={styles.container}>
@@ -54,9 +57,25 @@ const EachProduct = () => {
             </div>
             <div className={styles.buttons}>
               <Link to={`/${ROUTES.MENU}`}>Go To Menu</Link>
-              <button>
-                Add to Order <FaCartShopping />
-              </button>
+              {userInfo ? (
+                <button
+                  onClick={() => {
+                    sendingWatchList(dispatch, mealObj);
+                  }}
+                >
+                  Order Now <FaCartShopping />
+                </button>
+              ) : (
+                <Link
+                  to={`/${ROUTES.LOGIN}`}
+                  onClick={() =>
+                    notifyForError("Login required to add to cart.")
+                  }
+                  className={styles.goLogin}
+                >
+                  Order Now <FaCartShopping />
+                </Link>
+              )}
             </div>
           </div>
         </div>
