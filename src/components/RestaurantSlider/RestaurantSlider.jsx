@@ -29,7 +29,7 @@ const RestaurantSlider = ({imagesArr}) => {
           {imagesArr.map((elm, ind) => {
             return (
               <SwiperSlide key={ind}>
-                <img src={elm} alt="img" />
+                <img src={elm} alt="img"  loading="lazy"/>
               </SwiperSlide>
             );
           })}
