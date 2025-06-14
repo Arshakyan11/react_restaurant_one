@@ -10,12 +10,25 @@
       flex-direction: column;
       gap: 20px;
       .restaurants {
-        color: #ff8a00;
-        background: rgba(255, 165, 0, 0.2);
-        padding: 10px 20px;
-        max-width: 140px;
-        border-radius: 10px;
         font-size: 20px;
+        font-weight: 600;
+        color: #b5831e;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        &::after {
+          content: "";
+          display: block;
+          width: 30%;
+          height: 2px;
+          background-color: #b5831e;
+          margin-top: 4px;
+          border-radius: 1px;
+          transition: width 0.3s;
+        }
+        &:hover::after {
+          width: 70%;
+        }
       }
       .cusisineType {
         font-size: 60px;
@@ -41,4 +54,3 @@
     font-size: 50px;
   }
 }
-
