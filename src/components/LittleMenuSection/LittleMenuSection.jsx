@@ -14,11 +14,15 @@ import {
   setInfoAboutPagination,
 } from "../../store/PaginationSlice/paginationSlice";
 import Aos from "aos";
+import { notifyForError } from "../../helpers/notifyUser";
+import { sendingWatchList } from "../../helpers/sendData";
+import { ROUTES } from "../../Routes";
 
 const LittleMenuSection = () => {
   const dispatch = useDispatch();
   const { data, loading, activeCategory } = useSelector(gettAllInfo);
   const { slicedData } = useSelector(getAllPagination);
+  const userInfo = localStorage.getItem("userInfo");
   const categories = ["BBQ", "pizza", "sushi", "desserts top", "coffee drink"];
   const buttonNames = ["All Category", "Dinner", "Lunch", "Dessert", "Drink"];
   useEffect(() => {
@@ -96,11 +100,7 @@ const LittleMenuSection = () => {
                     <h3>Ingredients:</h3>
                     <div className={styles.ingredientsName}>
                       {ingredients.map((elm, ind) => {
-                        return (
-                          <p key={ind}>
-                            {`${ind + 1})`} {elm.food}
-                          </p>
-                        );
+                        return <p key={ind}>{elm.food},</p>;
                       })}
                     </div>
                   </div>
@@ -109,7 +109,25 @@ const LittleMenuSection = () => {
                       <span>Price:</span>
                       <p> ${each.price}</p>
                     </div>
-                    <Link>Order Now</Link>
+                    {userInfo ? (
+                      <button
+                        onClick={() => {
+                          sendingWatchList(dispatch, each);
+                        }}
+                      >
+                        Order Now
+                      </button>
+                    ) : (
+                      <Link
+                        to={`/${ROUTES.LOGIN}`}
+                        onClick={() =>
+                          notifyForError("Login required to add to cart.")
+                        }
+                        className={styles.goLogin}
+                      >
+                        Order Now
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
