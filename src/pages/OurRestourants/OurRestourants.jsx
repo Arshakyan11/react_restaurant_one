@@ -56,6 +56,7 @@ const OurRestourants = () => {
                     height="450"
                     style={{ border: 0 }}
                     loading="lazy"
+                    title="map"
                   ></iframe>
                 </div>
               </div>

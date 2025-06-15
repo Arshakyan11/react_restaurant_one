@@ -23,6 +23,7 @@ import { ROUTES } from "../../Routes";
 import Aos from "aos";
 import { notifyForError } from "../../helpers/notifyUser";
 import { sendingWatchList } from "../../helpers/sendData";
+import BuyingItemsList from "../../components/BuyingItemsList/BuyingItemsList";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -233,6 +234,7 @@ const Menu = () => {
             )}
           </div>
         </div>
+        <BuyingItemsList />
       </div>
     </section>
   );

@@ -316,3 +316,41 @@ export const deleteWishListFromData = createAsyncThunk(
     }
   }
 );
+
+export const changingCountOfItem = createAsyncThunk(
+  "miniBuyingList/changingCountOfItem",
+  async ({ mealId, type }, { rejectWithValue }) => {
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const response = await localStorageUsers({
+        method: "GET",
+        url: userInfo.id,
+      }).then((res) => {
+        return res.data.wishList;
+      });
+      const result = await response.map((elm) => {
+        if (elm.id === mealId && elm.count >= 1 && elm.count <= 9) {
+          elm.count += +type;
+        }
+        return elm;
+      });
+      localStorageUsers({
+        method: "PATCH",
+        url: userInfo.id,
+        data: {
+          wishList: result,
+        },
+      });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          ...userInfo,
+          wishList: result,
+        })
+      );
+      return "Success";
+    } catch (error) {
+      return rejectWithValue("Error Happened while  changing Count");
+    }
+  }
+);

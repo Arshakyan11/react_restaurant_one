@@ -9,6 +9,7 @@ import LoginReducer from "./LoginSlice/LoginSlice";
 import ReservationReducer from "./ReservationSlice/ReservationSlice";
 import ProfileReducer from "./ProfileSlice/ProfileSlice";
 import WishlistReducer from "./WishlistSlice/WishlistSlice";
+import MiniBuyingListReducer from "./MiniBuyingListSlice/MiniBuyingListSlice";
 const store = configureStore({
   reducer: {
     littleMenu: littleMenuReducer,
@@ -21,6 +22,7 @@ const store = configureStore({
     reservation: ReservationReducer,
     profile: ProfileReducer,
     wishlist: WishlistReducer,
+    miniBuyingList: MiniBuyingListReducer,
   },
 });
 

@@ -1,0 +1,63 @@
+.allItems {
+  .buyingList {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: orange;
+    cursor: pointer;
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    padding: 15px;
+    svg {
+      color: white;
+      font-size: 30px;
+    }
+  }
+  .modalContainer {
+    max-width: 400px;
+    width: 100%;
+    position: fixed;
+    right: 3%;
+    bottom: 13%;
+    padding: 20px;
+    background: linear-gradient(to bottom, #f7f6f4, #fff);
+    background: orange;
+    .modal {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .eachItem {
+        display: flex;
+        img {
+          max-width: 100px;
+          width: 100%;
+          object-fit: cover;
+          height: 100px;
+        }
+        .infoOfItem {
+          color: white;
+          .buttons {
+            display: flex;
+            gap: 20px;
+            p {
+              width: 30px;
+              text-align: center;
+              border-radius: 50%;
+              height: 30px;
+              font-size: 20px;
+              cursor: pointer;
+              padding-top: 5px;
+            }
+            p:nth-child(2) {
+              background: red;
+            }
+            p:nth-child(3) {
+              background: green;
+            }
+          }
+        }
+      }
+    }
+  }
+}

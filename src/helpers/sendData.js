@@ -66,6 +66,7 @@ export const sendingWatchList = (dispatch, item) => {
       img: item.images?.REGULAR.url,
       price: item.price,
       calories: item.calories,
+      count: 1,
     })
   );
 };
