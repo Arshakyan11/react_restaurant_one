@@ -12,7 +12,7 @@ import Pagination from "../Pagination/Pagination";
 import {
   getAllPagination,
   setInfoAboutPagination,
-} from "../../store/PaginationSlice/paginationSlice";
+} from "../../store/PaginationSlice/paginationSlice"; 
 import Aos from "aos";
 import { notifyForError } from "../../helpers/notifyUser";
 import { sendingWatchList } from "../../helpers/sendData";
