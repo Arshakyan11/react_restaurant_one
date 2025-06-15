@@ -16,9 +16,13 @@ const OurRestourants = () => {
     <section className={styles.OurAddressSec}>
       <div className={styles.container}>
         <div className={styles.ourRestaurants}>
-          {eachRestaurantData.map((elm) => {
+          {eachRestaurantData.map((elm, ind) => {
             return (
-              <div className={styles.firstRestaurant} data-aos="fade-left">
+              <div
+                className={styles.firstRestaurant}
+                data-aos="fade-left"
+                key={ind}
+              >
                 <p className={styles.title}>
                   <span>ERISO</span> {elm.location}
                 </p>
@@ -51,9 +55,7 @@ const OurRestourants = () => {
                     width="600"
                     height="450"
                     style={{ border: 0 }}
-                    allowfullscreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
               </div>

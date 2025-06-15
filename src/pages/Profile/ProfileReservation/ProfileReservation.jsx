@@ -12,7 +12,6 @@ const ProfileReservation = () => {
   const { userData } = useSelector(getAllReservationInfo);
   const isTrue = userData?.reservation ? true : false;
   const date = userData?.reservation?.date.split("T");
-  console.log(userData);
   
   const dispatch = useDispatch();
   useEffect(() => {

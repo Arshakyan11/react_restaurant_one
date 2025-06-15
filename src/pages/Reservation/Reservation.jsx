@@ -11,6 +11,7 @@ import { userReservationValidation } from "../../helpers/useValidation";
 import LineInfo from "../../components/LineInfo/LineInfo";
 import { restInfo1, restInfo2, restInfo3 } from "../../components/Images";
 import Aos from "aos";
+import { getCurrentTime } from "../../helpers/createTime";
 const Reservation = () => {
   useEffect(() => {
     Aos.init({ duration: 800 });
@@ -71,6 +72,7 @@ const Reservation = () => {
                         <Field
                           name="date"
                           type="datetime-local"
+                          min={getCurrentTime()}
                           placeholder="Time"
                           id="dateIn"
                         />
@@ -97,9 +99,15 @@ const Reservation = () => {
                         <option value="" hidden>
                           Select Your Table Experience
                         </option>
-                        <option value="Standard Seating">Standard Seating</option>
-                        <option value="Premium Service Table">Premium Service Table</option>
-                        <option value="Scenic View Table">Scenic View Table</option>
+                        <option value="Standard Seating">
+                          Standard Seating
+                        </option>
+                        <option value="Premium Service Table">
+                          Premium Service Table
+                        </option>
+                        <option value="Scenic View Table">
+                          Scenic View Table
+                        </option>
                       </Field>
                     </fieldset>
                     <div className={styles.buttons}>
