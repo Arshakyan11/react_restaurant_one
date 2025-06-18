@@ -261,18 +261,28 @@ export const addingWishlistToData = createAsyncThunk(
       const isExisting = checkingExistingMeal.find(
         (elm) => elm.name === wishObj.name && elm.calories === wishObj.calories
       );
+
       if (!isExisting) {
         const updatedWishlist = [...(userInfo.wishList || []), wishObj];
+        let totalCount = updatedWishlist.reduce(
+          (acc, elm) => acc + +elm.price,
+          0
+        );
         const response = await localStorageUsers({
           method: "PATCH",
           url: userInfo.id,
           data: {
             wishList: updatedWishlist,
+            totalCheckPrice: totalCount.toFixed(3),
           },
         });
         localStorage.setItem(
           "userInfo",
-          JSON.stringify({ ...userInfo, wishList: updatedWishlist })
+          JSON.stringify({
+            ...userInfo,
+            wishList: updatedWishlist,
+            totalCheckPrice: totalCount.toFixed(3),
+          })
         );
         notifyForSMth("Successfully added to Cart");
         return updatedWishlist;
@@ -298,16 +308,25 @@ export const deleteWishListFromData = createAsyncThunk(
         return res.data;
       });
       const newWishList = response.wishList.filter((elm) => elm.id !== mealId);
+      let totalCount = newWishList.reduce(
+        (acc, elm) => acc + +elm.price * +elm.count,
+        0
+      );
       localStorageUsers({
         method: "PATCH",
         url: userInfo.id,
         data: {
           wishList: newWishList,
+          totalCheckPrice: totalCount.toFixed(3),
         },
       });
       localStorage.setItem(
         "userInfo",
-        JSON.stringify({ ...userInfo, wishList: newWishList })
+        JSON.stringify({
+          ...userInfo,
+          wishList: newWishList,
+          totalCheckPrice: totalCount.toFixed(3),
+        })
       );
       notifyForError("Item Removed from Wishlist");
       return newWishList;
@@ -329,16 +348,26 @@ export const changingCountOfItem = createAsyncThunk(
         return res.data.wishList;
       });
       const result = await response.map((elm) => {
-        if (elm.id === mealId && elm.count >= 1 && elm.count <= 9) {
+        if (
+          elm.id === mealId &&
+          elm.count + type > 0 &&
+          elm.count + type <= 10
+        ) {
           elm.count += +type;
         }
         return elm;
       });
+      let totalCount = result.reduce(
+        (acc, elm) => acc + +elm.price * +elm.count,
+        0
+      );
+
       localStorageUsers({
         method: "PATCH",
         url: userInfo.id,
         data: {
           wishList: result,
+          totalCheckPrice: totalCount.toFixed(3),
         },
       });
       localStorage.setItem(
@@ -346,6 +375,7 @@ export const changingCountOfItem = createAsyncThunk(
         JSON.stringify({
           ...userInfo,
           wishList: result,
+          totalCheckPrice: totalCount.toFixed(3),
         })
       );
       return "Success";

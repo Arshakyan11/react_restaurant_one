@@ -3,7 +3,7 @@ import { changingCountOfItem } from "../api/api";
 const MiniBuyingList = createSlice({
   name: "miniBuyingList",
   initialState: {
-    isHidenModal: false,
+    isOpenModal: false,
     loading: false,
     error: null,
   },
@@ -12,7 +12,7 @@ const MiniBuyingList = createSlice({
   },
   reducers: {
     setModalOpenType: (state, action) => {
-      state.isHidenModal = action.payload;
+      state.isOpenModal = action.payload;
     },
   },
   extraReducers: (builder) => {

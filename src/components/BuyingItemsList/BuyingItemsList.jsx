@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./BuyingItemsList.scss";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
@@ -13,24 +13,45 @@ import {
 } from "../../store/api/api";
 const BuyingItemsList = () => {
   const dispatch = useDispatch();
-  const { isHidenModal, loading } = useSelector(getAllMiniBuyingListInfo);
+  const { isOpenModal } = useSelector(getAllMiniBuyingListInfo);
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const modalRef = useRef();
 
-  //   useEffect(() => {
-  // dispatch(setModalOpenType(!isHidenModal))
-  //   }, []);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        isOpenModal
+      ) {
+        console.log("mtav");
+        dispatch(setModalOpenType(false));
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpenModal, dispatch]);
+
+  useEffect(() => {
+    dispatch(setModalOpenType(false));
+  }, []);
   if (userInfo) {
     return (
       <div className="allItems">
         <div
           className="buyingList"
-          onClick={() => dispatch(setModalOpenType(!isHidenModal))}
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(setModalOpenType(!isOpenModal));
+          }}
         >
           <FaCartShopping />
         </div>
-        {isHidenModal ? (
+        {isOpenModal ? (
           <div className="modalContainer">
-            <div className="modal">
+            <div className="modal" ref={modalRef}>
               {userInfo.wishList.map((elm, ind) => {
                 return (
                   <div className="eachItem" key={ind}>
@@ -70,6 +91,13 @@ const BuyingItemsList = () => {
                   </div>
                 );
               })}
+              <div className="buttons">
+                <button>Order Now</button>
+              </div>
+              <div className="totalCount">
+                <p>Total</p>
+                <p>{userInfo.totalCheckPrice}$</p>
+              </div>
             </div>
           </div>
         ) : (
@@ -78,7 +106,7 @@ const BuyingItemsList = () => {
       </div>
     );
   } else {
-    <></>;
+    return null;
   }
 };
 
