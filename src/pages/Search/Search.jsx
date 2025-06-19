@@ -11,6 +11,7 @@ import { starRating } from "../../components/Images";
 import Aos from "aos";
 import { notifyForError } from "../../helpers/notifyUser";
 import { sendingWatchList } from "../../helpers/sendData";
+import BuyingItemsList from "../../components/BuyingItemsList/BuyingItemsList";
 const Search = () => {
   const dispatch = useDispatch();
   const { foundedData, loading } = useSelector(gettAllDataSearching);
@@ -123,6 +124,7 @@ const Search = () => {
             )}
           </div>
         </div>
+        <BuyingItemsList />
       </div>
     </section>
   );

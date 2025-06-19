@@ -234,7 +234,9 @@ const Menu = () => {
             )}
           </div>
         </div>
-        <BuyingItemsList />
+        <div className={styles.cartWrapper}>
+          <BuyingItemsList />
+        </div>
       </div>
     </section>
   );

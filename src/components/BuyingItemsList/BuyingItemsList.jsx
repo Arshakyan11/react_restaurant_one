@@ -11,10 +11,11 @@ import {
   changingCountOfItem,
   deleteWishListFromData,
 } from "../../store/api/api";
+import { getUserInfo } from "../../store/AuthSlice/AuthSlice";
 const BuyingItemsList = () => {
   const dispatch = useDispatch();
   const { isOpenModal } = useSelector(getAllMiniBuyingListInfo);
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const { userInfo } = useSelector(getUserInfo);
   const modalRef = useRef();
 
   useEffect(() => {

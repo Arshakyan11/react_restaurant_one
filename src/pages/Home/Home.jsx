@@ -14,6 +14,7 @@ import LittleMenuSection from "../../components/LittleMenuSection/LittleMenuSect
 import { restaurantChefs } from "../../data/chiefsData";
 import CustomersComment from "../../components/CustomersComment/CustomersComment";
 import Aos from "aos";
+import BuyingItemsList from "../../components/BuyingItemsList/BuyingItemsList";
 const Home = () => {
   useEffect(() => {
     Aos.init({ duration: 800 });
@@ -103,6 +104,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <BuyingItemsList />
       </div>
     </div>
   );

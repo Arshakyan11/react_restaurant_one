@@ -6,8 +6,8 @@
     background: orange;
     cursor: pointer;
     position: fixed;
-    right: 3%;
-    bottom: 3%;
+    right: max(calc((100vw - 1440px) / 2 + 20px), 20px);
+    bottom: 5%;
     padding: 15px;
     svg {
       color: white;
@@ -18,8 +18,8 @@
     max-width: 420px;
     width: 100%;
     position: fixed;
-    right: 3%;
-    bottom: 13%;
+    right: max(calc((100vw - 1440px) / 2 + 20px), 20px);
+    bottom: 15%;
     padding: 20px;
     border-radius: 20px;
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
