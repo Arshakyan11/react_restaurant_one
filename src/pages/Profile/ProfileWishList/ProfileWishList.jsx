@@ -2,14 +2,16 @@ import React from "react";
 import styles from "./ProfileWishList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getallWatchlistInfo } from "../../../store/WishlistSlice/WishlistSlice";
-import { deleteWishListFromData } from "../../../store/api/api";
+import {
+  changingCountOfItem,
+  deleteWishListFromData,
+} from "../../../store/api/api";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../Routes";
-import { FaBurger } from "react-icons/fa6";
 import { burgerProfile } from "../../../components/Images";
+import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 const ProfileWishList = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  const { loading } = useSelector(getallWatchlistInfo);
   const dispatch = useDispatch();
   return (
     <div className={styles.wishListSec}>
@@ -26,11 +28,35 @@ const ProfileWishList = () => {
                       <p>Price: </p>
                       <h2>{elm.price}$</h2>
                     </div>
-                    <button
-                      onClick={() => dispatch(deleteWishListFromData(elm.id))}
-                    >
-                      Remove
-                    </button>
+                    <div className={styles.buttons}>
+                      <p
+                        onClick={() => dispatch(deleteWishListFromData(elm.id))}
+                      >
+                        <FaTrash />
+                      </p>
+                      <p
+                        onClick={() =>
+                          dispatch(
+                            changingCountOfItem({
+                              mealId: elm.id,
+                              type: -1,
+                            })
+                          )
+                        }
+                      >
+                        <FaMinus />
+                      </p>
+                      <p
+                        onClick={() =>
+                          dispatch(
+                            changingCountOfItem({ mealId: elm.id, type: 1 })
+                          )
+                        }
+                      >
+                        <FaPlus />
+                      </p>
+                      <p>{elm.count}</p>
+                    </div>
                   </div>
                 </div>
               );

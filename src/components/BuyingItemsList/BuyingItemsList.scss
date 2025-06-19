@@ -30,60 +30,72 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      .eachItem {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        padding: 10px;
+      .selectedItems {
         display: flex;
-        align-items: center;
-        gap: 15px;
-        backdrop-filter: blur(10px);
-        img {
-          width: 80px;
-          height: 80px;
-          object-fit: cover;
-          border-radius: 10px;
-        }
-        .infoOfItem {
-          flex: 1;
-          color: white;
+        flex-direction: column;
+        gap: 20px;
+        max-height: 440px;
+        overflow-y: auto;
+        padding-right: 5px;
+        .eachItem {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 15px;
+          padding: 10px;
           display: flex;
-          flex-direction: column;
-          gap: 8px;
-          p {
-            margin: 0;
+          align-items: center;
+          gap: 15px;
+          backdrop-filter: blur(10px);
+          img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
           }
-          .buttons {
+          .infoOfItem {
+            flex: 1;
+            color: white;
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-direction: column;
+            gap: 8px;
             p {
-              width: 32px;
-              height: 32px;
-              font-size: 18px;
+              margin: 0;
+            }
+            .buttons {
               display: flex;
               align-items: center;
-              justify-content: center;
-              border-radius: 50%;
-              background: #fff;
-              color: #333;
-              cursor: pointer;
-              transition: 0.3s;
-              &:hover {
-                background: #333;
-                color: #fff;
+              gap: 12px;
+              p {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: #fff;
+                color: #333;
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover {
+                  background: #333;
+                  color: #fff;
+                }
               }
-            }
-            p:nth-child(2) {
-              background: #ff4d4f;
-              color: white;
-            }
-            p:nth-child(3) {
-              background: #4caf50;
-              color: white;
+              p:nth-child(2) {
+                background: #ff4d4f;
+                color: white;
+              }
+              p:nth-child(3) {
+                background: #4caf50;
+                color: white;
+              }
             }
           }
         }
+      }
+      h2 {
+        color: #fff;
+        align-self: center;
       }
       .buttons {
         display: flex;

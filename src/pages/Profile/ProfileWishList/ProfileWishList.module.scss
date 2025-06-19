@@ -64,13 +64,32 @@
               text-transform: capitalize;
             }
           }
-          button {
-            padding: 10px;
-            color: white;
-            border: 1px solid #f44336;
-            border-radius: 10px;
-            background: #f44336;
-            cursor: pointer;
+          .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            p {
+              width: 32px;
+              height: 32px;
+              font-size: 18px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              cursor: pointer;
+              transition: 0.3s;
+              background: #333;
+              color: #fff;
+            }
+            p:nth-child(2) {
+              background: #ff4d4f;
+              color: white;
+            }
+            p:nth-child(3) {
+              background: #4caf50;
+              color: white;
+            }
           }
         }
       }
