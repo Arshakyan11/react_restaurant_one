@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ProfileWishList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getallWatchlistInfo } from "../../../store/WishlistSlice/WishlistSlice";
@@ -10,14 +10,18 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../../Routes";
 import { burgerProfile } from "../../../components/Images";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
+import { getUserInfo, setUserInfo } from "../../../store/AuthSlice/AuthSlice";
 const ProfileWishList = () => {
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const { userInfo } = useSelector(getUserInfo);
   const dispatch = useDispatch();
+  useEffect(() => {
+    setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
+  }, []);
   return (
     <div className={styles.wishListSec}>
       <div className={styles.mainWishListSec}>
         <div className={styles.wishedItems}>
-          {userInfo.wishList.length > 0 ? (
+          {userInfo.wishList?.length > 0 ? (
             userInfo?.wishList?.map((elm, ind) => {
               return (
                 <div className={styles.wishedItemEach} key={ind}>

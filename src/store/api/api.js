@@ -5,6 +5,7 @@ import { ROUTES } from "../../Routes";
 import { setEmailManualy } from "../ProfileSlice/ProfileSlice";
 import { setUserInfoManualy } from "../ReservationSlice/ReservationSlice";
 import { nanoid } from "nanoid";
+import { setUserInfo } from "../AuthSlice/AuthSlice";
 
 const instant = axios.create({
   timeoutErrorMessage: "Error 404",
@@ -113,6 +114,17 @@ const localStorageUsers = axios.create({
   timeoutErrorMessage: "Too much time for fetching data",
 });
 
+const setingLocalStorageUserinfo = (dispatch, data) => {
+  localStorage.setItem("userInfo", JSON.stringify(data));
+  dispatch(setUserInfo(data));
+};
+const patchingUserDataToLocal = (id, data) => {
+  return axios.patch(`http://localhost:8000/users/${id}`, data, {
+    timeout: 10000,
+    timeoutErrorMessage: "Too much time for fetching data",
+  });
+};
+
 export const creatingUserData = createAsyncThunk(
   "registration/creatingUserData",
   (arg, { rejectWithValue }) => {
@@ -156,7 +168,7 @@ export const checkingUserExisting = createAsyncThunk(
 
 export const addingReserveTable = createAsyncThunk(
   "reservation/addingReserveTable",
-  async (obj, { rejectWithValue }) => {
+  async (obj, { dispatch, rejectWithValue }) => {
     try {
       let userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const response = await localStorageUsers().then((res) => res.data);
@@ -167,16 +179,12 @@ export const addingReserveTable = createAsyncThunk(
         const reservation = {
           reservation: obj,
         };
-        localStorageUsers({
-          method: "PATCH",
-          data: reservation,
-          url: `/${findedUser["id"]}`,
-        });
+        patchingUserDataToLocal(`/${findedUser["id"]}`, reservation);
         const updatedData = {
           ...userInfo,
           reservation: obj,
         };
-        localStorage.setItem("userInfo", JSON.stringify(updatedData));
+        setingLocalStorageUserinfo(dispatch, updatedData);
         notifyForSMth("Reservation passed Successfuly");
         return updatedData;
       } else {
@@ -218,22 +226,18 @@ export const deletingReservationTime = createAsyncThunk(
 
 export const updatingProfileInformation = createAsyncThunk(
   "profile/updatingProfileInformation",
-  async (data, { rejectWithValue }) => {
+  async (data, { dispatch, rejectWithValue }) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       if (
         data.userOldPass === userInfo.password &&
         userInfo.password !== data.userNewPass
       ) {
-        const response = await localStorageUsers({
-          method: "PATCH",
-          url: userInfo.id,
-          data: {
-            password: data.userNewPass,
-          },
+        patchingUserDataToLocal(userInfo.id, {
+          password: data.userNewPass,
         });
         userInfo.password = data.userNewPass;
-        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        setingLocalStorageUserinfo(dispatch, userInfo);
         notifyForSMth("Password Changed Successfuly");
       } else if (
         data.userOldPass === userInfo.password &&
@@ -251,7 +255,7 @@ export const updatingProfileInformation = createAsyncThunk(
 
 export const addingWishlistToData = createAsyncThunk(
   "wishlist/addingWishlistToData",
-  async (wishObj, { rejectWithValue }) => {
+  async (wishObj, { dispatch, rejectWithValue }) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const checkingExistingMeal = await localStorageUsers({
@@ -268,22 +272,15 @@ export const addingWishlistToData = createAsyncThunk(
           (acc, elm) => acc + +elm.price,
           0
         );
-        const response = await localStorageUsers({
-          method: "PATCH",
-          url: userInfo.id,
-          data: {
-            wishList: updatedWishlist,
-            totalCheckPrice: totalCount.toFixed(3),
-          },
+        const newUserInfo = {
+          wishList: updatedWishlist,
+          totalCheckPrice: totalCount.toFixed(3),
+        };
+        patchingUserDataToLocal(userInfo.id, newUserInfo);
+        setingLocalStorageUserinfo(dispatch, {
+          ...userInfo,
+          ...newUserInfo,
         });
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({
-            ...userInfo,
-            wishList: updatedWishlist,
-            totalCheckPrice: totalCount.toFixed(3),
-          })
-        );
         notifyForSMth("Successfully added to Cart");
         return updatedWishlist;
       } else {
@@ -298,7 +295,7 @@ export const addingWishlistToData = createAsyncThunk(
 
 export const deleteWishListFromData = createAsyncThunk(
   "wishlist/deleteWishListFromData",
-  async (mealId, { rejectWithValue }) => {
+  async (mealId, { dispatch, rejectWithValue }) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const response = await localStorageUsers({
@@ -312,22 +309,15 @@ export const deleteWishListFromData = createAsyncThunk(
         (acc, elm) => acc + +elm.price * +elm.count,
         0
       );
-      localStorageUsers({
-        method: "PATCH",
-        url: userInfo.id,
-        data: {
-          wishList: newWishList,
-          totalCheckPrice: totalCount.toFixed(3),
-        },
+      const newUserInfo = {
+        wishList: newWishList,
+        totalCheckPrice: totalCount.toFixed(3),
+      };
+      patchingUserDataToLocal(userInfo.id, newUserInfo);
+      setingLocalStorageUserinfo(dispatch, {
+        ...userInfo,
+        ...newUserInfo,
       });
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({
-          ...userInfo,
-          wishList: newWishList,
-          totalCheckPrice: totalCount.toFixed(3),
-        })
-      );
       notifyForError("Item Removed from Wishlist");
       return newWishList;
     } catch (error) {
@@ -338,7 +328,7 @@ export const deleteWishListFromData = createAsyncThunk(
 
 export const changingCountOfItem = createAsyncThunk(
   "miniBuyingList/changingCountOfItem",
-  async ({ mealId, type }, { rejectWithValue }) => {
+  async ({ mealId, type }, { dispatch, rejectWithValue }) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const response = await localStorageUsers({
@@ -361,26 +351,20 @@ export const changingCountOfItem = createAsyncThunk(
         (acc, elm) => acc + +elm.price * +elm.count,
         0
       );
-
-      localStorageUsers({
-        method: "PATCH",
-        url: userInfo.id,
-        data: {
-          wishList: result,
-          totalCheckPrice: totalCount.toFixed(3),
-        },
+      let newUserInfo = {
+        wishList: result,
+        totalCheckPrice: totalCount.toFixed(3),
+      };
+      patchingUserDataToLocal(userInfo.id, newUserInfo);
+      setingLocalStorageUserinfo(dispatch, {
+        ...userInfo,
+        ...newUserInfo,
       });
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({
-          ...userInfo,
-          wishList: result,
-          totalCheckPrice: totalCount.toFixed(3),
-        })
-      );
       return "Success";
     } catch (error) {
       return rejectWithValue("Error Happened while  changing Count");
     }
   }
 );
+
+//394
