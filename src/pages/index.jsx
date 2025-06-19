@@ -12,6 +12,7 @@ import Staff from "./Staff/Staff";
 import Profile from "./Profile/Profile";
 import ProfileReservation from "./Profile/ProfileReservation/ProfileReservation";
 import ProfileWishList from "./Profile/ProfileWishList/ProfileWishList";
+import NotFound from "./NotFound/NotFound";
 export {
   Search,
   OurRestourants,
@@ -27,4 +28,5 @@ export {
   ProfileReservation,
   ProfileWishList,
   Staff,
+  NotFound,
 };
