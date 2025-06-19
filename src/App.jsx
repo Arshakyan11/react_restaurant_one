@@ -12,6 +12,7 @@ import {
   Home,
   Login,
   Menu,
+  NotFound,
   OurRestourants,
   Profile,
   ProfileReservation,
@@ -53,7 +54,7 @@ function App() {
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.EACHPRODUCT} element={<EachProduct />} />
-
+          <Route path={ROUTES.NOTFOUND} element={<NotFound />} />
           <Route path={ROUTES.PROFILE} element={<ProfileLayOut />}>
             <Route index element={<Profile />} />
             <Route
