@@ -153,6 +153,7 @@ export const checkingUserExisting = createAsyncThunk(
         localStorage.setItem("userInfo", JSON.stringify(lastResult));
         await dispatch(setEmailManualy(email));
         await dispatch(setUserInfoManualy(lastResult));
+        dispatch(setUserInfo(lastResult));
         notifyForSMth("You Logged In");
         navigate(ROUTES.HOME);
         return true;
