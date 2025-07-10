@@ -47,12 +47,13 @@ const HeaderCuisine = () => {
               <div className="leftSide">
                 <p className="restaurants">Restaurant </p>
                 <p className="cusisineType">
-                  {elm.cuisine} <br /> Cuisine
+                  {elm.cuisine} <br className="br" /> Cuisine
                 </p>
                 <p className="aboutCousine">{elm.info}</p>
               </div>
               <div className="rightSide">
                 <img src={elm.img} alt="restaurant Img" loading="lazy" />
+                <p className="aboutCousineMedia">{elm.info}</p>
               </div>
             </SwiperSlide>
           );

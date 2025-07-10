@@ -9,7 +9,6 @@ import {
   img8,
   img9,
 } from "../components/Images";
-
 export const cuisines = [
   {
     cuisine: "Italy",
