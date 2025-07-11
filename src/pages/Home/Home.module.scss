@@ -157,13 +157,14 @@
       }
       .workingTimeAll {
         background: rgba(63, 198, 110, 0.1);
+        padding: 50px 40px;
         .workingDays {
           background: url("../../../public/img/restaurantPhoto.png");
           background-repeat: no-repeat;
           background-size: cover;
           max-width: 1100px;
           width: 100%;
-          margin: 100px auto;
+          margin: 50px auto;
           @include disFx();
           justify-content: flex-start;
           padding: 20px;
@@ -281,6 +282,19 @@
             }
           }
         }
+        .workingTimeAll {
+          .workingDays {
+            h2 {
+              font-size: 60px;
+            }
+            h3 {
+              font-size: 40px;
+            }
+            p {
+              font-size: 30px;
+            }
+          }
+        }
       }
       @media screen and (max-width: 1024px) {
         & {
@@ -300,6 +314,20 @@
       }
       @media screen and (max-width: 915px) {
         & {
+          .welcomeSec {
+            align-items: center;
+            .leftSide {
+              img {
+                width: 400px;
+                margin-top: 20px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                font-size: 38px;
+              }
+            }
+          }
           .reservationSec {
             .leftSideReserve {
               .images {
@@ -317,17 +345,17 @@
               }
             }
           }
-          .welcomeSec {
-            align-items: center;
-            .leftSide {
-              img {
-                width: 400px;
-                margin-top: 20px;
+          .workingTimeAll {
+            .workingDays {
+              gap: 30px;
+              h2 {
+                font-size: 50px;
               }
-            }
-            .rightSide {
-              .welcome {
-                font-size: 38px;
+              h3 {
+                font-size: 35px;
+              }
+              p {
+                font-size: 30px;
               }
             }
           }
@@ -469,6 +497,21 @@
               }
             }
           }
+          .workingTimeAll {
+            .workingDays {
+              justify-content: center;
+              gap: 30px;
+              h2 {
+                font-size: 40px;
+              }
+              h3 {
+                font-size: 32px;
+              }
+              p {
+                font-size: 25px;
+              }
+            }
+          }
         }
       }
       @media screen and (max-width: 680px) {
@@ -516,6 +559,41 @@
             p {
               font-size: 18px;
               text-align: center;
+            }
+          }
+        }
+        .workingTimeAll {
+          .workingDays {
+            h2 {
+              font-size: 36px;
+            }
+            h3 {
+              font-size: 28px;
+            }
+            p {
+              font-size: 22px;
+              text-align: center;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 490px) {
+        .workingTimeAll {
+          .workingDays {
+            h2 {
+              font-size: 36px;
+              text-align: center;
+            }
+            .buttons {
+              flex-direction: column;
+              max-width: 400px;
+              width: 100%;
+              a {
+                max-width: 300px;
+                width: 100%;
+                text-align: center;
+                margin-top: 0;
+              }
             }
           }
         }
@@ -617,6 +695,27 @@
                   &:hover {
                     transform: scale(1.05);
                   }
+                }
+              }
+            }
+          }
+          .workingTimeAll {
+            .workingDays {
+              h2 {
+                font-size: 32px;
+              }
+              h3 {
+                font-size: 24px;
+              }
+              p {
+                font-size: 19px;
+              }
+              .buttons {
+                a {
+                  max-width: 170px;
+                  width: 100%;
+                  text-align: center;
+                  margin-top: 0;
                 }
               }
             }
