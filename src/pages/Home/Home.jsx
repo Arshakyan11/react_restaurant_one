@@ -52,7 +52,7 @@ const Home = () => {
               <Link to={ROUTES.MENU}>See our Menu</Link>
             </div>
           </div>
-          {/* <LittleMenuSection /> */}
+          <LittleMenuSection />
           <div className={styles.reservationSec} data-aos="fade-up">
             <div className={styles.leftSideReserve}>
               <div className={styles.images}>
