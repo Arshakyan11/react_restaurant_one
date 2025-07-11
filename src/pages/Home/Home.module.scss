@@ -13,7 +13,22 @@
         margin-top: 70px;
         padding: 30px;
         background: rgba(63, 198, 110, 0.1);
+        .welcomeText {
+          @include textStyleSome();
+        }
+        a {
+          @include btnStylesAndHover();
+          padding: 10px 30px;
+          padding-left: 10px;
+          max-width: 300px;
+          width: 100%;
+          text-align: center;
+        }
         .leftSide {
+          a,
+          .welcomeText {
+            display: none;
+          }
           img {
             width: 500px;
           }
@@ -31,41 +46,46 @@
               font-weight: 100;
             }
           }
-          .welcomeText {
-            @include textStyleSome();
-          }
-          a {
-            @include btnStylesAndHover();
-            padding: 10px 30px;
-            padding-left: 10px;
-            max-width: 300px;
-            width: 100%;
-            text-align: center;
-          }
         }
       }
       .reservationSec {
         display: flex;
         justify-content: space-evenly;
         background: rgba(255, 244, 231, 0.6);
-        padding: 50px 0;
+        padding: 50px 10px;
+        gap: 50px;
+        p {
+          @include textStyleSome();
+          line-height: 40px;
+        }
+        a {
+          @include btnStylesAndHover();
+          padding: 10px 40px;
+          max-width: 200px;
+        }
         .leftSideReserve {
-          position: relative;
-          .mainImg {
-            width: 500px;
+          p,
+          a {
+            display: none;
           }
-          .secondaryImg,
-          .secondaryImg2 {
-            position: absolute;
-            width: 100px;
-          }
-          .secondaryImg {
-            right: 8%;
-            top: 2%;
-          }
-          .secondaryImg2 {
-            bottom: 0;
-            left: 0;
+          .images {
+            position: relative;
+            .mainImg {
+              width: 500px;
+            }
+            .secondaryImg,
+            .secondaryImg2 {
+              position: absolute;
+              width: 100px;
+            }
+            .secondaryImg {
+              right: 8%;
+              top: 2%;
+            }
+            .secondaryImg2 {
+              bottom: 0;
+              left: 0;
+            }
           }
         }
         .rightSideReserve {
@@ -79,15 +99,6 @@
               color: orange;
               font-weight: 100;
             }
-          }
-          p {
-            @include textStyleSome();
-            line-height: 40px;
-          }
-          a {
-            @include btnStylesAndHover();
-            padding: 10px 40px;
-            max-width: 200px;
           }
         }
       }
@@ -144,7 +155,6 @@
           font-size: 25px;
         }
       }
-
       .workingTimeAll {
         background: rgba(63, 198, 110, 0.1);
         .workingDays {
@@ -190,6 +200,326 @@
               font-size: 22px;
               border-radius: 60px;
               border: 1px solid transparent;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1212px) {
+        .reservationSec {
+          .leftSideReserve {
+            .images {
+              .mainImg {
+                width: 400px;
+              }
+              .secondaryImg {
+                right: 0%;
+              }
+            }
+          }
+          .rightSideReserve {
+            h2 {
+              font-size: 50px;
+            }
+            p {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1140px) {
+        & {
+          .welcomeSec {
+            .rightSide {
+              .welcome {
+                font-size: 50px;
+              }
+              .welcomeText {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1065px) {
+        .reservationSec {
+          align-items: center;
+          .leftSideReserve {
+            .images {
+              .mainImg {
+                width: 350px;
+              }
+              .secondaryImg {
+                right: -6%;
+                top: -4%;
+              }
+              .secondaryImg2 {
+                bottom: -19%;
+                left: 0;
+              }
+            }
+          }
+          .rightSideReserve {
+            h2 {
+              font-size: 40px;
+            }
+            p {
+              font-size: 19px;
+              word-spacing: 1px;
+              max-width: 400px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1024px) {
+        & {
+          .welcomeSec {
+            .leftSide {
+              img {
+                width: 400px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                font-size: 40px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 915px) {
+        & {
+          .reservationSec {
+            .leftSideReserve {
+              .images {
+                .mainImg {
+                  width: 300px;
+                }
+              }
+            }
+            .rightSideReserve {
+              h2 {
+                font-size: 35px;
+              }
+              p {
+                line-height: 30px;
+              }
+            }
+          }
+          .welcomeSec {
+            align-items: center;
+            .leftSide {
+              img {
+                width: 400px;
+                margin-top: 20px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                font-size: 38px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 845px) {
+        & {
+          .reservationSec {
+            flex-direction: column;
+            .leftSideReserve {
+              display: flex;
+              flex-direction: column;
+              gap: 40px;
+              align-items: center;
+              .images {
+                .mainImg {
+                  width: 300px;
+                }
+                .secondaryImg {
+                  right: -19%;
+                  top: -10%;
+                }
+                .secondaryImg2 {
+                  bottom: -10%;
+                  left: -24%;
+                }
+              }
+              a,
+              p {
+                display: block;
+              }
+              p {
+                font-size: 20px;
+              }
+            }
+            .rightSideReserve {
+              order: -1;
+              a,
+              p {
+                display: none;
+              }
+              .br {
+                display: none;
+              }
+              h2 {
+                font-size: 35px;
+              }
+            }
+          }
+          .welcomeSec {
+            gap: 20px;
+            .leftSide {
+              img {
+                width: 350px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                font-size: 35px;
+              }
+              .welcomeText {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 743px) {
+        & {
+          .welcomeSec {
+            flex-direction: column;
+            gap: 20px;
+            .leftSide {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              align-items: center;
+              a,
+              .welcomeText {
+                display: block;
+                text-align: center;
+              }
+              img {
+                width: 350px;
+              }
+            }
+            .rightSide {
+              a,
+              .welcomeText {
+                display: none;
+              }
+              order: -1;
+              .welcome {
+                font-size: 35px;
+                .br {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 680px) {
+        .reservationSec {
+          align-items: center;
+          padding: 50px 25px;
+        }
+      }
+      @media screen and (max-width: 580px) {
+        .reservationSec {
+          align-items: center;
+          padding: 50px 25px;
+          .leftSideReserve {
+            .images {
+              .mainImg {
+                width: 250px;
+              }
+              .secondaryImg,
+              .secondaryImg2 {
+                width: 75px;
+              }
+            }
+            p {
+              font-size: 18px;
+              text-align: center;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 434px) {
+        & {
+          .welcomeSec {
+            .leftSide {
+              img {
+                width: 300px;
+              }
+              .welcomeText {
+                font-size: 20px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                font-size: 34px;
+              }
+            }
+          }
+          .reservationSec {
+            .leftSideReserve {
+              .images {
+                .mainImg {
+                  width: 230px;
+                }
+              }
+              p {
+                font-size: 18px;
+                line-height: 25px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 395px) {
+        & {
+          .welcomeSec {
+            .leftSide {
+              img {
+                width: 250px;
+              }
+              .welcomeText {
+                font-size: 19px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                text-align: center;
+              }
+            }
+          }
+          .reservationSec {
+            .rightSideReserve{
+              h2{
+                font-size: 30px;
+              }
+            }
+            .leftSideReserve {
+              .images {
+                .mainImg {
+                  width: 200px;
+                }
+                .secondaryImg,
+                .secondaryImg2 {
+                  width: 65px;
+                }
+                .secondaryImg {
+                  right: -10%;
+                  top: -10%;
+                }
+                .secondaryImg2 {
+                  bottom: -15%;
+                  left: -10%;
+                }
+              }
+              p {
+              }
             }
           }
         }
