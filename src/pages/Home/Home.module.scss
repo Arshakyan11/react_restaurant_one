@@ -269,6 +269,18 @@
             }
           }
         }
+        .chiefSection {
+          .mainTitle {
+            font-size: 45px;
+          }
+          .chiefsBox {
+            .eachChief {
+              img {
+                width: 250px;
+              }
+            }
+          }
+        }
       }
       @media screen and (max-width: 1024px) {
         & {
@@ -323,6 +335,22 @@
       }
       @media screen and (max-width: 845px) {
         & {
+          .welcomeSec {
+            gap: 20px;
+            .leftSide {
+              img {
+                width: 350px;
+              }
+            }
+            .rightSide {
+              .welcome {
+                font-size: 35px;
+              }
+              .welcomeText {
+                font-size: 18px;
+              }
+            }
+          }
           .reservationSec {
             flex-direction: column;
             .leftSideReserve {
@@ -365,20 +393,26 @@
               }
             }
           }
-          .welcomeSec {
-            gap: 20px;
-            .leftSide {
-              img {
-                width: 350px;
+          .chiefSection {
+            padding: 20px;
+            .mainTitle {
+              font-size: 40px;
+            }
+            .chiefsBox {
+              .eachChief {
+                img {
+                  width: 200px;
+                }
+                h2 {
+                  font-size: 22px;
+                }
+                h3 {
+                  font-size: 22px;
+                }
               }
             }
-            .rightSide {
-              .welcome {
-                font-size: 35px;
-              }
-              .welcomeText {
-                font-size: 18px;
-              }
+            a {
+              font-size: 22px;
             }
           }
         }
@@ -416,12 +450,53 @@
               }
             }
           }
+          .chiefSection {
+            .mainTitle {
+              font-size: 35px;
+            }
+            .chiefsBox {
+              gap: 15px;
+              .eachChief {
+                img {
+                  width: 180px;
+                }
+                h2 {
+                  font-size: 20px;
+                }
+                h3 {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
         }
       }
       @media screen and (max-width: 680px) {
         .reservationSec {
           align-items: center;
           padding: 50px 25px;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .chiefSection {
+          .chiefsBox {
+            padding: 0 5px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            .eachChief {
+              img {
+                width: 180px;
+              }
+              h2 {
+                font-size: 20px;
+              }
+              h3 {
+                font-size: 20px;
+              }
+            }
+          }
         }
       }
       @media screen and (max-width: 580px) {
@@ -441,6 +516,18 @@
             p {
               font-size: 18px;
               text-align: center;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 470px) {
+        .chiefSection {
+          .chiefsBox {
+            gap: 25px;
+            .eachChief {
+              img {
+                width: 150px;
+              }
             }
           }
         }
@@ -495,8 +582,8 @@
             }
           }
           .reservationSec {
-            .rightSideReserve{
-              h2{
+            .rightSideReserve {
+              h2 {
                 font-size: 30px;
               }
             }
@@ -519,6 +606,18 @@
                 }
               }
               p {
+              }
+            }
+          }
+          .chiefSection {
+            .chiefsBox {
+              .eachChief {
+                img {
+                  width: 180px;
+                  &:hover {
+                    transform: scale(1.05);
+                  }
+                }
               }
             }
           }
