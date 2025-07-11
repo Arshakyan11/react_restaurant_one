@@ -1,6 +1,6 @@
 @import "../../global/global.scss";
 .littleMenuSec {
-  padding: 60px 0;
+  padding: 60px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,11 +12,15 @@
   }
   .foodType {
     display: flex;
+    justify-content: center;
     gap: 50px;
+    width: 100%;
     button {
-      padding: 10px 50px;
+      padding: 15px;
       background: rgba(128, 128, 128, 0.2);
       border: none;
+      max-width: 200px;
+      width: 100%;
       border-radius: 20px;
       font-size: 20px;
       cursor: pointer;
@@ -82,6 +86,9 @@
           }
         }
         .ingredients {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
           h3 {
             font-size: 17px;
             font-weight: 600;
@@ -118,7 +125,6 @@
               font-weight: 700;
               font-size: 18px;
               color: #2a9d8f;
-              margin-left: 6px;
             }
           }
           button,
@@ -135,6 +141,256 @@
             transition: all 0.25s ease;
             &:hover {
               background-color: #21867a;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1156px) {
+    .mainText {
+      font-size: 55px;
+    }
+    .foodType {
+      gap: 30px;
+      button {
+        font-size: 18px;
+      }
+    }
+    .allMenu {
+      .eachMenu {
+        max-width: 300px;
+      }
+    }
+  }
+  @media screen and (max-width: 1040px) {
+    .mainText {
+      font-size: 50px;
+    }
+    .foodType {
+      gap: 28px;
+      button {
+        font-size: 18px;
+      }
+    }
+    .allMenu {
+      .eachMenu {
+        max-width: 270px;
+      }
+    }
+  }
+  @media screen and (max-width: 972px) {
+    .mainText {
+      font-size: 47px;
+    }
+    .foodType {
+      gap: 40px;
+      button {
+        padding: 15px 10px;
+      }
+    }
+  }
+  @media screen and (max-width: 946px) {
+    .mainText {
+      font-size: 47px;
+    }
+    .foodType {
+      gap: 30px;
+      button {
+        max-width: 140px;
+        font-size: 17px;
+      }
+    }
+    .allMenu {
+      .eachMenu {
+        max-width: 240px;
+        .infoOfMeal {
+          h2 {
+            font-size: 17px;
+          }
+          .stars {
+            img {
+              width: 15px;
+              height: 15px;
+            }
+          }
+          .priceAndOrderNow {
+            button,
+            .goLogin {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 857px) {
+    .mainText {
+      font-size: 43px;
+    }
+    .foodType {
+      button {
+        font-size: 16px;
+      }
+    }
+    .allMenu {
+      .eachMenu {
+        max-width: 200px;
+        height: 550px;
+        .infoOfMeal {
+          .priceAndOrderNow {
+            flex-direction: column;
+            gap: 10px;
+            .priceBox {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              gap: 20px;
+            }
+            button,
+            .goLogin {
+              font-size: 15px;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 770px) {
+    .mainText {
+      font-size: 43px;
+    }
+    .foodType {
+      button {
+        font-size: 15px;
+      }
+    }
+    .allMenu {
+      gap: 20px;
+    }
+  }
+  @media screen and (max-width: 695px) {
+    .foodType {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .allMenu {
+      .eachMenu {
+        max-width: 280px;
+        .infoOfMeal {
+          h2 {
+            font-size: 19px;
+          }
+          .stars {
+            img {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 637px) {
+    .allMenu {
+      .eachMenu {
+        max-width: 240px;
+        .infoOfMeal {
+          h2 {
+            font-size: 17px;
+          }
+          .stars {
+            img {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 558px) {
+    .allMenu {
+      .eachMenu {
+        max-width: 200px;
+        .infoOfMeal {
+          h2 {
+            font-size: 17px;
+          }
+          .stars {
+            img {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 476px) {
+    .allMenu {
+      .eachMenu {
+        max-width: 180px;
+        height: 400px;
+        .infoOfMeal {
+          h2 {
+            font-size: 16px;
+          }
+          .ingredients {
+            display: none;
+          }
+          .stars {
+            height: 100%;
+            img {
+              margin-top: auto;
+            }
+            span {
+              display: none;
+            }
+            img {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 435px) {
+    .allMenu {
+      .eachMenu {
+        max-width: 160px;
+        height: 440px;
+      }
+    }
+  }
+  @media screen and (max-width: 394px) {
+    .allMenu {
+      .eachMenu {
+        max-width: 140px;
+        height: 400px;
+        .infoOfMeal {
+          .priceAndOrderNow {
+            button,
+            .goLogin {
+              padding: 10px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 356px) {
+    .allMenu {
+      .eachMenu {
+        max-width: 240px;
+        height: 400px;
+        .infoOfMeal {
+          .priceAndOrderNow {
+            button,
+            .goLogin {
+              padding: 10px 0;
             }
           }
         }
