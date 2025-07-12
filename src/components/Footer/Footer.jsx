@@ -16,34 +16,37 @@ const Footer = () => {
             <Link className="logoTitle" to={ROUTES.HOME}>
               eriso
             </Link>
-            <p className="welcomeText">
-              We're glad you're here! At ERISO, we serve fresh, flavorful dishes
-              made with care. Thank you for dining with us
-            </p>
-            <div className="socialLinks">
-              <a
-                href="https://www.facebook.com/share/18UMZzsAgy/?mibextid=wwXIfrnp"
-                target="_blank"
-              >
-                <FaFacebook />
-              </a>
-              <a
-                href="https://www.instagram.com/erhamindustry?igsh=cXVrdjJobWt1cWc5&utm_source=qr"
-                target="_blank"
-              >
-                <FaInstagram />
-              </a>
-              <a href="https://x.com/erhamindustry?s=21" target="_blank">
-                <FaTwitter />
-              </a>
-              <a
-                href="https://youtube.com/@erham.industry?si=7ZBDgjGpKEpkkq9f"
-                target="_blank"
-              >
-                <FaYoutube />
-              </a>
+            <div className="firstLinebottomBox">
+              <p className="welcomeText">
+                We're glad you're here! At ERISO, we serve fresh, flavorful
+                dishes made with care. Thank you for dining with us
+              </p>
+              <div className="socialLinks">
+                <a
+                  href="https://www.facebook.com/share/18UMZzsAgy/?mibextid=wwXIfrnp"
+                  target="_blank"
+                >
+                  <FaFacebook />
+                </a>
+                <a
+                  href="https://www.instagram.com/erhamindustry?igsh=cXVrdjJobWt1cWc5&utm_source=qr"
+                  target="_blank"
+                >
+                  <FaInstagram />
+                </a>
+                <a href="https://x.com/erhamindustry?s=21" target="_blank">
+                  <FaTwitter />
+                </a>
+                <a
+                  href="https://youtube.com/@erham.industry?si=7ZBDgjGpKEpkkq9f"
+                  target="_blank"
+                >
+                  <FaYoutube />
+                </a>
+              </div>
             </div>
           </div>
+          {/* <div className="navigationBox"> */}
           <div className="secondLine">
             <h2>Page</h2>
             <NavLink to={ROUTES.HOME}>Home</NavLink>
@@ -66,7 +69,9 @@ const Footer = () => {
                 <NavLink to={`/profile/${ROUTES.PROFILERESERVEDATE}`}>
                   Reserve Date
                 </NavLink>
-                <NavLink to={`/profile/${ROUTES.PROFILEWISHLIST}`}>Wishlist</NavLink>
+                <NavLink to={`/profile/${ROUTES.PROFILEWISHLIST}`}>
+                  Wishlist
+                </NavLink>
               </>
             ) : (
               <>
@@ -77,9 +82,10 @@ const Footer = () => {
           </div>
           <div className="secondLine">
             <h2>Get In Touch</h2>
-            <p>AdminAdmin123@gmail.com</p>
-            <a>+ 374-11-22-33-44</a>
+            <a href="mailto:AdminAdmin123@gmail.com">Write with Email</a>
+            <a href="tel:+37411223344">Call Us</a>
           </div>
+          {/* </div> */}
         </div>
         <p className="copyright">Copyright © 2025. All rights reserved.</p>
       </div>
