@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.scss";
-import { logo } from "../Images";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { ROUTES } from "../../Routes";
@@ -25,21 +24,28 @@ const Footer = () => {
                 <a
                   href="https://www.facebook.com/share/18UMZzsAgy/?mibextid=wwXIfrnp"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaFacebook />
                 </a>
                 <a
                   href="https://www.instagram.com/erhamindustry?igsh=cXVrdjJobWt1cWc5&utm_source=qr"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaInstagram />
                 </a>
-                <a href="https://x.com/erhamindustry?s=21" target="_blank">
+                <a
+                  href="https://x.com/erhamindustry?s=21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FaTwitter />
                 </a>
                 <a
                   href="https://youtube.com/@erham.industry?si=7ZBDgjGpKEpkkq9f"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FaYoutube />
                 </a>
@@ -82,8 +88,20 @@ const Footer = () => {
             </div>
             <div className="secondLine">
               <h2>Get In Touch</h2>
-              <a href="mailto:AdminAdmin123@gmail.com">Write with Email</a>
-              <a href="tel:+37411223344">Call Us</a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="mailto:AdminAdmin123@gmail.com"
+              >
+                Write with Email
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="tel:+37411223344"
+              >
+                Call Us
+              </a>
             </div>
           </div>
         </div>
