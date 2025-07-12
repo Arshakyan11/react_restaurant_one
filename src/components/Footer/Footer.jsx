@@ -46,46 +46,46 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          {/* <div className="navigationBox"> */}
-          <div className="secondLine">
-            <h2>Page</h2>
-            <NavLink to={ROUTES.HOME}>Home</NavLink>
-            <NavLink to={ROUTES.MENU}>Menu</NavLink>
-            <NavLink to={ROUTES.Search}>Search</NavLink>
-            <NavLink to={ROUTES.RESERVATION}>Reservation</NavLink>
+          <div className="navigationBox">
+            <div className="secondLine">
+              <h2>Page</h2>
+              <NavLink to={ROUTES.HOME}>Home</NavLink>
+              <NavLink to={ROUTES.MENU}>Menu</NavLink>
+              <NavLink to={ROUTES.Search}>Search</NavLink>
+              <NavLink to={ROUTES.RESERVATION}>Reservation</NavLink>
+            </div>
+            <div className="secondLine">
+              <h2>Information</h2>
+              <NavLink to={ROUTES.ABOUTUS}>About Us</NavLink>
+              <NavLink to={ROUTES.RESTAURANTS}>Our Addresses</NavLink>
+              <NavLink to={ROUTES.CONTACTUS}>Contact Us</NavLink>
+              <NavLink to={ROUTES.STAFF}>Our Staff</NavLink>
+            </div>
+            <div className="secondLine">
+              <h2>Account</h2>
+              {userData ? (
+                <>
+                  <NavLink to={ROUTES.PROFILE}>Profile</NavLink>
+                  <NavLink to={`/profile/${ROUTES.PROFILERESERVEDATE}`}>
+                    Reserve Date
+                  </NavLink>
+                  <NavLink to={`/profile/${ROUTES.PROFILEWISHLIST}`}>
+                    Wishlist
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                  <NavLink to={ROUTES.REGISTRATION}>Registration</NavLink>
+                  <NavLink to={ROUTES.LOGIN}>Login</NavLink>
+                </>
+              )}
+            </div>
+            <div className="secondLine">
+              <h2>Get In Touch</h2>
+              <a href="mailto:AdminAdmin123@gmail.com">Write with Email</a>
+              <a href="tel:+37411223344">Call Us</a>
+            </div>
           </div>
-          <div className="secondLine">
-            <h2>Information</h2>
-            <NavLink to={ROUTES.ABOUTUS}>About Us</NavLink>
-            <NavLink to={ROUTES.RESTAURANTS}>Our Addresses</NavLink>
-            <NavLink to={ROUTES.CONTACTUS}>Contact Us</NavLink>
-            <NavLink to={ROUTES.STAFF}>Our Staff</NavLink>
-          </div>
-          <div className="secondLine">
-            <h2>Account</h2>
-            {userData ? (
-              <>
-                <NavLink to={ROUTES.PROFILE}>Profile</NavLink>
-                <NavLink to={`/profile/${ROUTES.PROFILERESERVEDATE}`}>
-                  Reserve Date
-                </NavLink>
-                <NavLink to={`/profile/${ROUTES.PROFILEWISHLIST}`}>
-                  Wishlist
-                </NavLink>
-              </>
-            ) : (
-              <>
-                <NavLink to={ROUTES.REGISTRATION}>Registration</NavLink>
-                <NavLink to={ROUTES.LOGIN}>Login</NavLink>
-              </>
-            )}
-          </div>
-          <div className="secondLine">
-            <h2>Get In Touch</h2>
-            <a href="mailto:AdminAdmin123@gmail.com">Write with Email</a>
-            <a href="tel:+37411223344">Call Us</a>
-          </div>
-          {/* </div> */}
         </div>
         <p className="copyright">Copyright © 2025. All rights reserved.</p>
       </div>
