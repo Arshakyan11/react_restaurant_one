@@ -15,10 +15,13 @@ const AboutUS = () => {
           <div className={styles.firstBox} data-aos="fade-left">
             <div className={styles.firstleftSide}>
               <img src={pic2} alt="img" />
+              <p className={styles.title}>
+                <span>Our</span> <br /> Restaurant
+              </p>
             </div>
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
-                <span>Our</span> <br /> restaurant
+                <span>Our</span> <br /> Restaurant
               </p>
               <p className={styles.info}>
                 Welcome to our restaurant, where tradition meets innovation on
@@ -60,11 +63,17 @@ const AboutUS = () => {
             </div>
             <div className={styles.firstleftSide}>
               <img src={pic3} alt="img" />
+              <p className={styles.title}>
+                <span>Our</span> <br /> Menu
+              </p>
             </div>
           </div>
           <div className={styles.firstBox} data-aos="fade-left">
             <div className={styles.firstleftSide}>
               <img src={pic5} alt="img" className={styles.alternativeImg} />
+              <p className={styles.title}>
+                <span>Our</span> <br /> Service
+              </p>
             </div>
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
@@ -102,11 +111,17 @@ const AboutUS = () => {
             </div>
             <div className={styles.firstleftSide}>
               <img src={pic4} alt="img" className={styles.alternativeImg} />
+              <p className={styles.title}>
+                <span>Our</span> <br /> Working Time
+              </p>
             </div>
           </div>
           <div className={styles.firstBox} data-aos="fade-left">
             <div className={styles.firstleftSide}>
               <img src={ownerImg} alt="img" className={styles.ownerImg} />
+              <p className={styles.title}>
+                Owner & Executive Chef <br /> <span>Erik Arshakyan </span>
+              </p>
             </div>
             <div className={styles.firsRightSide}>
               <p className={styles.title}>
