@@ -428,10 +428,27 @@
         .bottomNavSection {
           .middle {
             ul {
+              li {
+                a {
+                  font-size: 18px;
+                }
+              }
               .dropDown {
+                .dropDownToggle{
+                  font-size: 18px;
+                }
                 .dropDownMenu {
                   left: -40%;
                 }
+              }
+            }
+          }
+          .right {
+            a,
+            button {
+              font-size: 16px;
+              svg {
+                font-size: 14px;
               }
             }
           }

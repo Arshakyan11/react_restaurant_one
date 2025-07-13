@@ -8,7 +8,7 @@
       flex-direction: column;
       align-items: center;
       gap: 50px;
-      padding: 40px 0;
+      padding: 40px 20px;
       background: linear-gradient(to bottom, #f7f6f4, #fff);
       .searchLine {
         display: flex;
@@ -31,7 +31,7 @@
           background: transparent;
           outline: none;
           width: 100%;
-          padding: 20px;
+          padding: 15px 20px;
           color: #333;
           font-size: 22px;
           padding-left: 0;
@@ -210,6 +210,85 @@
               }
             }
           }
+        }
+      }
+      @media screen and (max-width: 980px) {
+        .searchLine {
+          max-width: 700px;
+          svg {
+            font-size: 22px;
+          }
+          input {
+            font-size: 20px;
+            &::placeholder {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 812px) {
+        .searchLine {
+          max-width: 630px;
+          svg {
+            font-size: 20px;
+          }
+          input {
+            font-size: 18px;
+            &::placeholder {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 715px) {
+        .searchLine {
+          max-width: 570px;
+          svg {
+            font-size: 18px;
+          }
+          input {
+            padding: 10px 20px;
+            padding-left: 0px;
+          }
+        }
+        .noMealFound {
+          max-width: 420px;
+          .searchingIcon {
+            font-size: 45px;
+          }
+          .searchingTitle {
+            font-size: 22px;
+          }
+          .searchingMessage {
+            font-size: 17px;
+          }
+        }
+      }
+      @media screen and (max-width: 575px) {
+        .searchLine {
+          max-width: 380px;
+        }
+        .noMealFound {
+          max-width: 300px;
+          .searchingIcon {
+            font-size: 40px;
+          }
+          .searchingMessage {
+            font-size: 17px;
+          }
+          .buttons {
+            flex-direction: column;
+          }
+        }
+      }
+      @media screen and (max-width: 445px) {
+        .searchLine {
+          max-width: 300px;
+        }
+      }
+      @media screen and (max-width: 365px) {
+        .noMealFound {
+          max-width: 275px;
         }
       }
     }
