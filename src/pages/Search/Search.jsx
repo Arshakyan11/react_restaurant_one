@@ -34,7 +34,7 @@ const Search = () => {
             />
           </div>
           <div className={styles.allMeals}>
-            {loading ? (
+            {true ? (
               <div className={styles.loaders}>
                 <span className={styles.loader}></span>
                 <span className={styles.loader}></span>
@@ -60,9 +60,11 @@ const Search = () => {
                       <h2>{each.label}</h2>
                       <div className={styles.stars}>
                         <span>Rate:</span>
-                        {each.starCountArr.map((_, i) => {
-                          return <img key={i} src={starRating} alt="star" />;
-                        })}
+                        <div className={styles.mainStars}>
+                          {each.starCountArr.map((_, i) => {
+                            return <img key={i} src={starRating} alt="star" />;
+                          })}
+                        </div>
                       </div>
                       <div className={styles.cousine}>
                         <span>Cousine</span>
