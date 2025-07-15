@@ -2,6 +2,7 @@
 .mainNav {
   background: #fffdf6;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid #cccccc;
   .container {
     max-width: 1440px;
     margin: auto;
@@ -12,7 +13,6 @@
         align-items: center;
         padding: 0 40px;
         gap: 20px;
-        border-bottom: 2px solid #cccccc;
         .left {
           overflow: hidden;
           width: 210px;
@@ -434,7 +434,7 @@
                 }
               }
               .dropDown {
-                .dropDownToggle{
+                .dropDownToggle {
                   font-size: 18px;
                 }
                 .dropDownMenu {

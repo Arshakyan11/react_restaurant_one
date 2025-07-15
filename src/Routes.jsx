@@ -15,3 +15,7 @@ export const ROUTES = {
   PROFILEWISHLIST: "wishlist",
   NOTFOUND: "*",
 };
+
+// home
+//aboutUs
+//Search

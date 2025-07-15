@@ -34,7 +34,7 @@ const Search = () => {
             />
           </div>
           <div className={styles.allMeals}>
-            {true ? (
+            {loading ? (
               <div className={styles.loaders}>
                 <span className={styles.loader}></span>
                 <span className={styles.loader}></span>

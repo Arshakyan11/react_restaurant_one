@@ -525,4 +525,36 @@
       }
     }
   }
+  .firstLine:last-child {
+    height: 130px;
+  }
+  @media screen and (max-width: 860px) {
+    .firstLine {
+      width: 500px;
+      .loader2 {
+        font-size: 60px;
+        &::before {
+          left: 42px;
+          bottom: 12px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 560px) {
+    .firstLine {
+      width: 300px;
+      .loader:first-child {
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 432px) {
+    .firstLine {
+      .loader:nth-child(2) {
+        display: none;
+      }
+    }
+  }
 }

@@ -12,7 +12,7 @@ import Pagination from "../Pagination/Pagination";
 import {
   getAllPagination,
   setInfoAboutPagination,
-} from "../../store/PaginationSlice/paginationSlice"; 
+} from "../../store/PaginationSlice/paginationSlice";
 import Aos from "aos";
 import { notifyForError } from "../../helpers/notifyUser";
 import { sendingWatchList } from "../../helpers/sendData";
@@ -66,7 +66,7 @@ const LittleMenuSection = () => {
         })}
       </div>
       <div className={styles.allMenu}>
-        {loading ? (
+        {true ? (
           <div className={styles.allLoaders}>
             <div className={styles.firstLine}>
               <span className={styles.loader}></span>
