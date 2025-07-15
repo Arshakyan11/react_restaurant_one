@@ -20,7 +20,7 @@ const OurRestourants = () => {
             return (
               <div
                 className={styles.firstRestaurant}
-                data-aos="fade-left"
+                data-aos="fade-up"
                 key={ind}
               >
                 <p className={styles.title}>
@@ -46,18 +46,30 @@ const OurRestourants = () => {
                 </div>
                 <RestaurantSlider imagesArr={elm.images} />
                 <div className={styles.location}>
-                  <p>
-                    <span> {elm.city}</span> <br />
-                    {elm.info}
-                  </p>
-                  <iframe
-                    src={elm.iframeLink}
-                    width="600"
-                    height="450"
-                    style={{ border: 0 }}
-                    loading="lazy"
-                    title="map"
-                  ></iframe>
+                  <div className={styles.textInfo}>
+                    <span> {elm.city}</span>
+                    <div className={styles.mapWrapperMedian}>
+                      <iframe
+                        src={elm.iframeLink}
+                        width="600"
+                        height="450"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                        title="map"
+                      ></iframe>
+                    </div>
+                    <p>{elm.info}</p>
+                  </div>
+                  <div className={styles.mapWrapper}>
+                    <iframe
+                      src={elm.iframeLink}
+                      width="600"
+                      height="450"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      title="map"
+                    ></iframe>
+                  </div>
                 </div>
               </div>
             );

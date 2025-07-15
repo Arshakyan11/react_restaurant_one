@@ -20,3 +20,4 @@ export const ROUTES = {
 //aboutUs
 //Search
 //reservation
+//ourrestaurants
