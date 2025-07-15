@@ -27,22 +27,23 @@ const OurRestourants = () => {
                   <span>ERISO</span> {elm.location}
                 </p>
                 <div className={styles.info}>
-                  <p>
+                  <div className={styles.infoEachLine}>
                     <FaLocationDot />
-                    {elm.address}
-                  </p>
-                  <p>
+                    <p>{elm.address}</p>
+                  </div>
+                  <div className={styles.infoEachLine}>
                     <FaPhone />
-                    {elm.phone}
-                  </p>
-                  <p>
+                    <p>{elm.phone}</p>
+                  </div>
+                  <div className={styles.infoEachLine}>
                     <FaEnvelope />
-                    {elm.email}
-                  </p>
-                  <p>
+                    <p>{elm.email}</p>
+                  </div>
+                  <div className={styles.infoEachLine}>
                     <FaClock />
-                    {elm.workingTime}
-                  </p>
+                    {/* <FaEnvelope /> */}
+                    <p>{elm.workingTime}</p>
+                  </div>
                 </div>
                 <RestaurantSlider imagesArr={elm.images} />
                 <div className={styles.location}>

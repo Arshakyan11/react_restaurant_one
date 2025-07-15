@@ -25,13 +25,17 @@
         .info {
           display: flex;
           flex-direction: column;
-          gap: 5px;
-          p {
-            vertical-align: middle;
-            font-size: 20px;
+          gap: 10px;
+          .infoEachLine {
+            display: flex;
+            gap: 5px;
+            p {
+              font-size: 20px;
+              flex: 1;
+            }
             svg {
-              vertical-align: middle;
-              margin-right: 10px;
+              font-size: 20px;
+
             }
           }
         }
@@ -101,8 +105,13 @@
             font-size: 35px;
           }
           .info {
-            p {
-              font-size: 18px;
+            .infoEachLine {
+              p {
+                font-size: 18px;
+              }
+              svg {
+                font-size: 18px;
+              }
             }
           }
           .location {
@@ -143,12 +152,36 @@
                 }
               }
               P {
+                font-size: 17px;
                 max-width: 400px;
                 text-align: center;
+              }
+              span {
+                font-size: 35px;
               }
             }
           }
         }
+      }
+      @media screen and (max-width: 455px) {
+        .firstRestaurant {
+          .title {
+            font-size: 30px;
+          }
+          .location {
+            .textInfo {
+              .mapWrapperMedian {
+                max-width: 300px;
+                iframe {
+                  height: 200px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 365px) {
+        padding: 40px 20px;
       }
     }
   }
