@@ -19,3 +19,4 @@ export const ROUTES = {
 // home
 //aboutUs
 //Search
+//reservation

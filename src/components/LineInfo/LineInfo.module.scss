@@ -1,7 +1,7 @@
 .lineEachElement {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  // align-items: center;
   gap: 20px;
   padding: 20px;
   .leftSide {
@@ -10,6 +10,9 @@
     gap: 32px;
     color: white;
     max-width: 500px;
+    img {
+      display: none;
+    }
     h2 {
       font-size: 30px;
       &::after {
@@ -53,6 +56,153 @@
     img {
       width: 100%;
       border-radius: 12px;
+    }
+  }
+  @media screen and (max-width: 1215px) {
+    .leftSide {
+      h2 {
+        font-size: 27px;
+      }
+      .midTitle {
+        font-size: 32px;
+      }
+      .lineEachElInfo {
+        font-size: 18px;
+      }
+      a {
+        font-size: 19px;
+      }
+    }
+    .rightSide {
+      max-width: 450px;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 1065px) {
+    .leftSide {
+      h2 {
+        font-size: 25px;
+      }
+      .midTitle {
+        font-size: 30px;
+      }
+      .lineEachElInfo {
+        font-size: 17px;
+        line-height: 20px;
+      }
+    }
+    .rightSide {
+      max-width: 380px;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 980px) {
+    .leftSide {
+      max-width: 400px;
+      h2 {
+        font-size: 23px;
+      }
+      .midTitle {
+        font-size: 27px;
+      }
+      a {
+        max-width: 170px;
+        font-size: 16px;
+      }
+    }
+    .rightSide {
+      max-width: 330px;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  @media screen and (max-width: 835px) {
+    .rightSide {
+      max-width: 230px;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 720px) {
+    .leftSide {
+      max-width: 550px;
+      align-items: center;
+      text-align: center;
+      img {
+        display: block;
+        max-width: 400px;
+        width: 100%;
+      }
+      h2 {
+        font-size: 23px;
+      }
+      .midTitle {
+        font-size: 27px;
+      }
+      a {
+        max-width: 300px;
+        width: 100%;
+      }
+    }
+    .rightSide {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 628px) {
+    .leftSide {
+      max-width: 450px;
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .leftSide {
+      max-width: 400px;
+      h2 {
+        font-size: 21px;
+      }
+      .midTitle {
+        font-size: 23px;
+      }
+      img {
+        max-width: 300px;
+      }
+    }
+  }
+  @media screen and (max-width: 476px) {
+    .leftSide {
+      max-width: 320px;
+    }
+  }
+  @media screen and (max-width: 406px) {
+    .leftSide {
+      max-width: 300px;
+      h2 {
+        font-size: 18px;
+      }
+      .midTitle {
+        font-size: 20px;
+      }
+      .lineEachElInfo {
+        line-height: 18px;
+        font-size: 15px;
+      }
+      a {
+        max-width: 270px;
+      }
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  @media screen and (max-width: 356px) {
+    .leftSide {
+      max-width: 270px;
     }
   }
 }

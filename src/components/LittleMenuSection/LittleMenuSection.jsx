@@ -66,7 +66,7 @@ const LittleMenuSection = () => {
         })}
       </div>
       <div className={styles.allMenu}>
-        {true ? (
+        {loading ? (
           <div className={styles.allLoaders}>
             <div className={styles.firstLine}>
               <span className={styles.loader}></span>

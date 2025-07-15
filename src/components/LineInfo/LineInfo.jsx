@@ -12,6 +12,7 @@ const LineInfo = ({ img, eachElName, middleTitle, info, linkTo, order }) => {
         <h2>{eachElName}</h2>
         <p className={styles.midTitle}>{middleTitle}</p>
         <p className={styles.lineEachElInfo}>{info}</p>
+        <img src={img} alt="img" />
         <Link to={linkTo}>Explore More</Link>
       </div>
       <div className={styles.rightSide} style={{ order: order }}>
