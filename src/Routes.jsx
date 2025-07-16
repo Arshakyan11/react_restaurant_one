@@ -16,14 +16,18 @@ export const ROUTES = {
   NOTFOUND: "*",
 };
 
-// home
+//home
 //aboutUs
-//Search
-//reservation
-//ourrestaurants
-//contactUs
 //staff
+//contactUs
+//ourrestaurants
+//Search
+
+//reservation
+
 //registration
 //login
-//notFound
 //profile
+//profile/reserveDate
+
+//notFound

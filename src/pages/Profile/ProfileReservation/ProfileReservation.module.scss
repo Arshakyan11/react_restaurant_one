@@ -4,21 +4,21 @@
   flex-direction: column;
   gap: 60px;
   max-width: 1000px;
-  margin: 40px auto;
   width: 100%;
+  margin: 0px auto;
   border-radius: 20px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   font-family: "Inter", sans-serif;
   padding: 30px;
   color: #333;
   .header {
-    text-align: center;
     display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     img {
-      width: 600px;
+      width: 100%;
       height: 184px;
       object-fit: cover;
       margin-bottom: 20px;
@@ -56,6 +56,7 @@
         display: flex;
         justify-content: space-between;
         padding: 10px 0;
+        gap: 20px;
         border-bottom: 1px solid #333;
         p:first-child {
           font-weight: 500;
@@ -63,6 +64,7 @@
         }
         p:last-child {
           color: #111;
+          text-align: end;
         }
       }
       button {
@@ -128,6 +130,116 @@
           color: #333;
         }
       }
+    }
+  }
+  @media screen and (max-width: 1215px) {
+    .header {
+      .resereveInfoTextMain {
+        font-size: 33px;
+      }
+      .resereveInfoTextMiddle {
+        font-size: 18px;
+      }
+    }
+    .reserveDateInfo {
+      .reserveMainInfo {
+        button {
+          max-width: 300px;
+        }
+      }
+      .reserveNotFound {
+        font-size: 18px;
+      }
+    }
+  }
+  @media screen and (max-width: 955px) {
+    .header {
+      .resereveInfoTextMain {
+        font-size: 28px;
+      }
+    }
+  }
+  @media screen and (max-width: 880px) {
+    .header {
+      .resereveInfoTextMain {
+        font-size: 25px;
+      }
+      .resereveInfoTextMiddle {
+        font-size: 17px;
+      }
+      .resereveInfoTextLast {
+        font-size: 16px;
+      }
+    }
+    .reserveDateInfo {
+      .reserveMainInfo {
+        button {
+          max-width: 200px;
+          font-size: 16px;
+          padding: 12px 15px;
+        }
+      }
+      .noteSec {
+        h2 {
+          font-size: 20px;
+        }
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 565px) {
+    .reserveDateInfo {
+      .reserveMainInfo {
+        font-size: 15px;
+        button {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 475px) {
+    .header {
+      .resereveInfoTextMain {
+        font-size: 23px;
+      }
+      .resereveInfoTextMiddle {
+        font-size: 16px;
+      }
+      .resereveInfoTextLast {
+        font-size: 15px;
+      }
+    }
+    .reserveDateInfo {
+      .reserveMainInfo {
+        font-size: 14px;
+        button {
+          font-size: 14px;
+        }
+      }
+      .reserveNotFound {
+        font-size: 17px;
+      }
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .reserveDateInfo {
+      .reserveMainInfo {
+        .eachLine {
+          flex-direction: column;
+          gap: 10px;
+          p:last-child {
+            text-align: start;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    padding: 30px 20px;
+    .header {
+      padding: 0 10px;
     }
   }
 }

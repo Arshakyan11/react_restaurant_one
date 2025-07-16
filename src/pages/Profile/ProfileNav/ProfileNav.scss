@@ -1,10 +1,9 @@
 .miniNav {
-  background: #fffdf6;
   background: #fefefe;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  max-width: 260px;
   border-radius: 20px;
-  width: 100%;
+  width: 260px;
+  flex-shrink: 0;
   font-family: "Segoe UI", sans-serif;
   .miniNavSec {
     display: flex;
@@ -67,6 +66,7 @@
   }
   @media screen and (max-width: 820px) {
     max-width: 600px;
+    width: 100%;
     margin: auto;
     .miniNavSec {
       flex-direction: row;

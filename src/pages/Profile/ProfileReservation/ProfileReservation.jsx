@@ -12,14 +12,14 @@ const ProfileReservation = () => {
   const { userData } = useSelector(getAllReservationInfo);
   const isTrue = userData?.reservation ? true : false;
   const date = userData?.reservation?.date.split("T");
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     Aos.init({ duration: 800 });
   });
   return (
     <div className={styles.reserveDate}>
-      <div className={styles.header} data-aos="fade-up">
+      <div className={styles.header}>
         <img src={reserveDate} alt="imgReserve" />
         <p className={styles.resereveInfoTextMain}>Your Tabel Bookings</p>
         <p className={styles.resereveInfoTextMiddle}>
@@ -30,8 +30,7 @@ const ProfileReservation = () => {
           cancel a booking.
         </p>
       </div>
-      {/* <h2>{userData.email}</h2> */}
-      <div className={styles.reserveDateInfo} data-aos="fade-up">
+      <div className={styles.reserveDateInfo}>
         {isTrue ? (
           <div className={styles.reserveMainInfo}>
             <div className={styles.eachLine}>
@@ -63,7 +62,7 @@ const ProfileReservation = () => {
             </button>
           </div>
         ) : (
-          <div className={styles.reserveNotFound} data-aos="fade-up">
+          <div className={styles.reserveNotFound}>
             <p>
               At this very time you didnt have any reservation , but you can go
               to reservation page and do it!
@@ -71,7 +70,7 @@ const ProfileReservation = () => {
             <Link to={`/${ROUTES.RESERVATION}`}>Reservation</Link>
           </div>
         )}
-        <div className={styles.noteSec} data-aos="fade-up">
+        <div className={styles.noteSec}>
           <h2>attention!!</h2>
           <p>
             <strong>Arrival:</strong> Please arrive at least 10 minutes before

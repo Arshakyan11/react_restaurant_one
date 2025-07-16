@@ -11,13 +11,6 @@
   ],
   "users": [
     {
-      "id": "1",
-      "userName": "Ero",
-      "email": "adminadmin@gmail.com",
-      "password": "adminAdm123",
-      "phoneNumber": "+37477112233"
-    },
-    {
       "id": "4qN6l__",
       "userName": "Ero",
       "phoneNumber": "+37477887711",
@@ -31,6 +24,20 @@
       },
       "wishList": [],
       "totalCheckPrice": "0.000"
+    },
+    {
+      "id": "dPR4NGo",
+      "userName": "Ero",
+      "phoneNumber": "+37477112233",
+      "email": "adminadmin@gmail.com",
+      "password": "adminAdm123",
+      "wishList": [],
+      "reservation": {
+        "address": "5125 Melrose Avenue Los Angeles, CA 90038",
+        "date": "2025-06-01T21:41",
+        "count": "1",
+        "tableType": "Scenic View Table"
+      }
     }
   ]
 }
