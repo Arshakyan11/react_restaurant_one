@@ -25,3 +25,5 @@ export const ROUTES = {
 //staff
 //registration
 //login
+//notFound
+//profile

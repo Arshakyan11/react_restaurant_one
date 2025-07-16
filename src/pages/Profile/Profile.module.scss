@@ -1,5 +1,4 @@
 .profileSec {
-  background: linear-gradient(to bottom right, #f3f4f6, #e5e7eb);
   width: 100%;
   .mainProfileSec {
     display: flex;
@@ -7,7 +6,8 @@
     align-items: center;
     max-width: 600px;
     width: 100%;
-    margin: 60px auto;
+    height: 100%;
+    margin: 0px auto 60px;
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 16px;
@@ -66,25 +66,26 @@
             color: #a0a0a0;
           }
         }
-        .seePassIcon{
-            position: absolute;
-            right:  4%;
-            top: 20%;
-            svg{
-                font-size: 30px;
-            }
+        .seePassIcon {
+          position: absolute;
+          right: 4%;
+          cursor: pointer;
+          top: 20%;
+          svg {
+            font-size: 30px;
+          }
         }
       }
       .buttons {
         display: flex;
         justify-content: flex-end;
-        gap: 16px;
+        flex-direction: column;
+        gap: 26px;
         button {
           padding: 12px 24px;
           font-size: 15px;
           font-weight: 500;
           border-radius: 8px;
-          max-width: 300px;
           width: 100%;
           cursor: pointer;
           border: none;
@@ -101,6 +102,125 @@
             color: #333;
             &:hover {
               background-color: #d5d5d5;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 1095px) {
+      h2 {
+        font-size: 24px;
+      }
+    }
+    @media screen and (max-width: 940px) {
+      h2 {
+        font-size: 22px;
+      }
+    }
+    @media screen and (max-width: 890px) {
+      h2 {
+        font-size: 21px;
+      }
+      form {
+        fieldset {
+          .seePassIcon {
+            top: 25%;
+            svg {
+              font-size: 27px;
+            }
+          }
+        }
+        .buttons {
+          flex-direction: column;
+          button {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 500px) {
+      h2 {
+        font-size: 19px;
+      }
+      form {
+        fieldset {
+          input {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 457px) {
+      h2 {
+        font-size: 19px;
+      }
+      form {
+        fieldset {
+          .seePassIcon {
+            right: 6%;
+            svg {
+              font-size: 25px;
+            }
+          }
+        }
+        .buttons {
+          gap: 15px;
+        }
+      }
+    }
+    @media screen and (max-width: 435px) {
+      padding: 40px 20px;
+      h2 {
+        font-size: 18px;
+      }
+    }
+    @media screen and (max-width: 395px) {
+      form {
+        fieldset {
+          input {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 370px) {
+      h2 {
+        font-size: 16px;
+      }
+      form {
+        fieldset {
+          input {
+            font-size: 15px;
+            padding: 10px 12px;
+          }
+          .seePassIcon {
+            right: 8%;
+            top: 20%;
+            svg {
+              font-size: 22px;
+            }
+          }
+        }
+        .buttons {
+          gap: 10px;
+          button {
+            font-size: 14px;
+            padding: 10px 16px;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 345px) {
+      form {
+        fieldset {
+          input {
+            font-size: 14px;
+            padding: 10px;
+          }
+          .seePassIcon {
+            top: 22%;
+            svg {
+              font-size: 20px;
             }
           }
         }
