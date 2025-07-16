@@ -7,8 +7,8 @@
     .registationSection {
       display: flex;
       justify-content: space-around;
-      gap: 20px;
-      padding: 20px;
+      gap: 40px;
+      padding: 60px 40px;
       .leftSec {
         display: flex;
         flex-direction: column;
@@ -38,6 +38,7 @@
           display: flex;
           flex-direction: column;
           gap: 22px;
+          padding-top: 20px;
           fieldset {
             border-radius: 10px;
             position: relative;
@@ -92,10 +93,141 @@
         }
       }
       .rightSec {
+        .mobileVersionImg {
+          display: none;
+        }
         img {
           max-width: 700px;
           width: 100%;
           height: 700px;
+        }
+      }
+      @media screen and (max-width: 1300px) {
+        gap: 10px;
+        .leftSec {
+          max-width: 500px;
+        }
+        .rightSec {
+          img {
+            max-width: 500px;
+          }
+        }
+      }
+      @media screen and (max-width: 1165px) {
+        gap: 30px;
+        .leftSec {
+          max-width: 450px;
+        }
+        .rightSec {
+          img {
+            max-width: unset;
+            width: 450px;
+          }
+        }
+      }
+      @media screen and (max-width: 1000px) {
+        gap: 30px;
+        .rightSec {
+          img {
+            width: 430px;
+          }
+        }
+      }
+      @media screen and (max-width: 950px) {
+        padding: 0 0 60px;
+        .leftSec {
+          padding: 0 35px;
+        }
+        flex-direction: column;
+        padding-top: 0;
+        .leftSec {
+          max-width: 920px;
+        }
+        .rightSec {
+          order: -1;
+          img {
+            width: 100%;
+            object-fit: cover;
+            height: 300px;
+            display: none;
+          }
+          .mobileVersionImg {
+            display: block;
+          }
+        }
+      }
+      @media screen and (max-width: 620px) {
+        .rightSec {
+          img {
+            height: 200px;
+          }
+        }
+        .leftSec {
+          .loginBox {
+            font-size: 21px;
+            h2 {
+              font-size: 35px;
+            }
+          }
+          form {
+            .buttons {
+              button {
+                font-size: 16px;
+              }
+            }
+          }
+          .copyRight {
+            font-size: 18px;
+          }
+        }
+      }
+      @media screen and (max-width: 530px) {
+        .leftSec {
+          form {
+            .buttons {
+              button {
+                padding: 15px 20px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 426px) {
+        .leftSec {
+          .loginBox {
+            font-size: 19px;
+            text-align: center;
+            h2 {
+              font-size: 32px;
+            }
+          }
+          form {
+            gap: 30px;
+            fieldset {
+              legend {
+                top: -44%;
+              }
+              input {
+                font-size: 16px;
+                padding: 10px 15px;
+                &::placeholder {
+                  font-size: 16px;
+                }
+              }
+              .seePass {
+                font-size: 25px;
+                right: 5%;
+              }
+            }
+            .buttons {
+              button {
+                font-size: 15px;
+              }
+            }
+          }
+          .copyRight {
+            font-size: 17px;
+          }
         }
       }
     }

@@ -103,6 +103,13 @@ const Registration = () => {
           </div>
           <div className={styles.rightSec}>
             <img src={regImg} alt="regImg" />
+            <img
+              className={styles.mobileVersionImg}
+              src={
+                "https://wallpapers.com/images/featured/restaurant-background-2ez77umko2vj5w02.jpg"
+              }
+              alt="regImg"
+            />
           </div>
         </div>
       </div>
