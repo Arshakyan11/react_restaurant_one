@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./Registration.module.scss";
-import { regImg } from "../../components/Images";
+import { regImg, regImgMobile } from "../../components/Images";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -15,7 +15,7 @@ import { ROUTES } from "../../Routes";
 const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { initialValues, loading, isHidden } = useSelector(getAllRegInfo);
+  const { initialValues, isHidden } = useSelector(getAllRegInfo);
 
   return (
     <section className={styles.regSec}>
@@ -105,10 +105,8 @@ const Registration = () => {
             <img src={regImg} alt="regImg" />
             <img
               className={styles.mobileVersionImg}
-              src={
-                "https://wallpapers.com/images/featured/restaurant-background-2ez77umko2vj5w02.jpg"
-              }
-              alt="regImg"
+              src={regImgMobile}
+              alt="regImgMobile"
             />
           </div>
         </div>

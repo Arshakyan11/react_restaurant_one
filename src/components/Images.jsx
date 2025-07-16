@@ -55,7 +55,9 @@ import tokyoRestImg2 from "../assets/images/tokyoRestaurant/tokyo2.jpg";
 import tokyoRestImg3 from "../assets/images/tokyoRestaurant/tokyo3.jpg";
 import tokyoRestImg4 from "../assets/images/tokyoRestaurant/tokyo4.webp";
 import regImg from "../assets/images/defaultImages/registration.png";
+import regImgMobile from "../assets/images/defaultImages/restaurantImageRegMobile.jpg";
 import loginPic from "../assets/images/defaultImages/loginP.jpg";
+import loginPic2 from "../assets/images/defaultImages/loginPic.jpg";
 import restInfo1 from "../assets/images/defaultImages/restaurantInfo1.png";
 import restInfo2 from "../assets/images/defaultImages/restaurantInfo2.png";
 import restInfo3 from "../assets/images/defaultImages/restaurantInfo3.png";
@@ -125,4 +127,6 @@ export {
   restInfo3,
   reserveDate,
   burgerProfile,
+  regImgMobile,
+  loginPic2,
 };

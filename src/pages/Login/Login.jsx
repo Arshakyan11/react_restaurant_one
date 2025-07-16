@@ -11,8 +11,7 @@ import {
 import { userLoginValidation } from "../../helpers/useValidation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { checkUserSendingData } from "../../helpers/sendData";
-import { loginPic } from "../../components/Images";
-
+import { loginPic2 } from "../../components/Images";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,9 +22,11 @@ const Login = () => {
       <div className={styles.container}>
         <div className={styles.navSection}>
           <div className={styles.leftSec}>
+            <img src={loginPic2} alt="" />
             <img
-              src={loginPic}
-              alt=""
+              className={styles.loginPicMobile}
+              src="https://wallpaperbat.com/img/729584-restaurants-wallpaper-top-free-restaurants-background.jpg"
+              alt="logImgMobile"
             />
           </div>
           <div className={styles.rightSec}>
