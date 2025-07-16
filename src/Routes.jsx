@@ -24,3 +24,4 @@ export const ROUTES = {
 //contactUs
 //staff
 //registration
+//login
