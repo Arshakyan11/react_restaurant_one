@@ -22,3 +22,5 @@ export const ROUTES = {
 //reservation
 //ourrestaurants
 //contactUs
+//staff
+//registration

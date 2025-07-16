@@ -1,13 +1,13 @@
 @import "../../global/global.scss";
 .chiefsS {
+  background-color: #fffaf0;
   .container {
     max-width: 1440px;
     margin: auto;
-    background-color: #fffaf0;
     .staffSec {
       @include disFx();
       flex-direction: column;
-      padding: 20px 20px;
+      padding: 60px 40px;
       font-family: "Georgia", serif;
       line-height: 1.7;
       .title {
@@ -30,6 +30,7 @@
         color: #333;
         font-size: 18px;
         text-align: center;
+        max-width: 1100px;
       }
       .allChefs {
         display: flex;
@@ -38,7 +39,8 @@
         gap: 30px;
         .eachChef {
           @include disFx();
-          max-width: 330px;
+          justify-content: flex-start;
+          max-width: 320px;
           flex-direction: column;
           background-color: #fff;
           border: 2px solid #d4af37;
@@ -46,30 +48,214 @@
           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
           overflow: hidden;
           transition: all 0.5s;
-          padding: 20px;
+          padding: 10px 20px;
           transform: translateY(10px);
           background: rgba(201, 182, 147, 0.5);
-          //   opacity: 0;
-          //   animation: fadeInUp 0.6s ease-out forwards;
           transition: all 3s;
           &:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
           }
           img {
-            width: 200px;
-            height: 300px;
+            width: 150px;
+            height: 250px;
             object-fit: cover;
             border-radius: 16px;
+            object-position: 0% 0%;
           }
           .infoSec {
             color: #333;
             font-family: "Georgia", serif;
             line-height: 1.6;
             text-align: left;
-            span {
-              font-weight: bold;
-              margin-right: 10px;
+            .eachInfoSec {
+              display: flex;
+              p:first-child {
+                margin-top: auto;
+              }
+              span {
+                font-weight: bold;
+                margin-right: 10px;
+              }
+              &:last-child {
+                flex-direction: column;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1116px) {
+        .titleMain {
+          font-size: 26px;
+        }
+        .title {
+          font-size: 35px;
+        }
+        .info {
+          font-size: 17px;
+        }
+        .allChefs {
+          .eachChef {
+            max-width: 270px;
+          }
+        }
+      }
+      @media screen and (max-width: 967px) {
+        .titleMain {
+          font-size: 24px;
+        }
+        .title {
+          font-size: 33px;
+        }
+        .info {
+          font-size: 16px;
+        }
+        .allChefs {
+          .eachChef {
+            max-width: 230px;
+            .infoSec {
+              .eachInfoSec {
+                font-size: 15px;
+                span {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 848px) {
+        .titleMain {
+          font-size: 23px;
+        }
+        .title {
+          font-size: 31px;
+        }
+        .info {
+          font-size: 15px;
+          max-width: 650px;
+        }
+        .allChefs {
+          .eachChef {
+            max-width: 300px;
+          }
+        }
+      }
+      @media screen and (max-width: 726px) {
+        .allChefs {
+          .eachChef {
+            max-width: 250px;
+          }
+        }
+      }
+      @media screen and (max-width: 626px) {
+        .info {
+          font-size: 14px;
+        }
+        .title {
+          font-size: 27px;
+        }
+        .allChefs {
+          gap: 15px;
+          .eachChef {
+            max-width: 220px;
+            img {
+              width: 130px;
+              height: 200px;
+            }
+            .infoSec {
+              .eachInfoSec {
+                span {
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 566px) {
+        .allChefs {
+          .eachChef {
+            padding: 10px;
+            max-width: 200px;
+            img {
+              width: 130px;
+              height: 170px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 512px) {
+        padding: 60px 20px;
+        .allChefs {
+          .eachChef {
+            width: 100%;
+            img {
+              height: 220px;
+              width: 140px;
+            }
+            .infoSec {
+              .eachInfoSec {
+                justify-content: space-between;
+                text-align: end;
+                &:last-child {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 472px) {
+        .allChefs {
+          .eachChef {
+            max-width: 175px;
+            padding: 10px;
+            .infoSec {
+              .eachInfoSec {
+                font-size: 14px;
+                span {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 425px) {
+        .allChefs {
+          .eachChef {
+            img {
+              width: 100px;
+              height: 170px;
+            }
+            max-width: 150px;
+            padding: 10px;
+            .infoSec {
+              .eachInfoSec {
+                flex-direction: column;
+                text-align: start;
+                align-items: flex-start;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 371px) {
+        .allChefs {
+          .eachChef {
+            max-width: 250px;
+            img {
+              width: 200px;
+              height: 250px;
+              object-position: 50% 0;
+              object-fit: contain;
+            }
+            .infoSec {
+              .eachInfoSec {
+                flex-direction: row;
+                font-size: 16px;
+              }
             }
           }
         }
@@ -77,14 +263,3 @@
     }
   }
 }
-
-// @keyframes fadeInUp {
-//   from {
-//     opacity: 0;
-//     transform: translateY(20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }

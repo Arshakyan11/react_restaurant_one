@@ -36,22 +36,22 @@ const Staff = () => {
                 <div key={ind} className={styles.eachChef} data-aos="fade-up">
                   <img src={chef.img} alt="imgChef" />
                   <div className={styles.infoSec}>
-                    <p>
+                    <div className={styles.eachInfoSec}>
                       <span>Name:</span>
-                      {chef.name}
-                    </p>
-                    <p>
+                      <p>{chef.name}</p>
+                    </div>
+                    <div className={styles.eachInfoSec}>
                       <span>Position:</span>
-                      {chef.position}
-                    </p>
-                    <p>
+                      <p>{chef.position}</p>
+                    </div>
+                    <div className={styles.eachInfoSec}>
                       <span>Country:</span>
-                      {chef.country}
-                    </p>
-                    <p>
+                      <p>{chef.country}</p>
+                    </div>
+                    <div className={styles.eachInfoSec}>
                       <span>Description:</span>
-                      {chef.description}
-                    </p>
+                      <p>{chef.description}</p>
+                    </div>
                   </div>
                 </div>
               );
