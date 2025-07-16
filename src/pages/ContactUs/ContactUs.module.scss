@@ -1,13 +1,13 @@
 @import "../../global/global.scss";
 .contactUsSec {
+  background: linear-gradient(to bottom, #f7f6f4, #fff);
   .container {
     max-width: 1440px;
     margin: auto;
     .contactUsMain {
       @include disFx();
       flex-direction: column;
-      padding: 40px 20px;
-      background: linear-gradient(to bottom, #f7f6f4, #fff);
+      padding: 40px;
       h2 {
         font-size: 50px;
         font-weight: bold;
@@ -37,7 +37,6 @@
         gap: 40px;
         width: 100%;
         fieldset {
-          overflow: hidden;
           border-radius: 20px;
           background-color: #f2f0ec;
           border: 1px solid #d0ccc7;
@@ -55,6 +54,7 @@
             background: transparent;
             padding: 20px;
             width: 100%;
+            font-size: 16px;
           }
         }
         .eachLine {
@@ -98,6 +98,107 @@
               box-shadow: 0 4px 12px rgba(255, 210, 77, 0.5);
               color: rgb(240, 77, 36);
               transform: translateY(-2px);
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1165px) {
+        h2 {
+          font-size: 40px;
+        }
+        .titileText {
+          font-size: 19px;
+          max-width: 800px;
+        }
+        form {
+          .eachLine {
+            fieldset {
+              max-width: 400px;
+            }
+          }
+          fieldset {
+            max-width: 820px;
+          }
+        }
+      }
+      @media screen and (max-width: 890px) {
+        padding: 40px 60px;
+        h2 {
+          font-size: 36px;
+        }
+        .titileText {
+          font-size: 19px;
+          max-width: 600px;
+        }
+        form {
+          .eachLine {
+            fieldset {
+              max-width: 300px;
+            }
+          }
+          fieldset {
+            max-width: 620px;
+          }
+        }
+      }
+      @media screen and (max-width: 555px) {
+        form {
+          gap: 40px;
+          .eachLine {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            fieldset {
+              max-width: 420px;
+            }
+          }
+          fieldset {
+            .textareaStyle {
+              min-height: 200px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 465px) {
+        padding: 40px 50px;
+        h2 {
+          font-size: 32px;
+        }
+        .titileText {
+          font-size: 18px;
+        }
+        form {
+          .buttons {
+            flex-direction: column;
+            button {
+              max-width: 100%;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 395px) {
+        h2 {
+          &::after {
+            width: 200px;
+          }
+        }
+        form {
+          fieldset {
+            input {
+              padding: 10px 20px;
+            }
+          }
+          .eachLine {
+            flex-direction: column;
+            align-items: center;
+            fieldset {
+              max-width: 420px;
+            }
+          }
+          fieldset {
+            .textareaStyle {
+              min-height: 150px;
             }
           }
         }

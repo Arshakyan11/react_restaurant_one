@@ -19,8 +19,8 @@ export const createDataContact = (e, form, dispatch) => {
     subject,
     message,
   };
-  form.resetForm();
   dispatch(sendingMessage(data));
+  form.resetForm();
 };
 
 export const createUserData = (event, form, dispatch, navigate) => {

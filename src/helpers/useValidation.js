@@ -13,7 +13,7 @@ export const contactUsValidation = object({
     .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Pls enter valid email")
     .required("Pls write Your Email"),
   subject: string()
-    .min(3, "Write  Subject more than 3symbols")
+    .min(3, "Write  Subject more symbols")
     .max(30, "Write less than  15 symbols")
     .required("Pls write Subject"),
   message: string()

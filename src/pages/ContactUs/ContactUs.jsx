@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllData } from "../../store/ContactUsSlice/ContactUsSlice";
 import { contactUsValidation } from "../../helpers/useValidation";
 import Aos from "aos";
-import { sendingMessage } from "../../store/api/api";
 import { createDataContact } from "../../helpers/sendData";
 const ContactUs = () => {
   const dispatch = useDispatch();
@@ -27,7 +26,7 @@ const ContactUs = () => {
             hello, our team is here to help. At our restaurant, we value every
             guest and believe communication is the key to great service.
           </p>
-          <Formik
+          <Formik 
             initialValues={initialValues}
             validationSchema={contactUsValidation}
             onSubmit={(e, form) => createDataContact(e, form, dispatch)}
