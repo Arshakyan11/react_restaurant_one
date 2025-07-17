@@ -24,10 +24,10 @@ export const ROUTES = {
 //Search
 
 //reservation
-
+//eachProduct
 //registration
 //login
 //profile
 //profile/reserveDate
-//profileWishllist ??????????  
+//profileWishllist ??????????
 //notFound

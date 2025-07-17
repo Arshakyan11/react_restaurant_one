@@ -20,9 +20,9 @@ const EachProduct = () => {
             <div className={styles.infoSecMiddle}>
               <p className={styles.ingredientsTitle}>Ingredients:</p>
               <div className={styles.ingredients}>
-                {mealObj.ingredients.map((elm, i) => {
-                  return <p key={i}>{elm.food}, </p>;
-                })}
+                <p>
+                  {mealObj.ingredients.map((elm, i) => elm.food).join(", ")}
+                </p>
               </div>
             </div>
           </div>
