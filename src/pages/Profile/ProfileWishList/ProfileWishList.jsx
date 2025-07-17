@@ -19,10 +19,10 @@ const ProfileWishList = () => {
   }, []);
   return (
     <div className={styles.wishListSec}>
-      <div className={styles.mainWishListSec}>
-        <div className={styles.wishedItems}>
-          {userInfo.wishList?.length > 0 ? (
-            userInfo?.wishList?.map((elm, ind) => {
+      <div className={styles.wishedItems}>
+        {userInfo.wishList?.length > 0 ? (
+          <div className={styles.allWishedItemsOnly}>
+            {userInfo?.wishList?.map((elm, ind) => {
               return (
                 <div className={styles.wishedItemEach} key={ind}>
                   <img src={elm.img} alt="img" className={styles.mealImg} />
@@ -64,21 +64,21 @@ const ProfileWishList = () => {
                   </div>
                 </div>
               );
-            })
-          ) : (
-            <div className={styles.notFoundAnyItem}>
-              <h2>Your wishlist is currently empty.</h2>
-              <img src={burgerProfile} alt="burgerImg" />
-              <h3>
-                Start adding your favorite items to keep track of them here.
-              </h3>
-              <div className={styles.buttons}>
-                <Link to={`/${ROUTES.MENU}`}>Check Menu</Link>
-                <Link to={`/${ROUTES.Search}`}>Go to Search</Link>
-              </div>
+            })}
+          </div>
+        ) : (
+          <div className={styles.notFoundAnyItem}>
+            <h2>Your wishlist is currently empty.</h2>
+            <img src={burgerProfile} alt="burgerImg" />
+            <h3>
+              Start adding your favorite items to keep track of them here.
+            </h3>
+            <div className={styles.buttons}>
+              <Link to={`/${ROUTES.MENU}`}>Check Menu</Link>
+              <Link to={`/${ROUTES.Search}`}>Go to Search</Link>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
