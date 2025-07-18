@@ -6,6 +6,7 @@ const MenuSlice = createSlice({
   initialState: {
     selectedItems: [],
     selectedParams: null,
+    isOpenFilterBox: true,
     loading: false,
     error: null,
     filterActivated: false,
@@ -29,6 +30,9 @@ const MenuSlice = createSlice({
           (elm) => elm.recipe.price >= min && elm.recipe.price <= max
         );
       }
+    },
+    setFilterBoxStatus: (state, action) => {
+      state.isOpenFilterBox = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -57,6 +61,5 @@ const MenuSlice = createSlice({
 });
 
 export default MenuSlice.reducer;
-export const { setFilteredDataByPrice, setFilteredMainData } =
-  MenuSlice.actions;
+export const { setFilteredDataByPrice, setFilterBoxStatus } = MenuSlice.actions;
 export const { getAllMenuInfo } = MenuSlice.selectors;

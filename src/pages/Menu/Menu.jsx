@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Menu.module.scss";
 import Pagination from "../../components/Pagination/Pagination";
 import {
@@ -9,9 +9,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllMenuInfo,
+  setFilterBoxStatus,
   setFilteredDataByPrice,
 } from "../../store/MenuSlice/MenuSlice";
-import { addingWishlistToData, fetchingGlobalMenu } from "../../store/api/api";
+import { fetchingGlobalMenu } from "../../store/api/api";
 import { starRating } from "../../components/Images";
 import { nanoid } from "nanoid";
 import {
@@ -27,22 +28,29 @@ import BuyingItemsList from "../../components/BuyingItemsList/BuyingItemsList";
 
 const Menu = () => {
   const dispatch = useDispatch();
+
   const {
     selectedItems,
     selectedParams,
     filterActivated,
     loading,
     filteredData,
+    isOpenFilterBox,
   } = useSelector(getAllMenuInfo);
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
   const userInfo = localStorage.getItem("userInfo");
+  const h3Ref = useRef();
 
   useEffect(() => {
     dispatch(fetchingGlobalMenu("BreakFast"));
     Aos.init({ duration: 800 });
   }, []);
   useEffect(() => {
+    if (window.innerWidth <= 690) {
+      dispatch(setFilterBoxStatus(false));
+    }
+
     // if (displayData.length > 0 && !didPaginate.current) {
     dispatch(
       setInfoAboutPagination({
@@ -68,98 +76,124 @@ const Menu = () => {
     <section className={styles.menuSec}>
       <div className={styles.container}>
         <div className={styles.restaurantMenu}>
-          <div className={styles.tutorialMenu} data-aos="fade-left">
+          <div className={styles.tutorialMenu}>
             <span>Eriso</span>
             <h2>
               View Our <br /> New Menu
             </h2>
             <p>The freshest ingredients for you every day</p>
           </div>
-          <h3 className={styles.menuTitle}>Menu</h3>
+          <h3 className={styles.menuTitle} ref={h3Ref}>
+            Menu
+          </h3>
           <div className={styles.filtersAndMeals} data-aos="fade-up">
             <div className={styles.filterBox}>
-              <h2>Filters</h2>
-              <div className={styles.forBackground}>
-                <div className={styles.filtersMain}>
-                  <ul className={styles.mealTime}>
-                    <h2>MealTime</h2>
-                    {mealTime.map((elm) => {
-                      return (
-                        <li
-                          key={elm}
-                          onClick={() => handleMenuChoosing(elm)}
-                          className={
-                            selectedParams === elm
-                              ? styles.activatedMenuFilter
-                              : ""
-                          }
-                        >
-                          {elm}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <ul className={styles.mealTime}>
-                    <h2>Top Categories</h2>
-                    {topCategories.map((elm) => {
-                      return (
-                        <li
-                          key={elm}
-                          onClick={() => handleMenuChoosing(elm)}
-                          className={
-                            selectedParams === elm
-                              ? styles.activatedMenuFilter
-                              : ""
-                          }
-                        >
-                          {elm}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <ul className={styles.mealTime}>
-                    <h2>Desserts & Drinks</h2>
-                    {dessertsAndDrinks.map((elm) => {
-                      return (
-                        <li
-                          key={elm}
-                          onClick={() => handleMenuChoosing(elm)}
-                          className={
-                            selectedParams === elm
-                              ? styles.activatedMenuFilter
-                              : ""
-                          }
-                        >
-                          {elm}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <ul className={styles.mealTime}>
-                    <h2>By Price</h2>
-                    <li onClick={() => handleFilteringData(0, 5)}>up to 5$</li>
-                    <li onClick={() => handleFilteringData(6, 10)}>6$ - 10$</li>
-                    <li onClick={() => handleFilteringData(11, 20)}>
-                      11$ - 20$
-                    </li>
-                    <li onClick={() => handleFilteringData(21, 30)}>
-                      21$ - 30$
-                    </li>
-                    <li onClick={() => handleFilteringData(31, 40)}>
-                      31$ - 40$
-                    </li>
-                    <li onClick={() => handleFilteringData(41, 50)}>
-                      41$ - 50$
-                    </li>
-                    <li onClick={() => handleFilteringData(51, 1000)}>
-                      51$ and more
-                    </li>
-                    <li onClick={() => handleFilteringData(0, 1000, false)}>
-                      Remove the price filter
-                    </li>
-                  </ul>
-                </div>
+              <div className={styles.firstLineFilter}>
+                <h2>Filters</h2>
+                <button
+                  onClick={() => dispatch(setFilterBoxStatus(!isOpenFilterBox))}
+                >
+                  ⬇️
+                </button>
               </div>
+              {isOpenFilterBox && (
+                <div className={styles.forBackground}>
+                  <div className={styles.filtersMain}>
+                    <ul className={styles.mealTime}>
+                      <h2>MealTime</h2>
+                      {mealTime.map((elm) => {
+                        return (
+                          <li
+                            key={elm}
+                            onClick={() => handleMenuChoosing(elm)}
+                            className={
+                              selectedParams === elm
+                                ? styles.activatedMenuFilter
+                                : ""
+                            }
+                          >
+                            {elm}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <ul className={styles.mealTime}>
+                      <h2>Top Categories</h2>
+                      {topCategories.map((elm) => {
+                        return (
+                          <li
+                            key={elm}
+                            onClick={() => handleMenuChoosing(elm)}
+                            className={
+                              selectedParams === elm
+                                ? styles.activatedMenuFilter
+                                : ""
+                            }
+                          >
+                            {elm}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <ul className={styles.mealTime}>
+                      <h2>Desserts & Drinks</h2>
+                      {dessertsAndDrinks.map((elm) => {
+                        return (
+                          <li
+                            key={elm}
+                            onClick={() => handleMenuChoosing(elm)}
+                            className={
+                              selectedParams === elm
+                                ? styles.activatedMenuFilter
+                                : ""
+                            }
+                          >
+                            {elm}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <ul className={styles.mealTime}>
+                      <h2>By Price</h2>
+                      <li onClick={() => handleFilteringData(0, 5)}>
+                        up to 5$
+                      </li>
+                      <li onClick={() => handleFilteringData(6, 10)}>
+                        6$ - 10$
+                      </li>
+                      <li onClick={() => handleFilteringData(11, 20)}>
+                        11$ - 20$
+                      </li>
+                      <li onClick={() => handleFilteringData(21, 30)}>
+                        21$ - 30$
+                      </li>
+                      <li onClick={() => handleFilteringData(31, 40)}>
+                        31$ - 40$
+                      </li>
+                      <li onClick={() => handleFilteringData(41, 50)}>
+                        41$ - 50$
+                      </li>
+                      <li onClick={() => handleFilteringData(51, 1000)}>
+                        51$ and more
+                      </li>
+                      <li onClick={() => handleFilteringData(0, 1000, false)}>
+                        Remove the price filter
+                      </li>
+                    </ul>
+                  </div>
+                  <button
+                    onClick={() => {
+                      dispatch(setFilterBoxStatus(!isOpenFilterBox));
+                      window.scrollTo({
+                        top: h3Ref.current.offsetTop,
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
             </div>
             {loading ? (
               <div className={styles.allLoaders}>
@@ -200,7 +234,7 @@ const Menu = () => {
                             </div>
                             <p> {each.price}$</p>
                           </div>
-                          <div className={styles.priceAndWeight}>
+                          <div className={styles.onlyWeight}>
                             <p>{each.totalWeight.toFixed(1)}g</p>
                             <p>Weight</p>
                           </div>

@@ -29,5 +29,5 @@ export const ROUTES = {
 //login
 //profile
 //profile/reserveDate
-//profileWishllist ??????????
+//profileWishllist
 //notFound
