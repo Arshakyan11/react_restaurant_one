@@ -15,19 +15,3 @@ export const ROUTES = {
   PROFILEWISHLIST: "wishlist",
   NOTFOUND: "*",
 };
-
-//home
-//aboutUs
-//staff
-//contactUs
-//ourrestaurants
-//Search
-
-//reservation
-//eachProduct
-//registration
-//login
-//profile
-//profile/reserveDate
-//profileWishllist
-//notFound
