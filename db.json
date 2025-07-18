@@ -31,14 +31,47 @@
       "phoneNumber": "+37477112233",
       "email": "adminadmin@gmail.com",
       "password": "adminAdm123",
-      "wishList": [],
+      "wishList": [
+        {
+          "id": "FSnk",
+          "name": "Brown Rice Almond BBQ Crackers",
+          "img": "https://edamam-product-images.s3.amazonaws.com/web-img/f32/f32af28c6b544d80783da269400620c3.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHcaCXVzLWVhc3QtMSJIMEYCIQD756wPXKTmaGXgq0MDZUs%2BdvtTWrZSqZ8pQNbe7hvpngIhANcFzAVZJN%2FDnwKEyrOE7ktyAYdW7Tetmpo4aBn4M1WgKsEFCJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMTg3MDE3MTUwOTg2IgzcJ0FF7mEdhofXIqcqlQUZwEk6eKQ1zPIOH%2FubJj3eju6RoWMyyz8AxmNV0QyvGZ4EmpNNXG3kJna3qheYLFv%2FiXoz7mBbQ%2BoMXCgm5EG88pvXZdx9Q2yroalRrdhkbg2UnsCHqdCcZ%2F1DNnG9sNpohet%2F5e1CZpD4iSEgVJ1qAuYa0l63tQu2WsVcsdXrQMJSyK5GmZDP1CadSI5tP3pcSHBGY5iC3LUPlItrp%2FjnjpqK8RuTA%2FMyHZ%2BP5ZdSnj4Bi4dDTL3f4u5u6DwtgxDVHjoWt1N10XlUY%2FAT5mQTQ44yX6NFKg5cUWe0kSbI%2FiynBVT%2FWh7vQ0bBP%2BEIOBsyrn0EKTUaxvB9fj4Yc5db9t9%2B3iME%2FiO8Coi1RMQPpOC9%2FuvQRB5TLMgnxL5iLOOaiOzztwPq3JeP34JJAJf%2B779CTOfGtmoMkZZKX8a7IcCDdYqBxsF%2Fj9RopUUFrRp1vOu33vdPE9LXTjHhxiILHJ6B1L5IThiKxiuuEDLqdsTD2pkEENOk54dgTicaoCJ7X1wClkHPYQURb%2B9ibexGZMW%2BAJ%2F0L%2Fl0p58afhLAMxhK8fEvRCxkmSt9lgCerosFwdRXmVHV0Q%2FRJYCIrwkRK5A%2FTiu0eS6VmNnUTZkH7OtT1yvcdVSHSfKxdc4hPywHZIZfms2n2brdcnXLNJ3L5rvGyOJU8ycbVM1DzXsrt7r%2BaseOtgKXHLstW7ksWPmJ1foWFHGaJDouRlOkSUki9ZHhFbJv7vinyyahxikPOXN2aiC3bCdhMyGq7nuftB%2BUnJpZdep3ZvbtTSqYrsztL542U2AYcDWBFkOG2fzsXJ%2B2yTvxinwIB1X53k%2BH6ncpeyIu8GupY3Iw86k3vu0YoSvCScp5zZakGuFDwpdHAfhWsyXXMI666cMGOrABYWdtMz8JQwMLlzzhHHecADfVSYOjEWIrfMP8syInPE%2FcglOvzBfFXlCzwndkTKFw%2FR2xjoFXv8z99J%2BnyTrALXVxbPbN96AJpgMOyE%2BOd1m%2FxNt7gi96HRClIJVw0YfXfBunG3p9dAKxks3l8czl5Ivr6SafUyiXv3EQr9pls3S%2BjONsm3t9DD71XmZmDcrQXU0pkxbplFoVYkZu9vfBBj2jPFtv%2BbLhCIhfcdBIzqM%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250718T153536Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIASXCYXIIFGWORHSDB%2F20250718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1e70248b1c3639bf61ac68e9e6288e5610d5a1aa2908987e4233ca8b1355e0a9",
+          "price": "31.75",
+          "calories": 2937.978,
+          "count": 1
+        },
+        {
+          "id": "s0p7",
+          "name": "BBQ Chicken Quinoa Salad",
+          "img": "https://edamam-product-images.s3.amazonaws.com/web-img/ffd/ffd68082ca4e12b64c83f8539b528649.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHcaCXVzLWVhc3QtMSJIMEYCIQD756wPXKTmaGXgq0MDZUs%2BdvtTWrZSqZ8pQNbe7hvpngIhANcFzAVZJN%2FDnwKEyrOE7ktyAYdW7Tetmpo4aBn4M1WgKsEFCJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMTg3MDE3MTUwOTg2IgzcJ0FF7mEdhofXIqcqlQUZwEk6eKQ1zPIOH%2FubJj3eju6RoWMyyz8AxmNV0QyvGZ4EmpNNXG3kJna3qheYLFv%2FiXoz7mBbQ%2BoMXCgm5EG88pvXZdx9Q2yroalRrdhkbg2UnsCHqdCcZ%2F1DNnG9sNpohet%2F5e1CZpD4iSEgVJ1qAuYa0l63tQu2WsVcsdXrQMJSyK5GmZDP1CadSI5tP3pcSHBGY5iC3LUPlItrp%2FjnjpqK8RuTA%2FMyHZ%2BP5ZdSnj4Bi4dDTL3f4u5u6DwtgxDVHjoWt1N10XlUY%2FAT5mQTQ44yX6NFKg5cUWe0kSbI%2FiynBVT%2FWh7vQ0bBP%2BEIOBsyrn0EKTUaxvB9fj4Yc5db9t9%2B3iME%2FiO8Coi1RMQPpOC9%2FuvQRB5TLMgnxL5iLOOaiOzztwPq3JeP34JJAJf%2B779CTOfGtmoMkZZKX8a7IcCDdYqBxsF%2Fj9RopUUFrRp1vOu33vdPE9LXTjHhxiILHJ6B1L5IThiKxiuuEDLqdsTD2pkEENOk54dgTicaoCJ7X1wClkHPYQURb%2B9ibexGZMW%2BAJ%2F0L%2Fl0p58afhLAMxhK8fEvRCxkmSt9lgCerosFwdRXmVHV0Q%2FRJYCIrwkRK5A%2FTiu0eS6VmNnUTZkH7OtT1yvcdVSHSfKxdc4hPywHZIZfms2n2brdcnXLNJ3L5rvGyOJU8ycbVM1DzXsrt7r%2BaseOtgKXHLstW7ksWPmJ1foWFHGaJDouRlOkSUki9ZHhFbJv7vinyyahxikPOXN2aiC3bCdhMyGq7nuftB%2BUnJpZdep3ZvbtTSqYrsztL542U2AYcDWBFkOG2fzsXJ%2B2yTvxinwIB1X53k%2BH6ncpeyIu8GupY3Iw86k3vu0YoSvCScp5zZakGuFDwpdHAfhWsyXXMI666cMGOrABYWdtMz8JQwMLlzzhHHecADfVSYOjEWIrfMP8syInPE%2FcglOvzBfFXlCzwndkTKFw%2FR2xjoFXv8z99J%2BnyTrALXVxbPbN96AJpgMOyE%2BOd1m%2FxNt7gi96HRClIJVw0YfXfBunG3p9dAKxks3l8czl5Ivr6SafUyiXv3EQr9pls3S%2BjONsm3t9DD71XmZmDcrQXU0pkxbplFoVYkZu9vfBBj2jPFtv%2BbLhCIhfcdBIzqM%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250718T153536Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIASXCYXIIFGWORHSDB%2F20250718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=fb953d7c0d53a3319442263ae3fff88b02d4421ddfb09710aadfc0f4862ef28d",
+          "price": "37.62",
+          "calories": 1459.8194316819365,
+          "count": 8
+        },
+        {
+          "id": "xMEV",
+          "name": "BBQ Chicken and Peach Quesadillas",
+          "img": "https://edamam-product-images.s3.amazonaws.com/web-img/07c/07ca416d6292ac80a7c3b2a33b3f0ec0.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHcaCXVzLWVhc3QtMSJIMEYCIQD756wPXKTmaGXgq0MDZUs%2BdvtTWrZSqZ8pQNbe7hvpngIhANcFzAVZJN%2FDnwKEyrOE7ktyAYdW7Tetmpo4aBn4M1WgKsEFCJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMTg3MDE3MTUwOTg2IgzcJ0FF7mEdhofXIqcqlQUZwEk6eKQ1zPIOH%2FubJj3eju6RoWMyyz8AxmNV0QyvGZ4EmpNNXG3kJna3qheYLFv%2FiXoz7mBbQ%2BoMXCgm5EG88pvXZdx9Q2yroalRrdhkbg2UnsCHqdCcZ%2F1DNnG9sNpohet%2F5e1CZpD4iSEgVJ1qAuYa0l63tQu2WsVcsdXrQMJSyK5GmZDP1CadSI5tP3pcSHBGY5iC3LUPlItrp%2FjnjpqK8RuTA%2FMyHZ%2BP5ZdSnj4Bi4dDTL3f4u5u6DwtgxDVHjoWt1N10XlUY%2FAT5mQTQ44yX6NFKg5cUWe0kSbI%2FiynBVT%2FWh7vQ0bBP%2BEIOBsyrn0EKTUaxvB9fj4Yc5db9t9%2B3iME%2FiO8Coi1RMQPpOC9%2FuvQRB5TLMgnxL5iLOOaiOzztwPq3JeP34JJAJf%2B779CTOfGtmoMkZZKX8a7IcCDdYqBxsF%2Fj9RopUUFrRp1vOu33vdPE9LXTjHhxiILHJ6B1L5IThiKxiuuEDLqdsTD2pkEENOk54dgTicaoCJ7X1wClkHPYQURb%2B9ibexGZMW%2BAJ%2F0L%2Fl0p58afhLAMxhK8fEvRCxkmSt9lgCerosFwdRXmVHV0Q%2FRJYCIrwkRK5A%2FTiu0eS6VmNnUTZkH7OtT1yvcdVSHSfKxdc4hPywHZIZfms2n2brdcnXLNJ3L5rvGyOJU8ycbVM1DzXsrt7r%2BaseOtgKXHLstW7ksWPmJ1foWFHGaJDouRlOkSUki9ZHhFbJv7vinyyahxikPOXN2aiC3bCdhMyGq7nuftB%2BUnJpZdep3ZvbtTSqYrsztL542U2AYcDWBFkOG2fzsXJ%2B2yTvxinwIB1X53k%2BH6ncpeyIu8GupY3Iw86k3vu0YoSvCScp5zZakGuFDwpdHAfhWsyXXMI666cMGOrABYWdtMz8JQwMLlzzhHHecADfVSYOjEWIrfMP8syInPE%2FcglOvzBfFXlCzwndkTKFw%2FR2xjoFXv8z99J%2BnyTrALXVxbPbN96AJpgMOyE%2BOd1m%2FxNt7gi96HRClIJVw0YfXfBunG3p9dAKxks3l8czl5Ivr6SafUyiXv3EQr9pls3S%2BjONsm3t9DD71XmZmDcrQXU0pkxbplFoVYkZu9vfBBj2jPFtv%2BbLhCIhfcdBIzqM%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250718T153536Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIASXCYXIIFGWORHSDB%2F20250718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=a0409ba24d6f3a5118da7ddbd6782bba0cab54f0c39ecd129250ea19c47eb8d0",
+          "price": "18.86",
+          "calories": 451.94285833333333,
+          "count": 1
+        },
+        {
+          "id": "Te6j",
+          "name": "BBQ Pork Pizza with Caramelized Onions and Roasted Tomatoes",
+          "img": "https://edamam-product-images.s3.amazonaws.com/web-img/0f7/0f7db37701263f4c3e05794bad916d29.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHgaCXVzLWVhc3QtMSJHMEUCIQCMy%2BWuaZtAjvketNpDhnjjjpQj%2B28Fym%2BpIVttk%2FRbDgIgIC%2F%2FoVJjypJrMaBkNMGw4sf%2BVs0zuuVUuzQFtEqFrfYqwQUIkf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwxODcwMTcxNTA5ODYiDCYtxseK%2Fp2lsLqK%2BiqVBcxQnvyaetP9siw%2FmWDJPMuWFhzHKgE7LjGjSWjiD%2F8%2Be8RSyBAwbWOJ9wnWhRc5uqsfrI8DKuYFzj9r2E13xN8Dfjrs7oIV%2FnjcSvRJ%2BnxBKlYF%2B%2Bee1YZig60dbsS3SqVxdWGL4omGlWDhJ8e6WzfgaDbhMQ%2Byh98Dw2y8HcU0SF5rgVj5EGVdlHigV9wReaiCCIWYrL2rf8zDNqS9%2FQeu%2BhRQ9KQwGrUQCmybxhaj0WwAgUqEhuRLSQXq%2Fy7id6z3WqQTgE54ayj%2FEnDe2JOzWPYyO3gtfsVr7egx1RY12LamEreI%2BeSR9NrIe1qRIqVNWm%2FQtmxqiAL5jyX4OF1ZoihOsILZ4dmMJH97Ivm94CdBwHYbyXkkMU5MrO%2B2OucONYSGNffrS%2BLu2V7AEUugaN%2Fh1nYjui%2F76qC7HsuCcvbTwBO3vEjhmDQAT0tgpovr1Hrv9%2FjJu69Y3cibDXVfYs4Zyhj8INhfnQX8zPATKS4eg%2BZstyhMMxrm43eS0s7Pv4%2FXt%2Bo8EoG0ubxXkZ9h%2BYgEAjqZDnEJ7hfb3cIsEHDPBBal3KEUG31tAedHk2FG2FZtKmm2OCTFLw8CqbbdehM8HflEDys%2FSdR217K%2BwPtBxKCTUgKVeu%2BUkGQy5zl2jnNNUbxkuXlJUXJ3gvPV8%2B6bgGAn5VAe6amue1Rg9vStbWnoDhw43h6yU6PYVzPHFyIDsj3D6q0%2ByfAVpMwSWpPCRplbPXgDeaiJCP7o%2FfSSPkpdcIA6NQu6R7XPiUV77DM44s85bXOqez10f4mJzhrfSnrlBLodjPr0nfjoaBAxIyBxlqciraQrrA2dWDnAT3vaYs%2B3F2Ag2IKXs%2B0FiyGN5sM8IFVcK0PZAoI7qp%2BLpdQw09jpwwY6sQEXZQSi3LJsqietOCp0U85UMMjVj26fTDoBDajfkhDJjqs0BmaQn2vPepkpQaXSOoT%2FapPgEv9Bn%2B2LtGwT6VSiHrp%2FZiJP4stl1%2FHPdXRsZyB7UfjxSJrnsGYD97bNblrfubG07neXGrvw0duHwlNLuBma1MBmm1V8BnD8NuF2TxdEeBSJ27irwh3hOuk70BHRDr%2BPKRaQopsYlDemC%2FAf6TVNnp4MkpKAfiruiEqBYuI%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250718T160901Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIASXCYXIIFDHEGVQP3%2F20250718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=836e81728a6123b35d82c21cf8e0212ffbf0e94c8404b0a3ac82c840c43f8ed0",
+          "price": "36.11",
+          "calories": 6313.0933263413235,
+          "count": 1
+        }
+      ],
       "reservation": {
         "address": "5125 Melrose Avenue Los Angeles, CA 90038",
         "date": "2025-06-01T21:41",
         "count": "1",
         "tableType": "Scenic View Table"
       },
-      "totalCheckPrice": "0.000"
+      "totalCheckPrice": "124.340"
     }
   ]
 }

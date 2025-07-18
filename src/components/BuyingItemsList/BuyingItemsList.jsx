@@ -37,91 +37,88 @@ const BuyingItemsList = () => {
   useEffect(() => {
     dispatch(setModalOpenType(false));
   }, []);
-  if (userInfo) {
-    return (
-      <div className="allItems">
-        <div
-          className="buyingList"
-          onClick={(e) => {
-            e.stopPropagation();
-            dispatch(setModalOpenType(!isOpenModal));
-          }}
-        >
-          <FaCartShopping />
-        </div>
-        {isOpenModal ? (
-          <div className="modalContainer">
-            <div className="modal" ref={modalRef}>
-              {userInfo.wishList.length > 0 ? (
-                <>
-                  <div className="selectedItems">
-                    {userInfo.wishList.map((elm, ind) => {
-                      return (
-                        <div className="eachItem" key={ind}>
-                          <img src={elm.img} alt="" />
-                          <div className="infoOfItem">
-                            <p>{elm.name.slice(0, 30)}</p>
-                            <p>{elm.price}$</p>
-                            <div className="buttons">
-                              <p
-                                onClick={() =>
-                                  dispatch(deleteWishListFromData(elm.id))
-                                }
-                              >
-                                <FaTrash />
-                              </p>
-                              <p
-                                onClick={() =>
-                                  dispatch(
-                                    changingCountOfItem({
-                                      mealId: elm.id,
-                                      type: -1,
-                                    })
-                                  )
-                                }
-                              >
-                                <FaMinus />
-                              </p>
-                              <p
-                                onClick={() =>
-                                  dispatch(
-                                    changingCountOfItem({
-                                      mealId: elm.id,
-                                      type: 1,
-                                    })
-                                  )
-                                }
-                              >
-                                <FaPlus />
-                              </p>
-                              <p>{elm.count}</p>
-                            </div>
+  if (!userInfo) return null;
+  return (
+    <div className="allItems">
+      <div
+        className="buyingList"
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch(setModalOpenType(!isOpenModal));
+        }}
+      >
+        <FaCartShopping />
+      </div>
+      {isOpenModal ? (
+        <div className="modalContainer">
+          <div className="modal" ref={modalRef}>
+            {userInfo.wishList.length > 0 ? (
+              <>
+                <div className="selectedItems">
+                  {userInfo.wishList.map((elm, ind) => {
+                    return (
+                      <div className="eachItem" key={ind}>
+                        <img src={elm.img} alt="" />
+                        <div className="infoOfItem">
+                          <p>{elm.name.slice(0, 30)}</p>
+                          <p>{elm.price}$</p>
+                          <div className="buttons">
+                            <p
+                              onClick={() =>
+                                dispatch(deleteWishListFromData(elm.id))
+                              }
+                            >
+                              <FaTrash />
+                            </p>
+                            <p
+                              onClick={() =>
+                                dispatch(
+                                  changingCountOfItem({
+                                    mealId: elm.id,
+                                    type: -1,
+                                  })
+                                )
+                              }
+                            >
+                              <FaMinus />
+                            </p>
+                            <p
+                              onClick={() =>
+                                dispatch(
+                                  changingCountOfItem({
+                                    mealId: elm.id,
+                                    type: 1,
+                                  })
+                                )
+                              }
+                            >
+                              <FaPlus />
+                            </p>
+                            <p>{elm.count}</p>
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
-                  <div className="buttons">
-                    <button>Order Now</button>
-                  </div>
-                </>
-              ) : (
-                <h2>There is no any item yet!</h2>
-              )}
-              <div className="totalCount">
-                <p>Total</p>
-                <p>{userInfo.totalCheckPrice}$</p>
-              </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="buttons">
+                  <button>Order Now</button>
+                </div>
+              </>
+            ) : (
+              <h2>There is no any item yet!</h2>
+            )}
+            <div className="totalCount">
+              <p>Total</p>
+              <p>{userInfo.totalCheckPrice}$</p>
             </div>
           </div>
-        ) : (
-          ""
-        )}
-      </div>
-    );
-  } else {
-    return null;
-  }
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 };
 
 export default BuyingItemsList;
