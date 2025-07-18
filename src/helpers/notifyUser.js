@@ -12,6 +12,7 @@ export const notifyForSMth = (mess) => {
     theme: "light",
     transition: Bounce,
     type: "success",
+    className: "toastifyEditing",
   });
 };
 
@@ -27,5 +28,6 @@ export const notifyForError = (mess) => {
     theme: "light",
     transition: Bounce,
     type: "error",
+    className: "toastifyEditing",
   });
 };
