@@ -130,11 +130,11 @@ const NavBar = () => {
                 ) : (
                   <>
                     <Link to={ROUTES.REGISTRATION}>
-                      <FaAddressCard />
+                      <FaAddressCard className="regSvg" />
                       Sign Up
                     </Link>
                     <Link to={ROUTES.LOGIN}>
-                      <FaRightToBracket />
+                      <FaRightToBracket className="regSvg" />
                       Sign In
                     </Link>
                   </>

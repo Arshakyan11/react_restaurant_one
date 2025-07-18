@@ -228,7 +228,7 @@
             svg {
               vertical-align: top;
               margin-right: 5px;
-              margin-top: 1px;
+              margin-top: 2.4px;
             }
             &:hover {
               background: #329125;
@@ -329,9 +329,11 @@
         }
         .bottomNavSection {
           .right {
-            flex-direction: column;
+            width: 100%;
+            margin: auto;
             a,
             button {
+              width: 100%;
               font-size: 16px;
               border-radius: 5px;
               text-align: center;
@@ -416,9 +418,15 @@
               column-gap: 30px;
               row-gap: 20px;
               justify-content: center;
+              li {
+                a {
+                  font-size: 18px;
+                }
+              }
               .dropDown {
                 .dropDownToggle {
                   padding-left: 0;
+                  font-size: 18px;
                 }
               }
             }
@@ -431,12 +439,12 @@
             ul {
               li {
                 a {
-                  font-size: 18px;
+                  font-size: 17px;
                 }
               }
               .dropDown {
                 .dropDownToggle {
-                  font-size: 18px;
+                  font-size: 17px;
                 }
                 .dropDownMenu {
                   left: -40%;
@@ -450,6 +458,9 @@
               font-size: 16px;
               svg {
                 font-size: 14px;
+              }
+              .regSvg {
+                margin-top: 3px;
               }
             }
           }
@@ -471,6 +482,11 @@
             img {
               width: 180px;
             }
+          }
+        }
+        .bottomNavSection {
+          .right {
+            flex-direction: column;
           }
         }
       }
