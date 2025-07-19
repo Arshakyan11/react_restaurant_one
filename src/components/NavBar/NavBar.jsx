@@ -133,7 +133,7 @@ const NavBar = () => {
                 {userInfo ? (
                   <>
                     <Link to={ROUTES.PROFILE}>
-                      <FaUser />
+                      <FaUser className="newUserSvg" />
                       Profile
                     </Link>
                     <button
@@ -141,7 +141,7 @@ const NavBar = () => {
                         LogOutFromAccount(navigate);
                       }}
                     >
-                      <FaRightToBracket />
+                      <FaRightToBracket className="newUserSvg" />
                       Log Out
                     </button>
                   </>
