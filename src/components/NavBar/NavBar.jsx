@@ -1,20 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./NavBar.scss";
 import { logo, logo1 } from "../Images";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../Routes";
 import { FaAddressCard, FaBars, FaUser } from "react-icons/fa";
 import { FaRightToBracket } from "react-icons/fa6";
 import { LogOutFromAccount } from "../../helpers/logOut";
+
 const NavBar = () => {
   const dropDownRef = useRef();
+  const dropDownRefBottom = useRef();
   const navigate = useNavigate();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const [isDropDownOpenBottom, setIsDropDownOpenBottom] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const toogleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
+  const toogleDropDownBottom = () => {
+    setIsDropDownOpenBottom(!isDropDownOpenBottom);
+  };
+
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   useEffect(() => {
     const handleScreenSize = () => setScreenWidth(window.innerWidth);
@@ -23,6 +30,12 @@ const NavBar = () => {
       if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
         setIsDropDownOpen(false);
       }
+      if (
+        dropDownRefBottom.current &&
+        !dropDownRefBottom.current.contains(event.target)
+      ) {
+        setIsDropDownOpenBottom(false);
+      }
     };
     document.addEventListener("mousedown", handleOffingDrop);
     return () => {
@@ -30,6 +43,11 @@ const NavBar = () => {
       window.removeEventListener("resize", handleScreenSize);
     };
   }, []);
+  const pathname = useLocation();
+  useEffect(() => {
+    setIsOpen(false);
+    setIsDropDownOpen(false);
+  }, [pathname]);
 
   return (
     <nav className="mainNav">
@@ -154,15 +172,15 @@ const NavBar = () => {
                   <li>
                     <NavLink to={ROUTES.Search}>Search</NavLink>
                   </li>
-                  <li className="dropDown" ref={dropDownRef}>
+                  <li className="dropDown" ref={dropDownRefBottom}>
                     <button
                       type="button"
                       className="dropDownToggle"
-                      onClick={toogleDropDown}
+                      onClick={toogleDropDownBottom}
                     >
                       More Pages
                     </button>
-                    {isDropDownOpen && (
+                    {isDropDownOpenBottom && (
                       <div className="dropDownMenu">
                         <NavLink to={ROUTES.RESERVATION}>Reservation</NavLink>
                         <NavLink to={ROUTES.RESTAURANTS}>Our Addresses</NavLink>
