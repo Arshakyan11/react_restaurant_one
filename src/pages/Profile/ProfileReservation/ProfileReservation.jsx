@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletingReservationTime } from "../../../store/api/api";
 import { getAllReservationInfo } from "../../../store/ReservationSlice/ReservationSlice";
 import Aos from "aos";
+import { getUserInfo } from "../../../store/AuthSlice/AuthSlice";
 
 const ProfileReservation = () => {
-  const { userData } = useSelector(getAllReservationInfo);
-  const isTrue = userData?.reservation ? true : false;
-  const date = userData?.reservation?.date.split("T");
+  const { userInfo } = useSelector(getUserInfo);
+  const isTrue = userInfo?.reservation ? true : false;
+  const date = userInfo?.reservation?.date.split("T");
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,7 +36,7 @@ const ProfileReservation = () => {
           <div className={styles.reserveMainInfo}>
             <div className={styles.eachLine}>
               <p>Address:</p>
-              <p>{userData.reservation.address}</p>
+              <p>{userInfo.reservation.address}</p>
             </div>
             <div className={styles.eachLine}>
               <p>Date:</p>
@@ -47,11 +48,11 @@ const ProfileReservation = () => {
             </div>
             <div className={styles.eachLine}>
               <p>Number of Guests:</p>
-              <p>{userData.reservation.count} people</p>
+              <p>{userInfo.reservation.count} people</p>
             </div>
             <div className={styles.eachLine}>
               <p>Table Experience:</p>
-              <p>{userData.reservation.tableType}</p>
+              <p>{userInfo.reservation.tableType}</p>
             </div>
             <div className={styles.eachLine}>
               <p>Reservation Status:</p>

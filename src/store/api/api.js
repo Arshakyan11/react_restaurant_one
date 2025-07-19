@@ -119,6 +119,7 @@ const setingLocalStorageUserinfo = (dispatch, data) => {
   dispatch(setUserInfo(data));
 };
 const patchingUserDataToLocal = (id, data) => {
+  console.log(data, id);
   return axios.patch(`http://localhost:8000/users/${id}`, data, {
     timeout: 10000,
     timeoutErrorMessage: "Too much time for fetching data",
@@ -180,7 +181,7 @@ export const addingReserveTable = createAsyncThunk(
         const reservation = {
           reservation: obj,
         };
-        patchingUserDataToLocal(`/${findedUser["id"]}`, reservation);
+        patchingUserDataToLocal(`${findedUser["id"]}`, reservation);
         const updatedData = {
           ...userInfo,
           reservation: obj,
@@ -202,7 +203,7 @@ export const addingReserveTable = createAsyncThunk(
 
 export const deletingReservationTime = createAsyncThunk(
   "reservation/deletingReservationTime",
-  async (_, { rejectWithValue }) => {
+  async (_, { dispatch, rejectWithValue }) => {
     try {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const response = await localStorageUsers({ url: userInfo.id }).then(
@@ -217,6 +218,7 @@ export const deletingReservationTime = createAsyncThunk(
         url: userInfo.id,
       });
       localStorage.setItem("userInfo", JSON.stringify(response));
+      dispatch(setUserInfo(response));
       notifyForSMth("Reservation deleted successfuly");
       return response;
     } catch (error) {
