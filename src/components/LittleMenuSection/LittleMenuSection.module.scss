@@ -372,9 +372,11 @@
         max-width: 140px;
         height: 400px;
         .infoOfMeal {
+          padding: 16px 10px;
           .priceAndOrderNow {
             button,
             .goLogin {
+              text-align: center;
               padding: 10px 0;
             }
           }
