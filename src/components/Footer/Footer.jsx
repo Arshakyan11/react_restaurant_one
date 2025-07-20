@@ -98,7 +98,7 @@ const Footer = () => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="tel:+37411223344"
+                href="tel:+3740010011"
               >
                 Call Us
               </a>
