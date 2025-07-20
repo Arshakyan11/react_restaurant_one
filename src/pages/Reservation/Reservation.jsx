@@ -48,7 +48,7 @@ const Reservation = () => {
                         <ErrorMessage name="address" component="div" />
                       </legend>
                       <FaArrowDown />
-                      <Field name="address" as="select">
+                      <Field name="address" as="select" className={styles.firstInput}>
                         <option value="" hidden>
                           Select Restaurnat Address
                         </option>

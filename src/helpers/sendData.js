@@ -32,6 +32,7 @@ export const createUserData = (event, form, dispatch, navigate) => {
     email,
     password,
     wishList: [],
+    totalCheckPrice: "0.000",
   };
   navigate(`/${ROUTES.LOGIN}`);
   dispatch(creatingUserData(data));

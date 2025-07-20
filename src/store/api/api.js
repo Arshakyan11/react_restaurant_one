@@ -107,7 +107,6 @@ export const fetchingGlobalMenu = createAsyncThunk(
     }
   }
 );
-
 const localStorageUsers = axios.create({
   baseURL: "http://localhost:8000/users",
   timeout: 10000,
@@ -369,5 +368,3 @@ export const changingCountOfItem = createAsyncThunk(
     }
   }
 );
-
-//394
