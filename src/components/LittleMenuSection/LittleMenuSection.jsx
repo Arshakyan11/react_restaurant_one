@@ -115,7 +115,7 @@ const LittleMenuSection = () => {
                           sendingWatchList(dispatch, each);
                         }}
                       >
-                        Order Now
+                        Add to Cart
                       </button>
                     ) : (
                       <Link
@@ -125,7 +125,7 @@ const LittleMenuSection = () => {
                         }
                         className={styles.goLogin}
                       >
-                        Order Now
+                        Add to Cart
                       </Link>
                     )}
                   </div>

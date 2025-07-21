@@ -245,7 +245,7 @@ const Menu = () => {
                               sendingWatchList(dispatch, each);
                             }}
                           >
-                            Buy Now
+                            Add to Cart
                           </button>
                         ) : (
                           <Link
@@ -255,7 +255,7 @@ const Menu = () => {
                             }
                             className={styles.goLogin}
                           >
-                            Buy Now
+                            Add to Cart
                           </Link>
                         )}
                       </div>

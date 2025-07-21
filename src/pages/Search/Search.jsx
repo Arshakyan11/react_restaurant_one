@@ -90,7 +90,7 @@ const Search = () => {
                               sendingWatchList(dispatch, each);
                             }}
                           >
-                            Order Now
+                            Add to Cart
                           </button>
                         ) : (
                           <Link
@@ -100,7 +100,7 @@ const Search = () => {
                             }
                             className={styles.goLogin}
                           >
-                            Order Now
+                            Add to Cart
                           </Link>
                         )}
                       </div>
