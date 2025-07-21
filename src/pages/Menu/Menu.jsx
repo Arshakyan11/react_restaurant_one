@@ -4,6 +4,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import {
   dessertsAndDrinks,
   mealTime,
+  priceRanges,
   topCategories,
 } from "../../data/menuData";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +29,6 @@ import BuyingItemsList from "../../components/BuyingItemsList/BuyingItemsList";
 
 const Menu = () => {
   const dispatch = useDispatch();
-
   const {
     selectedItems,
     selectedParams,
@@ -36,7 +36,12 @@ const Menu = () => {
     loading,
     filteredData,
     isOpenFilterBox,
+    filterInfo,
   } = useSelector(getAllMenuInfo);
+
+  const isPriceSelected = (min, max) => {
+    return filterActivated && filterInfo[0] === min && filterInfo[1] === max;
+  };
   const { slicedData } = useSelector(getAllPagination);
   const displayData = filterActivated ? filteredData : slicedData;
   const userInfo = localStorage.getItem("userInfo");
@@ -50,7 +55,6 @@ const Menu = () => {
     if (window.innerWidth <= 690) {
       dispatch(setFilterBoxStatus(false));
     }
-
     // if (displayData.length > 0 && !didPaginate.current) {
     dispatch(
       setInfoAboutPagination({
@@ -62,14 +66,22 @@ const Menu = () => {
     // }
   }, [selectedItems]);
 
+  const goToTop = () => {
+    window.scrollTo({
+      top: h3Ref.current.offsetTop - 100,
+      behavior: "smooth",
+    });
+  };
   const handleMenuChoosing = (query) => {
     if (query != selectedParams) {
       dispatch(fetchingGlobalMenu(query));
+      goToTop();
     }
   };
 
   const handleFilteringData = (min, max, filterArg = true) => {
     dispatch(setFilteredDataByPrice({ min, max, filterArg }));
+    goToTop();
   };
 
   return (
@@ -155,27 +167,23 @@ const Menu = () => {
                     </ul>
                     <ul className={styles.mealTime}>
                       <h2>By Price</h2>
-                      <li onClick={() => handleFilteringData(0, 5)}>
-                        up to 5$
-                      </li>
-                      <li onClick={() => handleFilteringData(6, 10)}>
-                        6$ - 10$
-                      </li>
-                      <li onClick={() => handleFilteringData(11, 20)}>
-                        11$ - 20$
-                      </li>
-                      <li onClick={() => handleFilteringData(21, 30)}>
-                        21$ - 30$
-                      </li>
-                      <li onClick={() => handleFilteringData(31, 40)}>
-                        31$ - 40$
-                      </li>
-                      <li onClick={() => handleFilteringData(41, 50)}>
-                        41$ - 50$
-                      </li>
-                      <li onClick={() => handleFilteringData(51, 1000)}>
-                        51$ and more
-                      </li>
+                      {priceRanges.map((elm, ind) => {
+                        return (
+                          <li
+                            key={ind}
+                            className={
+                              isPriceSelected(elm.min, elm.max)
+                                ? styles.activatedMenuFilterPrice
+                                : ""
+                            }
+                            onClick={() =>
+                              handleFilteringData(elm.min, elm.max)
+                            }
+                          >
+                            {elm.label}
+                          </li>
+                        );
+                      })}
                       <li onClick={() => handleFilteringData(0, 1000, false)}>
                         Remove the price filter
                       </li>
@@ -184,10 +192,7 @@ const Menu = () => {
                   <button
                     onClick={() => {
                       dispatch(setFilterBoxStatus(!isOpenFilterBox));
-                      window.scrollTo({
-                        top: h3Ref.current.offsetTop,
-                        behavior: "smooth",
-                      });
+                      goToTop();
                     }}
                   >
                     Close
